@@ -1,6 +1,4 @@
 import server from "../build/server/index.js";
 
-// Hono server's fetch method
-export default async (req, ctx) => {
-  return server.fetch(req, ctx);
-};
+// Export the Hono server directly - it should handle fetch requests
+export default server;
