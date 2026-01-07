@@ -2,15 +2,18 @@ import server from "../build/server/index.js";
 
 // Vercel serverless function handler
 export default async function handler(req) {
-  // Convert Vercel's request to a Web Request if needed
-  const request =
-    req instanceof Request
-      ? req
-      : new Request(req.url, {
-          method: req.method,
-          headers: req.headers,
-          body: req.body,
-        });
+  // Build a complete URL from Vercel's request
+  const protocol = req.headers["x-forwarded-proto"] || "https";
+  const host =
+    req.headers["x-forwarded-host"] || req.headers.host || "localhost";
+  const url = `${protocol}://${host}${req.url || "/"}`;
+
+  // Convert to Web Request
+  const request = new Request(url, {
+    method: req.method,
+    headers: req.headers,
+    body: req.method !== "GET" && req.method !== "HEAD" ? req.body : undefined,
+  });
 
   // The server might be a fetch function itself or have a fetch method
   const fetchHandler = typeof server === "function" ? server : server.fetch;
