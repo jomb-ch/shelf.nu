@@ -5,6 +5,7 @@ import path from "node:path";
 
 export default {
   ssr: true,
+  appDirectory: "app",
   buildDirectory: "build",
   serverBuildFile: "index.js",
   buildEnd: async ({ reactRouterConfig }) => {
