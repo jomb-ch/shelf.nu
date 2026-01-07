@@ -1,0 +1,35 @@
+# Source files (only built files should be deployed)
+app/
+server/
+test/
+docs/
+
+# Development files
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Config files not needed in production
+tsconfig.json
+vitest.config.ts
+playwright.config.ts
+
+# Dependencies (Vercel handles these)
+node_modules/
+
+# Build artifacts that Vercel regenerates
+.react-router/
+.cache/
+
+# Environment files (use Vercel environment variables)
+.env*
+!.env.example
+
+# Other
+.git/
+.github/
+.vscode/
+.DS_Store
+*.log
+coverage/

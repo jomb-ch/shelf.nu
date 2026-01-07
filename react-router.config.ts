@@ -5,6 +5,8 @@ import path from "node:path";
 
 export default {
   ssr: true,
+  buildDirectory: "build",
+  serverBuildFile: "index.js",
   buildEnd: async ({ reactRouterConfig }) => {
     const sentryInstrument = `instrument.server`;
     await esbuild
@@ -20,6 +22,9 @@ export default {
         packages: "external",
         bundle: true,
         logLevel: "info",
+        define: {
+          "process.env.NODE_ENV": JSON.stringify("production"),
+        },
       })
       .then(() => {
         const serverBuildPath = `${reactRouterConfig.buildDirectory}/server/${reactRouterConfig.serverBuildFile}`;

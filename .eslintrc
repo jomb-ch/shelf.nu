@@ -16,7 +16,7 @@
     "plugin:tailwindcss/recommended",
     "prettier"
   ],
-  "ignorePatterns": ["coverage"],
+  "ignorePatterns": ["coverage", "api/**"],
   "env": {
     "browser": true,
     "node": true,

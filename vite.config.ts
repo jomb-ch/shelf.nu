@@ -11,13 +11,16 @@ const createHash = init({
 
 const buildHash = process.env.BUILD_HASH || createHash();
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export default defineConfig({
+  mode: isProduction ? "production" : "development",
   server: {
     port: 3000,
-    https: {
-      key: "./.cert/key.pem",
-      cert: "./.cert/cert.pem",
-    },
+    // https: {
+    //   key: "./.cert/key.pem",
+    //   cert: "./.cert/cert.pem",
+    // },
     warmup: {
       clientFiles: [
         "./app/entry.client.tsx",
