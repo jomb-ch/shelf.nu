@@ -6,10 +6,18 @@
   "installCommand": "npm ci --legacy-peer-deps",
   "framework": null,
   "regions": ["iad1"],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/api/index"
+      "src": "/file-assets/(.*)",
+      "dest": "/file-assets/$1"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index"
     }
   ]
 }
