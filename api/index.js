@@ -1,23 +1,32 @@
 import serverPromise from "../build/server/index.js";
 
-// Vercel serverless function handler
-export default async function handler(req) {
-  // Await the server promise to get the actual Hono instance
-  const server = await serverPromise;
+// Cache the resolved server instance
+let serverInstance = null;
 
-  // Build a complete URL from Vercel's request
-  const protocol = req.headers["x-forwarded-proto"] || "https";
-  const host =
-    req.headers["x-forwarded-host"] || req.headers.host || "localhost";
-  const url = `${protocol}://${host}${req.url || "/"}`;
+// Vercel Functions format: export an object with a fetch method
+export default {
+  async fetch(request) {
+    // Resolve and cache the server instance on first request
+    if (!serverInstance) {
+      serverInstance = await serverPromise;
+    }
 
-  // Convert to Web Request
-  const request = new Request(url, {
-    method: req.method,
-    headers: req.headers,
-    body: req.method !== "GET" && req.method !== "HEAD" ? req.body : undefined,
-  });
+    // Build a complete URL if needed
+    const url = request.url.startsWith("http")
+      ? request.url
+      : `https://${request.headers.get("host") || "localhost"}${request.url}`;
 
-  // Call the Hono server's fetch method
-  return await server.fetch(request);
-}
+    // Create a proper Web Request
+    const req = new Request(url, {
+      method: request.method,
+      headers: request.headers,
+      body:
+        request.method !== "GET" && request.method !== "HEAD"
+          ? request.body
+          : undefined,
+    });
+
+    // Call the Hono server's fetch method
+    return await serverInstance.fetch(req);
+  },
+};
