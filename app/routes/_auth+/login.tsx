@@ -20,8 +20,12 @@ import PasswordInput from "~/components/forms/password-input";
 import { Button } from "~/components/shared/button";
 import { config } from "~/config/shelf.config";
 import { useSearchParams } from "~/hooks/search-params";
+import { supabaseClient } from "~/integrations/supabase/client";
 import { ContinueWithEmailForm } from "~/modules/auth/components/continue-with-email-form";
-import { signInWithEmail } from "~/modules/auth/service.server";
+import {
+  signInWithEmail,
+  signInWithOauth,
+} from "~/modules/auth/service.server";
 
 import {
   getSelectedOrganisation,
@@ -201,6 +205,21 @@ export default function IndexLoginForm() {
           </div>
         </div>
       </Form>
+      <Button
+        className="text-center"
+        onClick={async () => {
+          console.log("Google sign in");
+          await supabaseClient.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+              redirectTo: `http://localhost:3000/callback`,
+            },
+          });
+        }}
+        disabled={disabled}
+      >
+        Log in with Google
+      </Button>
       {!disableSSO && (
         <div className="mt-6 text-center">
           <Button variant="link" to="/sso-login">

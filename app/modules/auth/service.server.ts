@@ -98,6 +98,29 @@ export async function resendVerificationEmail(email: string) {
   }
 }
 
+export async function signInWithOauth(provider: "google") {
+  console.log("OAuth sign in called");
+  try {
+    const { data, error } = await getSupabaseAdmin().auth.signInWithOAuth({
+      provider: provider,
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    return data.url;
+  } catch (cause) {
+    throw new ShelfError({
+      cause,
+      message:
+        "Something went wrong. Please try again later or contact support.",
+      additionalData: {},
+      label,
+    });
+  }
+}
+
 export async function signInWithEmail(email: string, password: string) {
   try {
     const { data, error } = await getSupabaseAdmin().auth.signInWithPassword({

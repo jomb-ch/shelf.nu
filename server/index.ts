@@ -129,6 +129,7 @@ export default createHonoServer<ServerEnv>({
           "/join",
           "/login",
           "/sso-login",
+          "/callback",
           "/oauth/callback",
           "/logout",
           "/otp",
