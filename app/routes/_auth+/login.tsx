@@ -1,4 +1,3 @@
-import { CALLBACK_URL } from "~/utils/env";
 import type {
   ActionFunctionArgs,
   LoaderFunctionArgs,
@@ -34,6 +33,7 @@ import {
 } from "~/modules/organization/context.server";
 import { appendToMetaTitle } from "~/utils/append-to-meta-title";
 import { setCookie } from "~/utils/cookies.server";
+import { CALLBACK_URL } from "~/utils/env";
 import {
   isLikeShelfError,
   isZodValidationError,
@@ -206,8 +206,16 @@ export default function IndexLoginForm() {
           </div>
         </div>
       </Form>
+
+      {!disableSSO && (
+        <div className="mt-6 text-center">
+          <Button variant="link" to="/sso-login">
+            Login with SSO
+          </Button>
+        </div>
+      )}
       <Button
-        className="text-center"
+        className="text-center mt-6 w-full"
         onClick={async () => {
           console.log("Google sign in");
           await supabaseClient.auth.signInWithOAuth({
@@ -221,14 +229,6 @@ export default function IndexLoginForm() {
       >
         Log in with Google
       </Button>
-      {!disableSSO && (
-        <div className="mt-6 text-center">
-          <Button variant="link" to="/sso-login">
-            Login with SSO
-          </Button>
-        </div>
-      )}
-
       <div className="mt-6">
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
