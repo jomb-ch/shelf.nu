@@ -16,9 +16,11 @@ import {
   getSelectedOrganisation,
   setSelectedOrganizationIdCookie,
 } from "~/modules/organization/context.server";
+import { createUser, getUserByID } from "~/modules/user/service.server"; // ADD THIS
 import { setCookie } from "~/utils/cookies.server";
 import { SUPABASE_ANON_PUBLIC, SUPABASE_URL } from "~/utils/env";
 import { safeRedirect } from "~/utils/http.server";
+import { randomUsernameFromEmail } from "~/utils/user"; // ADD THIS
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (data?.error) {
@@ -63,6 +65,32 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
   const { data, error } = await supabase.auth.exchangeCodeForSession(code);
   if (data.session) {
     const authSession = mapAuthSession(data.session);
+
+    // ===== ADD THIS SECTION =====
+    // Check if user exists in database, if not create them
+    try {
+      await getUserByID(authSession.userId);
+    } catch (userNotFoundError) {
+      // User doesn't exist, create them with a personal workspace
+      const userMetadata = data.session.user.user_metadata;
+
+      // Extract name from Google metadata
+      const fullName = userMetadata?.full_name || "";
+      const nameParts = fullName.split(" ");
+      const firstName = nameParts[0] || userMetadata?.given_name || "";
+      const lastName =
+        nameParts.slice(1).join(" ") || userMetadata?.family_name || "";
+
+      await createUser({
+        email: authSession.email,
+        userId: authSession.userId,
+        username: randomUsernameFromEmail(authSession.email),
+        firstName: firstName || undefined,
+        lastName: lastName || undefined,
+        isSSO: false, // This is OAuth, not SSO
+      });
+    }
+    // ===== END NEW SECTION =====
 
     const { organizationId } = await getSelectedOrganisation({
       userId: authSession.userId,
