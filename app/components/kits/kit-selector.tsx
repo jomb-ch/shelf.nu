@@ -183,12 +183,12 @@ export default function KitSelector({
               })}
               {filteredKits.length === 0 && !isLoading && (
                 <div className="px-4 py-3 text-sm text-gray-500">
-                  {searchQuery ? "No kits found" : "No kits available"}
+                  {searchQuery ? "Keine Kits gefunden" : "Keine Kits verfügbar"}
                 </div>
               )}
               {isLoading && (
                 <div className="px-4 py-3 text-sm text-gray-500">
-                  Loading kits...
+                  Kits werden geladen...
                 </div>
               )}
             </div>

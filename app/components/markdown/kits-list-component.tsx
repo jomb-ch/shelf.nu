@@ -106,7 +106,9 @@ export function KitsListComponent({
         {isLoading && (
           <div className="flex items-center justify-center py-4">
             <Spinner className="size-4" />
-            <span className="ml-2 text-sm text-gray-500">Loading kits...</span>
+            <span className="ml-2 text-sm text-gray-500">
+              Kits werden geladen...
+            </span>
           </div>
         )}
 
@@ -185,12 +187,12 @@ export function KitsListComponent({
 
         {!isLoading && error && (
           <div className="py-2 text-sm text-gray-500">
-            Failed to load kit details
+            Kit-Details konnten nicht geladen werden
           </div>
         )}
 
         {!isLoading && data?.kits.length === 0 && (
-          <div className="py-2 text-sm text-gray-500">No kits found</div>
+          <div className="py-2 text-sm text-gray-500">Keine Kits gefunden</div>
         )}
       </PopoverContent>
     </Popover>

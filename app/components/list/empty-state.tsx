@@ -30,10 +30,12 @@ export const EmptyState = ({
   const plural = modelName?.plural || modelNameData.plural;
 
   const texts = {
-    title: search ? `No ${plural} found` : `No ${plural} on database`,
+    title: search
+      ? `Keine ${plural} gefunden`
+      : `Keine ${plural} in der Datenbank`,
     p: search
-      ? `Your search for "${search}" did not \n match any ${plural} in the database.`
-      : `What are you waiting for? Create your first ${singular} now!`,
+      ? `Ihre Suche nach "${search}" ergab keine Treffer in der Datenbank.`
+      : `Erstellen Sie jetzt Ihr erstes ${singular}.`,
   };
 
   return (
@@ -46,7 +48,7 @@ export const EmptyState = ({
       <div className="flex flex-col items-center">
         <img
           src="/static/images/empty-state.svg"
-          alt="Empty state"
+          alt="Leerer Zustand"
           className="h-auto w-[172px]"
         />
         {customContent ? (
@@ -72,7 +74,7 @@ export const EmptyState = ({
               variant: "secondary",
             }}
           >
-            Clear Search
+            Suche löschen
           </ClearSearch>
         )}
         {customContent?.newButtonRoute && (
@@ -87,7 +89,7 @@ export const EmptyState = ({
           >
             {customContent?.newButtonContent
               ? customContent.newButtonContent
-              : `New ${singular}`}
+              : `Neues ${singular}`}
           </Button>
         )}
       </div>

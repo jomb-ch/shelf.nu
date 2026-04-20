@@ -64,7 +64,7 @@ export default function BookingFilters({
         <DynamicDropdown
           trigger={
             <div className="my-2 flex cursor-pointer items-center gap-2 md:my-0">
-              Verwahrer <ChevronRight className="hidden rotate-90 md:inline" />
+              Zuständig <ChevronRight className="hidden rotate-90 md:inline" />
             </div>
           }
           model={{
@@ -73,7 +73,7 @@ export default function BookingFilters({
             deletedAt: null,
           }}
           renderItem={(item) => resolveTeamMemberName(item, true)}
-          label="Nach Verwahrer filtern"
+          label="Nach zuständiger Person filtern"
           placeholder="Teammitglieder suchen"
           initialDataKey="teamMembers"
           countKey="totalTeamMembers"

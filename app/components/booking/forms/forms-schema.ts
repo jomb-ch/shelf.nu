@@ -210,7 +210,7 @@ export function BookingFormSchema({
         if (!val && val === "") {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
-            message: "Bitte wählen Sie einen Verwahrer aus",
+            message: "Bitte wählen Sie eine zuständige Person aus",
           });
           return z.NEVER;
         }

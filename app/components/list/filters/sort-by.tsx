@@ -74,7 +74,7 @@ export function SortBy<T extends Record<string, string>>({
           disabled={disabled}
         >
           <span className="truncate whitespace-nowrap text-[14px]">
-            Sorted by: {sortingOptions[orderBy as keyof T]}
+            Sortiert nach: {sortingOptions[orderBy as keyof T]}
           </span>
           <CaretSortIcon />
         </button>
@@ -86,7 +86,7 @@ export function SortBy<T extends Record<string, string>>({
           onOpenAutoFocus={(event) => event.preventDefault()}
         >
           <div>
-            <h5>Sort by:</h5>
+            <h5>Sortieren nach:</h5>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -115,8 +115,8 @@ export function SortBy<T extends Record<string, string>>({
                 updateSearchParam("orderDirection", event.currentTarget.value)
               }
             >
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
+              <option value="asc">Aufsteigend</option>
+              <option value="desc">Absteigend</option>
             </select>
           </div>
         </PopoverContent>

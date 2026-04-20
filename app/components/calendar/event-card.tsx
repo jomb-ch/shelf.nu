@@ -249,13 +249,13 @@ export function EventCardContent({
 
       <div className="flex items-center gap-5">
         <div>
-          <p className="mb-1 text-sm font-normal">Custodian:</p>
+          <p className="mb-1 text-sm font-normal">Zuständig:</p>
           <div className="mb-3 flex items-center gap-2">
             <TeamMemberBadge teamMember={booking.custodian} hidePrivate />
           </div>
         </div>
         <div>
-          <p className="mb-1 text-sm font-normal">Created by:</p>
+          <p className="mb-1 text-sm font-normal">Erstellt von:</p>
           <div className="mb-3 flex items-center gap-2">
             <TeamMemberBadge teamMember={booking.creator} />
           </div>

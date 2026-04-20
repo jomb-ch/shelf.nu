@@ -154,12 +154,12 @@ export default function QrLink() {
             </div>
             <div className="mb-8">
               <h1 className="mb-2 text-[24px] font-semibold">
-                Unlinked QR Code
+                Nicht verknüpfter QR-Code
               </h1>
               <p className="text-gray-600">
                 {comesFromClaim
-                  ? "Thanks for claiming the code. Now its time to link it to a kit or asset."
-                  : "This code is part of your Shelf environment but is not linked with an asset. Would you like to link it?"}
+                  ? "Danke fürs Beanspruchen des Codes. Jetzt können Sie ihn mit einem Kit oder Asset verknüpfen."
+                  : "Dieser Code gehört zu Ihrer Shelf-Umgebung, ist aber noch nicht mit einem Asset verknüpft. Möchten Sie ihn jetzt verknüpfen?"}
               </p>
             </div>
             <div className="flex flex-col justify-center gap-2">
@@ -168,14 +168,14 @@ export default function QrLink() {
                 className=" max-w-full"
                 to={`/assets/new?qrId=${qrId}`}
               >
-                Create a new Asset and link
+                Neues Asset erstellen und verknüpfen
               </Button>
               <Button
                 variant="primary"
                 className=" max-w-full"
                 to={`/kits/new?qrId=${qrId}`}
               >
-                Create a new Kit and link
+                Neues Kit erstellen und verknüpfen
               </Button>
 
               <Button
@@ -183,11 +183,11 @@ export default function QrLink() {
                 className=" max-w-full"
                 to={`/qr/${qrId}/link/asset`}
               >
-                Link to existing asset/kit
+                Mit bestehendem Asset/Kit verknüpfen
               </Button>
 
               <Button variant="secondary" className="max-w-full" to={"/"}>
-                Cancel
+                Abbrechen
               </Button>
             </div>
           </div>

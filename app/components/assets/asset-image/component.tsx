@@ -245,9 +245,7 @@ export const AssetImage = ({
             title={
               <div>
                 <div className="text-lg font-semibold text-gray-900">{alt}</div>
-                <div className="text-sm font-normal text-gray-600">
-                  1 image(s)
-                </div>
+                <div className="text-sm font-normal text-gray-600">1 Bild</div>
               </div>
             }
           >
@@ -262,10 +260,10 @@ export const AssetImage = ({
               </div>
               <div className="flex w-full justify-center gap-3 px-6 py-3 md:justify-end">
                 <Button to={`/assets/${assetId}/edit`} variant="secondary">
-                  Edit image(s)
+                  Bild(er) bearbeiten
                 </Button>
                 <Button variant="secondary" onClick={handleCloseDialog}>
-                  Close
+                  Schliessen
                 </Button>
               </div>
             </div>

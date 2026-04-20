@@ -206,7 +206,7 @@ export function ActionSwitcher() {
             ))}
             {filteredActions.length === 0 && (
               <div className="px-4 py-2 text-[14px] text-gray-500">
-                No columns found
+                Keine Spalten gefunden
               </div>
             )}
           </PopoverContent>

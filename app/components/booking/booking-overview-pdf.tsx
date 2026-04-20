@@ -202,7 +202,9 @@ const BookingPDFPreview = ({
             <span className="grow text-gray-600">{booking?.name}</span>
           </div>
           <div className="flex border-b border-gray-300 p-2">
-            <span className="min-w-[150px] text-sm font-medium">Verwahrer</span>
+            <span className="min-w-[150px] text-sm font-medium">
+              Zuständige Person
+            </span>
             <span className="grow text-gray-600">{custodianName}</span>
           </div>
           <div className="flex border-b border-gray-300 p-2">

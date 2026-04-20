@@ -306,7 +306,7 @@ function getAssetSubtitle(asset: AssetSearchResult, query: string): string {
     asset.custodianName &&
     asset.custodianName.toLowerCase().includes(lowercaseQuery)
   ) {
-    return `Custodian: ${asset.custodianName}${
+    return `Zuständig: ${asset.custodianName}${
       asset.locationName ? ` • ${asset.locationName}` : ""
     }`;
   }
@@ -316,7 +316,7 @@ function getAssetSubtitle(asset: AssetSearchResult, query: string): string {
     asset.custodianUserName &&
     asset.custodianUserName.toLowerCase().includes(lowercaseQuery)
   ) {
-    return `Custodian: ${asset.custodianUserName}${
+    return `Zuständig: ${asset.custodianUserName}${
       asset.locationName ? ` • ${asset.locationName}` : ""
     }`;
   }

@@ -176,7 +176,7 @@ export const TimeSelect: FC<TimeSelectProps> = ({
   defaultValue,
   onValueChange,
   disabled = false,
-  placeholder = "Select time",
+  placeholder = "Zeit auswählen",
   required = false,
   className,
   error,
@@ -221,7 +221,7 @@ export const TimeSelect: FC<TimeSelectProps> = ({
         required={required}
       >
         <SelectTrigger
-          aria-label={ariaLabel || "Select time"}
+          aria-label={ariaLabel || "Zeit auswählen"}
           className={`mt-2 w-[110px] px-3.5 py-2 text-left text-sm text-gray-500 md:mt-0 ${
             className || ""
           } ${error ? "border-error-500 focus:border-error-500" : ""}`}

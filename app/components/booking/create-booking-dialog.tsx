@@ -65,8 +65,8 @@ export default function CreateBookingDialog({
               <h4>Neue Buchung erstellen</h4>
               <p>
                 Geben Sie Ihrer Buchung einen Namen, wählen Sie Start- und
-                Endzeit und bestimmen Sie den Verwahrer. Auf Grundlage dieser
-                Angaben wird die Verfügbarkeit der Assets ermittelt.
+                Endzeit und legen Sie die zuständige Person fest. Auf Grundlage
+                dieser Angaben wird die Verfügbarkeit der Assets ermittelt.
               </p>
             </div>
 

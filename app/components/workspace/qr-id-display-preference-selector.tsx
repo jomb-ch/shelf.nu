@@ -190,7 +190,7 @@ export default function QrIdDisplayPreferenceSelector({
           })}
           {filteredOptions.length === 0 && (
             <div className="px-4 py-2 text-sm text-gray-500">
-              No options found
+              Keine Optionen gefunden
             </div>
           )}
         </PopoverContent>

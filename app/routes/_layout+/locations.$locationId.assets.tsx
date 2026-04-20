@@ -173,7 +173,7 @@ export default function LocationAssets() {
                   <DynamicDropdown
                     trigger={
                       <div className="flex items-center gap-2">
-                        Custodian
+                        Zuständig
                         <ChevronRight className="rotate-90" />
                       </div>
                     }
@@ -183,13 +183,13 @@ export default function LocationAssets() {
                       queryKey: "name",
                       deletedAt: null,
                     }}
-                    label="Filter by custodian"
-                    placeholder="Search team members"
+                    label="Nach zuständiger Person filtern"
+                    placeholder="Teammitglieder suchen"
                     initialDataKey="teamMembers"
                     countKey="totalTeamMembers"
                     withoutValueItem={{
                       id: "without-custody",
-                      name: "Without custody",
+                      name: "Ohne Zuständigkeit",
                     }}
                     renderItem={(item) => resolveTeamMemberName(item, true)}
                   />
@@ -206,7 +206,7 @@ export default function LocationAssets() {
                 to={`/locations/${location.id}/scan-assets-kits`}
                 width="full"
               >
-                Scan
+                Scannen
               </Button>
               <Button
                 to="manage-assets"
@@ -214,7 +214,7 @@ export default function LocationAssets() {
                 width="full"
                 className="whitespace-nowrap"
               >
-                Add assets
+                Assets hinzufügen
               </Button>
             </When>
           </div>
@@ -225,21 +225,21 @@ export default function LocationAssets() {
           extraItemComponentProps={{ canReadCustody }}
           headerChildren={
             <>
-              <Th>Category</Th>
+              <Th>Kategorie</Th>
               <Th>Tags</Th>
               <Th className="flex items-center gap-1 whitespace-nowrap">
-                Custodian{" "}
+                Zuständig{" "}
                 <InfoTooltip
                   iconClassName="size-4"
                   content={
                     <>
-                      <h6>Asset custody</h6>
+                      <h6>Asset-Zuständigkeit</h6>
                       <p>
-                        This column shows if a user has custody of the asset
-                        either via direct assignment or via a booking. If you
-                        see <GrayBadge>private</GrayBadge> that means you don't
-                        have the permissions to see who has custody of the
-                        asset.
+                        Diese Spalte zeigt, ob eine Person für das Asset
+                        zuständig ist, entweder durch direkte Zuweisung oder
+                        über eine Buchung. Wenn <GrayBadge>Privat</GrayBadge>{" "}
+                        angezeigt wird, haben Sie keine Berechtigung zu sehen,
+                        wer für das Asset zuständig ist.
                       </p>
                     </>
                   }
@@ -248,10 +248,10 @@ export default function LocationAssets() {
             </>
           }
           customEmptyStateContent={{
-            title: "There are currently no assets at the location",
-            text: "Add assets in this location",
+            title: "An diesem Standort gibt es derzeit keine Assets",
+            text: "Fügen Sie diesem Standort Assets hinzu",
             newButtonRoute: "manage-assets",
-            newButtonContent: "Add asset",
+            newButtonContent: "Asset hinzufügen",
           }}
         />
       </div>
@@ -297,7 +297,7 @@ const ListAssetContent = ({
                   thumbnailImage: item.thumbnailImage,
                   mainImageExpiration: item.mainImageExpiration,
                 }}
-                alt={`Image of ${item.title}`}
+                alt={`Bild von ${item.title}`}
                 className="size-full rounded-[4px] border object-cover"
                 withPreview
               />

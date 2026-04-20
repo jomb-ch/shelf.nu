@@ -22,9 +22,9 @@ type RemindersTableProps = {
 
 export const REMINDERS_SORTING_OPTIONS = {
   name: "Name",
-  alertDateTime: "Alert Time",
-  createdAt: "Date Created",
-  updatedAt: "Date Updated",
+  alertDateTime: "Erinnerungszeit",
+  createdAt: "Erstellt am",
+  updatedAt: "Aktualisiert am",
 } as const;
 
 export default function RemindersTable({
@@ -34,8 +34,8 @@ export default function RemindersTable({
   const { assetId } = useParams<{ assetId: string }>();
 
   const emptyStateTitle = isAssetReminderPage
-    ? "No reminders for this asset"
-    : "No reminders created yet.";
+    ? "Keine Erinnerungen für dieses Asset"
+    : "Noch keine Erinnerungen erstellt.";
 
   return (
     <ListContentWrapper className="mb-4">
@@ -57,7 +57,7 @@ export default function RemindersTable({
           title: emptyStateTitle,
           text: (
             <p>
-              What are you waiting for? Create your first{" "}
+              Erstellen Sie jetzt Ihre erste{" "}
               {isAssetReminderPage ? (
                 <Button
                   variant="link"
@@ -65,24 +65,24 @@ export default function RemindersTable({
                     setIsReminderDialogOpen(true);
                   }}
                 >
-                  reminder
+                  Erinnerung
                 </Button>
               ) : (
-                "reminder"
-              )}{" "}
-              now!
+                "Erinnerung"
+              )}
+              .
             </p>
           ),
         }}
         headerChildren={
           <>
-            <Th>Message</Th>
+            <Th>Nachricht</Th>
             <When truthy={!isAssetReminderPage}>
               <Td>Asset</Td>
             </When>
-            <Th>Alert Date</Th>
+            <Th>Erinnerungsdatum</Th>
             <Th>Status</Th>
-            <Th>Users</Th>
+            <Th>Benutzer</Th>
           </>
         }
         extraItemComponentProps={{ isAssetReminderPage }}
@@ -110,7 +110,7 @@ function ListContent({
 }) {
   const now = new Date();
   const status =
-    now < new Date(item.alertDateTime) ? "Pending" : "Reminder sent";
+    now < new Date(item.alertDateTime) ? "Ausstehend" : "Erinnerung gesendet";
 
   return (
     <>
@@ -134,7 +134,7 @@ function ListContent({
       <Td>
         <Badge
           color={
-            status === "Pending" ? colors.yellow["500"] : colors.green["500"]
+            status === "Ausstehend" ? colors.yellow["500"] : colors.green["500"]
           }
         >
           {status}
@@ -143,7 +143,7 @@ function ListContent({
       <Td>
         <ReminderTeamMembers
           teamMembers={item.teamMembers}
-          isAlreadySent={status === "Reminder sent"}
+          isAlreadySent={status === "Erinnerung gesendet"}
         />
       </Td>
       <Td>

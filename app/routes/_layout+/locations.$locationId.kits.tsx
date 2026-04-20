@@ -159,7 +159,7 @@ export default function LocationKits() {
                   <DynamicDropdown
                     trigger={
                       <div className="flex items-center gap-2">
-                        Custodian
+                        Zuständig
                         <ChevronRight className="rotate-90" />
                       </div>
                     }
@@ -169,14 +169,14 @@ export default function LocationKits() {
                       queryKey: "name",
                       deletedAt: null,
                     }}
-                    label="Filter by custodian"
-                    placeholder="Search team members"
+                    label="Nach zuständiger Person filtern"
+                    placeholder="Teammitglieder suchen"
                     initialDataKey="teamMembers"
                     countKey="totalTeamMembers"
                     renderItem={(item) => resolveTeamMemberName(item, true)}
                     withoutValueItem={{
                       id: "without-custody",
-                      name: "Without custody",
+                      name: "Ohne Zuständigkeit",
                     }}
                   />
                 </div>
@@ -193,7 +193,7 @@ export default function LocationKits() {
                   to={`/locations/${locationId}/scan-assets-kits`}
                   width="full"
                 >
-                  Scan
+                  Scannen
                 </Button>
                 <Button
                   to="manage-kits"
@@ -201,7 +201,7 @@ export default function LocationKits() {
                   width="full"
                   className="whitespace-nowrap"
                 >
-                  Add kits
+                  Kits hinzufügen
                 </Button>
               </div>
             </When>
@@ -214,19 +214,20 @@ export default function LocationKits() {
           extraItemComponentProps={{ canReadCustody }}
           headerChildren={
             <>
-              <Th>Category</Th>
+              <Th>Kategorie</Th>
               <Th className="flex items-center gap-1 whitespace-nowrap">
-                Custodian{" "}
+                Zuständig{" "}
                 <InfoTooltip
                   iconClassName="size-4"
                   content={
                     <>
-                      <h6>Kit custody</h6>
+                      <h6>Kit-Zuständigkeit</h6>
                       <p>
-                        This column shows if a user has custody of the kit
-                        either via direct assignment or via a booking. If you
-                        see <GrayBadge>private</GrayBadge> that means you don't
-                        have the permissions to see who has custody of the kit.
+                        Diese Spalte zeigt, ob eine Person für das Kit zuständig
+                        ist, entweder durch direkte Zuweisung oder über eine
+                        Buchung. Wenn <GrayBadge>Privat</GrayBadge> angezeigt
+                        wird, haben Sie keine Berechtigung zu sehen, wer für das
+                        Kit zuständig ist.
                       </p>
                     </>
                   }
@@ -235,10 +236,10 @@ export default function LocationKits() {
             </>
           }
           customEmptyStateContent={{
-            title: "You haven't added any kits yet.",
-            text: "What are you waiting for? Add your first kit now!",
+            title: "Sie haben noch keine Kits hinzugefügt.",
+            text: "Fügen Sie jetzt Ihr erstes Kit hinzu.",
             newButtonRoute: "manage-kits",
-            newButtonContent: "Add kit",
+            newButtonContent: "Kit hinzufügen",
           }}
         />
       </div>

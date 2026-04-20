@@ -639,7 +639,7 @@ export default function AddAssetsToNewBooking() {
           emptyStateClassName="py-10"
           customEmptyStateContent={{
             title: "You haven't added any assets yet.",
-            text: "What are you waiting for? Create your first asset now!",
+            text: "Erstellen Sie jetzt Ihr erstes Asset.",
             newButtonRoute: "/assets/new",
             newButtonContent: "New asset",
           }}

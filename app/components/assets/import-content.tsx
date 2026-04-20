@@ -373,13 +373,13 @@ export const FileForm = ({ intent, url }: { intent: string; url?: string }) => {
                         Asset
                       </th>
                       <th scope="col" className="px-2 py-1">
-                        Custodian
+                        Zuständige Person
                       </th>
                       <th scope="col" className="px-2 py-1">
                         Kit
                       </th>
                       <th scope="col" className="px-2 py-1">
-                        Issue
+                        Problem
                       </th>
                     </tr>
                   </thead>

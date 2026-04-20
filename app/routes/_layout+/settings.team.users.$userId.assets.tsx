@@ -53,8 +53,8 @@ export default function UserAssetsPage() {
       disableTeamMemberFilter
       disableBulkActions
       customEmptyState={{
-        title: "No assets in custody",
-        text: "This user currently has no assets in their custody.",
+        title: "Keine Assets in Zuständigkeit",
+        text: "Diese Person hat derzeit keine Assets in ihrer Zuständigkeit.",
       }}
     />
   );

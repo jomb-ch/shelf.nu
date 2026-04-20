@@ -138,7 +138,7 @@ export default function EditCategory() {
         <div className="gap-3 lg:flex lg:items-end">
           <Input
             label="Name"
-            placeholder="Category name"
+            placeholder="Kategoriename"
             className="mb-4 lg:mb-0 lg:max-w-[180px]"
             name={zo.fields.name()}
             disabled={disabled}
@@ -150,7 +150,7 @@ export default function EditCategory() {
           />
           <Input
             label="Description"
-            placeholder="Description (optional)"
+            placeholder="Beschreibung (optional)"
             name={zo.fields.description()}
             disabled={disabled}
             data-test-id="categoryDescription"
@@ -176,10 +176,10 @@ export default function EditCategory() {
 
         <div className="flex items-center gap-1">
           <Button variant="secondary" to="/categories" size="sm">
-            Cancel
+            Abbrechen
           </Button>
           <Button type="submit" size="sm">
-            Update
+            Aktualisieren
           </Button>
         </div>
       </div>

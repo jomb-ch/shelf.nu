@@ -25,14 +25,14 @@ export function CustodianField({
 }) {
   return (
     <FormRow
-      rowLabel="Verwahrer"
+      rowLabel="Zuständige Person"
       className="mobile-styling-only border-b-0 p-0"
     >
       <label
         className="mb-2.5 block font-medium text-gray-700"
         htmlFor="custodian"
       >
-        <span className="required-input-label">Verwahrer</span>
+        <span className="required-input-label">Zuständige Person</span>
       </label>
       <DynamicSelect
         defaultValue={
@@ -75,8 +75,8 @@ export function CustodianField({
 
       {error ? <div className="text-sm text-error-500">{error}</div> : null}
       <p className="mt-2 text-[14px] text-gray-600">
-        Die Person, die während des Buchungszeitraums die Assets verwahrt oder
-        dafür verantwortlich ist.
+        Die Person, die während des Buchungszeitraums für die Assets
+        verantwortlich ist.
       </p>
     </FormRow>
   );

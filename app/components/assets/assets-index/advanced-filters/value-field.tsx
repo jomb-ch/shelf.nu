@@ -849,13 +849,13 @@ function CustodyEnumField({
     renderItem: (item: any) => resolveTeamMemberName(item, true),
     initialDataKey: "teamMembers",
     countKey: "totalTeamMembers",
-    label: "Filter by custodian",
+    label: "Nach zuständiger Person filtern",
     hideLabel: true,
     hideCounter: true,
-    placeholder: "Search team members",
+    placeholder: "Teammitglieder suchen",
     withoutValueItem: {
       id: "without-custody",
-      name: "Without custody",
+      name: "Ohne Zuständigkeit",
     },
     disabled,
   };
@@ -882,7 +882,7 @@ function CustodyEnumField({
                   ? selectedIds
                       .map((id) => {
                         if (id === "without-custody") {
-                          return "Without custody";
+                          return "Ohne Zuständigkeit";
                         }
                         const teamMember = data.teamMembers.find(
                           (tm) => tm.id === id
@@ -892,7 +892,7 @@ function CustodyEnumField({
                         });
                       })
                       .join(", ")
-                  : "Select custodian"}
+                  : "Zuständige Person auswählen"}
               </span>
               <ChevronRight className="mr-1 inline-block rotate-90" />
             </div>
@@ -913,7 +913,7 @@ function CustodyEnumField({
     <DynamicSelect
       {...commonProps}
       fieldName={name}
-      placeholder="Select custodian"
+      placeholder="Zuständige Person auswählen"
       defaultValue={value as string}
       onChange={(selectedId) => {
         if (selectedId !== undefined) {
@@ -923,7 +923,7 @@ function CustodyEnumField({
       closeOnSelect={true}
       triggerWrapperClassName="w-full text-gray-700"
       className="z-[999999]"
-      contentLabel="Custodian"
+      contentLabel="Zuständige Person"
     />
   );
 }
@@ -1112,7 +1112,7 @@ function LocationEnumField({
                 )}
               >
                 {disabled
-                  ? "Select column first"
+                  ? "Wählen Sie zuerst eine Spalte aus"
                   : selectedIds.length > 0
                   ? selectedIds
                       .map((id) => {

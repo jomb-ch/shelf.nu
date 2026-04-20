@@ -25,14 +25,17 @@ export default function CustodiansList() {
       <div className="rounded-t border border-b-0 border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex-1 p-4 text-left text-[14px] font-semibold  text-gray-900 md:px-6">
-            Top custodians
+            Top Zuständige
           </div>
           <div className=" p-4 text-right text-[14px] font-semibold  text-gray-900 md:px-6">
             <InfoTooltip
               content={
                 <>
-                  <h6>Custodians</h6>
-                  <p>Below listed custodians currently hold the most assets</p>
+                  <h6>Zuständige Personen</h6>
+                  <p>
+                    Unten sind die Personen aufgeführt, die aktuell für die
+                    meisten Assets zuständig sind.
+                  </p>
                 </>
               }
             />
@@ -64,7 +67,7 @@ export default function CustodiansList() {
         </Table>
       ) : (
         <div className="h-full flex-1 rounded-b border border-gray-200 p-8">
-          <EmptyState text="No assets in custody" />
+          <EmptyState text="Keine Assets in Zuständigkeit" />
         </div>
       )}
     </>
@@ -103,7 +106,7 @@ function Row({
                     : "/static/images/default_pfp.jpg"
                 }
                 className={"size-10 rounded-[4px]"}
-                alt={`${resolveTeamMemberName(custodian)}'s profile`}
+                alt={`Profilbild von ${resolveTeamMemberName(custodian)}`}
               />
               <div>
                 <span className="word-break block">

@@ -98,9 +98,7 @@ export default function ImageWithPreview({
             title={
               <div>
                 <div className="text-lg font-semibold text-gray-900">{alt}</div>
-                <div className="text-sm font-normal text-gray-600">
-                  1 image(s)
-                </div>
+                <div className="text-sm font-normal text-gray-600">1 Bild</div>
               </div>
             }
           >
@@ -115,12 +113,12 @@ export default function ImageWithPreview({
               <div className="flex w-full justify-center gap-3 px-6 py-3 md:justify-end">
                 {editImageUrl ? (
                   <Button to={editImageUrl} variant="secondary">
-                    Edit image(s)
+                    Bild(er) bearbeiten
                   </Button>
                 ) : null}
 
                 <Button variant="secondary" onClick={handleCloseDialog}>
-                  Close
+                  Schliessen
                 </Button>
               </div>
             </div>

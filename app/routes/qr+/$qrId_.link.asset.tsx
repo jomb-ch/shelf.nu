@@ -243,7 +243,7 @@ export default function QrLinkExisting() {
                 className="block max-w-none font-normal  text-gray-500 hover:text-gray-600"
                 type="button"
               >
-                Clear all filters
+                Alle Filter löschen
               </Button>
               <div className="text-gray-500"> | </div>
             </div>
@@ -253,12 +253,12 @@ export default function QrLinkExisting() {
             <DynamicDropdown
               trigger={
                 <div className="flex cursor-pointer items-center gap-2">
-                  Categories{" "}
+                  Kategorien{" "}
                   <ChevronRight className="hidden rotate-90 md:inline" />
                 </div>
               }
               model={{ name: "category", queryKey: "name" }}
-              label="Filter by category"
+              label="Nach Kategorie filtern"
               initialDataKey="categories"
               countKey="totalCategories"
             />
@@ -269,19 +269,19 @@ export default function QrLinkExisting() {
                 </div>
               }
               model={{ name: "tag", queryKey: "name" }}
-              label="Filter by tags"
+              label="Nach Tags filtern"
               initialDataKey="tags"
               countKey="totalTags"
             />
             <DynamicDropdown
               trigger={
                 <div className="flex cursor-pointer items-center gap-2">
-                  Locations{" "}
+                  Standorte{" "}
                   <ChevronRight className="hidden rotate-90 md:inline" />
                 </div>
               }
               model={{ name: "location", queryKey: "name" }}
-              label="Filter by Location"
+              label="Nach Standort filtern"
               initialDataKey="locations"
               countKey="totalLocations"
               renderItem={({ metadata }) => (
@@ -307,10 +307,10 @@ export default function QrLinkExisting() {
           /** Clicking on the row will add the current asset to the atom of selected assets */
           navigate={handleSelectAsset}
           customEmptyStateContent={{
-            title: "You haven't added any assets yet.",
-            text: "What are you waiting for? Create your first asset now!",
+            title: "Sie haben noch keine Assets hinzugefügt.",
+            text: "Erstellen Sie jetzt Ihr erstes Asset.",
             newButtonRoute: `/assets/new?qrId=${qrId}`,
-            newButtonContent: "Create new asset and link",
+            newButtonContent: "Neues Asset erstellen und verknüpfen",
           }}
           className="h-full border-t-0"
         />
@@ -328,7 +328,7 @@ export default function QrLinkExisting() {
       {/* Footer of the modal */}
       <footer className="-mx-4 flex justify-between border-t px-4 pt-3">
         <Button variant="secondary" to={`/qr/${qrId}/link`} width="full">
-          Close
+          Schliessen
         </Button>
       </footer>
     </div>
@@ -399,18 +399,18 @@ export const ConfirmLinkingAssetModal = ({
             <LinkIcon />
           </span>
           <AlertDialogTitle className="text-left">
-            Link QR code with ‘{asset.title}’
+            QR-Code mit „{asset.title}“ verknüpfen
           </AlertDialogTitle>
           <AlertDialogDescription className="text-left">
-            Are you sure that you want to do this? The current QR code that is
-            linked to this asset will be unlinked. You can always re-link it
-            with the old QR code.
+            Möchten Sie das wirklich tun? Der aktuell mit diesem Asset
+            verknüpfte QR-Code wird gelöst. Sie können ihn später jederzeit
+            wieder mit dem alten QR-Code verknüpfen.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="gap-2">
           <AlertDialogCancel asChild>
             <Button variant="secondary" disabled={disabled}>
-              Cancel
+              Abbrechen
             </Button>
           </AlertDialogCancel>
 
@@ -422,7 +422,7 @@ export const ConfirmLinkingAssetModal = ({
               width="full"
               disabled={disabled}
             >
-              Confirm
+              Bestätigen
             </Button>
           </fetcher.Form>
           {data?.error ? (

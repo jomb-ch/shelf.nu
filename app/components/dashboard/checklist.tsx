@@ -25,16 +25,18 @@ export default function OnboardingChecklist() {
           as="h2"
           className="break-all text-display-xs font-semibold md:text-display-sm"
         >
-          Welcome
+          Willkommen
         </Heading>
-        <SubHeading>Complete all tasks to unlock your dashboard.</SubHeading>
+        <SubHeading>
+          Erledigen Sie alle Aufgaben, um Ihr Dashboard freizuschalten.
+        </SubHeading>
       </div>
       <div className="mb-8">
         <div className="mb-4">
-          <h4 className=" text-lg font-semibold">Stay organized</h4>
+          <h4 className=" text-lg font-semibold">Bleiben Sie organisiert</h4>
           <p className="text-[14px] text-gray-600">
-            Organizing your assets improves overview and unlocks the power of
-            our filters and search bar.
+            Eine saubere Organisation Ihrer Assets verbessert die Übersicht und
+            nutzt die Stärke unserer Filter und Suchleiste voll aus.
           </p>
         </div>
         <ul className="onboarding-checklist -mx-1 xl:flex xl:flex-wrap">
@@ -52,10 +54,10 @@ export default function OnboardingChecklist() {
                 <div className="text-[14px]">
                   <div className="mb-3">
                     <h6 className="font-medium text-gray-700">
-                      Create your first asset
+                      Erstellen Sie Ihr erstes Asset
                     </h6>
                     <p className=" text-gray-600">
-                      Each asset gets it’s own encrypted QR tag.
+                      Jedes Asset erhält seinen eigenen verschlüsselten QR-Tag.
                     </p>
                   </div>
                   <div className="flex gap-3">
@@ -64,10 +66,10 @@ export default function OnboardingChecklist() {
                       target="_blank"
                       className=" font-semibold text-gray-600"
                     >
-                      Learn more
+                      Mehr erfahren
                     </Link>
                     <Button variant="link" to="/assets/new">
-                      New asset
+                      Neues Asset
                     </Button>
                   </div>
                 </div>
@@ -91,11 +93,11 @@ export default function OnboardingChecklist() {
                 <div className="text-[14px]">
                   <div className="mb-3">
                     <h6 className="font-medium text-gray-700">
-                      Create a custom category
+                      Erstellen Sie eine eigene Kategorie
                     </h6>
                     <p className=" text-gray-600">
-                      View, edit or delete our default categories and build your
-                      own.
+                      Sehen, bearbeiten oder löschen Sie Standardkategorien und
+                      erstellen Sie Ihre eigenen.
                     </p>
                   </div>
                   <div className="flex gap-3">
@@ -104,10 +106,10 @@ export default function OnboardingChecklist() {
                       target="_blank"
                       className=" font-semibold text-gray-600"
                     >
-                      Learn more
+                      Mehr erfahren
                     </Link>
                     <Button variant="link" to="/categories/new">
-                      New category
+                      Neue Kategorie
                     </Button>
                   </div>
                 </div>
@@ -130,15 +132,17 @@ export default function OnboardingChecklist() {
                 </div>
                 <div className="text-[14px]">
                   <div className="mb-3">
-                    <h6 className="font-medium text-gray-700">Create a tag</h6>
+                    <h6 className="font-medium text-gray-700">
+                      Erstellen Sie einen Tag
+                    </h6>
                     <p className=" text-gray-600">
-                      Tags are small pieces of information that can be added to
-                      assets.
+                      Tags sind kleine Informationseinheiten, die Assets
+                      hinzugefügt werden können.
                     </p>
                   </div>
                   <div className="flex gap-3">
                     <Button variant="link" to="/tags/new">
-                      New tag
+                      Neuer Tag
                     </Button>
                   </div>
                 </div>
@@ -152,10 +156,13 @@ export default function OnboardingChecklist() {
       </div>
       <div className="mb-8">
         <div className="mb-4">
-          <h4 className=" text-lg font-semibold">Team, custody and bookings</h4>
+          <h4 className=" text-lg font-semibold">
+            Team, Verwahrung und Buchungen
+          </h4>
           <p className="text-[14px] text-gray-600">
-            Assign custody to your team members. Consider upgrading to Team to
-            invite other users to your workspace.
+            Weisen Sie Ihren Teammitgliedern Verwahrung zu. Erwägen Sie ein
+            Upgrade auf Team, um weitere Benutzer in Ihren Arbeitsbereich
+            einzuladen.
           </p>
         </div>
         <ul className="onboarding-checklist -mx-1 xl:flex xl:flex-wrap">
@@ -173,11 +180,11 @@ export default function OnboardingChecklist() {
                 <div className="text-[14px]">
                   <div className="mb-3">
                     <h6 className="font-medium text-gray-700">
-                      Add a team member
+                      Fügen Sie ein Teammitglied hinzu
                     </h6>
                     <p className=" text-gray-600">
-                      Track who has custody over an asset by adding your team
-                      members to shelf.
+                      Verfolgen Sie, wer ein Asset in Verwahrung hat, indem Sie
+                      Ihre Teammitglieder in Shelf hinzufügen.
                     </p>
                   </div>
                   <div className="flex gap-3">
@@ -186,10 +193,10 @@ export default function OnboardingChecklist() {
                       target="_blank"
                       className=" font-semibold text-gray-600"
                     >
-                      Learn more
+                      Mehr erfahren
                     </Link>
                     <Button variant="link" to="/settings/team">
-                      New team member
+                      Neues Teammitglied
                     </Button>
                   </div>
                 </div>
@@ -213,11 +220,11 @@ export default function OnboardingChecklist() {
                 <div className="text-[14px]">
                   <div className="mb-3">
                     <h6 className="font-medium text-gray-700">
-                      Assign custody over an asset
+                      Weisen Sie Verwahrung für ein Asset zu
                     </h6>
                     <p className=" text-gray-600">
-                      View, edit or delete our default categories and build your
-                      own.
+                      Verfolgen und organisieren Sie langfristige Ausleihen,
+                      indem Sie Assets verantwortlichen Personen zuweisen.
                     </p>
                   </div>
                   <div className="flex gap-3">
@@ -226,7 +233,7 @@ export default function OnboardingChecklist() {
                       target="_blank"
                       className=" font-semibold text-gray-600"
                     >
-                      Learn more
+                      Mehr erfahren
                     </Link>
                   </div>
                 </div>
@@ -240,10 +247,10 @@ export default function OnboardingChecklist() {
       </div>
       <div className="mb-8">
         <div className="mb-4">
-          <h4 className=" text-lg font-semibold">Customize your experience</h4>
+          <h4 className=" text-lg font-semibold">Passen Sie Ihr Erlebnis an</h4>
           <p className="text-[14px] text-gray-600">
-            Optimize your workflow and use Shelf in way that works for you and
-            your organizations.
+            Optimieren Sie Ihre Abläufe und nutzen Sie Shelf so, wie es für Sie
+            und Ihre Organisationen passt.
           </p>
         </div>
         <ul className="onboarding-checklist -mx-1 xl:flex xl:flex-wrap">
@@ -261,10 +268,11 @@ export default function OnboardingChecklist() {
                 <div className="text-[14px]">
                   <div className="mb-3">
                     <h6 className="font-medium text-gray-700">
-                      Create a custom field
+                      Erstellen Sie ein benutzerdefiniertes Feld
                     </h6>
                     <p className=" text-gray-600">
-                      Improve your asset database with custom field types.
+                      Erweitern Sie Ihre Asset-Datenbank mit zusätzlichen
+                      Feldtypen.
                     </p>
                   </div>
                   <div className="flex gap-3">
@@ -273,10 +281,10 @@ export default function OnboardingChecklist() {
                       target="_blank"
                       className=" font-semibold text-gray-600"
                     >
-                      Learn more
+                      Mehr erfahren
                     </Link>
                     <Button variant="link" to="/settings/custom-fields/new">
-                      New custom field
+                      Neues benutzerdefiniertes Feld
                     </Button>
                   </div>
                 </div>
@@ -294,7 +302,7 @@ export default function OnboardingChecklist() {
       >
         <input type="hidden" name="skipOnboardingChecklist" value="skipped" />
         <Button variant="link" type="submit">
-          Skip tour, continue to dashboard
+          Tour überspringen, weiter zum Dashboard
         </Button>
       </fetcher.Form>
     </div>

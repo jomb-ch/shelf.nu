@@ -135,10 +135,11 @@ export default function QrLink() {
           </div>
           <div className="mb-8">
             <h1 className="mb-2 text-[24px] font-semibold">
-              Unclaimed QR Code
+              Nicht beanspruchter QR-Code
             </h1>
             <p className="text-gray-600">
-              Select the workspace for which you want to claim the QR code.
+              Wählen Sie den Arbeitsbereich aus, für den Sie den QR-Code
+              beanspruchen möchten.
             </p>
           </div>
           <div className="flex flex-col justify-center gap-2">
@@ -151,7 +152,7 @@ export default function QrLink() {
                   type="submit"
                   disabled={disabled}
                 >
-                  Confirm
+                  Bestätigen
                 </Button>
                 <Button
                   variant="secondary"
@@ -161,7 +162,7 @@ export default function QrLink() {
                   type="button"
                   disabled={disabled}
                 >
-                  Cancel
+                  Abbrechen
                 </Button>
               </div>
             </Form>

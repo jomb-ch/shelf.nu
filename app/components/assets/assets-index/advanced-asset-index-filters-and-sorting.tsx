@@ -200,7 +200,7 @@ function AdvancedFilter() {
           >
             {/* We use the initial sorts, as we only count the ones returned from the server as those are already active filters */}
             {initialFilters.length > 0
-              ? `Filtered by ${initialFilters.length}`
+              ? `${initialFilters.length} Filter aktiv`
               : "Filter"}
           </Button>
         </PopoverTrigger>
@@ -214,8 +214,11 @@ function AdvancedFilter() {
             <div className="border-b p-4 pb-5">
               {filters.length === 0 ? (
                 <div>
-                  <h5>No filters applied to this view</h5>
-                  <p>Add a column below to filter the view</p>
+                  <h5>Keine Filter für diese Ansicht aktiv</h5>
+                  <p>
+                    Fügen Sie unten eine Spalte hinzu, um diese Ansicht zu
+                    filtern
+                  </p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-2">
@@ -294,7 +297,10 @@ function AdvancedFilter() {
                                 }}
                                 disabled={
                                   filter.isNew
-                                    ? { reason: "Please select a column" }
+                                    ? {
+                                        reason:
+                                          "Bitte wählen Sie zuerst eine Spalte aus",
+                                      }
                                     : false
                                 }
                               />
@@ -347,7 +353,7 @@ function AdvancedFilter() {
                     disabled || availableColumns.length === 0
                       ? {
                           reason:
-                            "You are not able to add more filters because all columns are already used. If you want to filter by more columns, please enable them on your column settings.",
+                            "Sie können keine weiteren Filter hinzufügen, weil bereits alle Spalten verwendet werden. Wenn Sie nach weiteren Spalten filtern möchten, aktivieren Sie diese in den Spalteneinstellungen.",
                         }
                       : false
                   }
@@ -356,7 +362,9 @@ function AdvancedFilter() {
                   <div className="mr-1 inline-block size-[14px] align-middle">
                     <PlusIcon />
                   </div>
-                  <span className="inline-block align-middle">Add filter</span>
+                  <span className="inline-block align-middle">
+                    Filter hinzufügen
+                  </span>
                 </Button>
                 <Button
                   variant="block-link-gray"
@@ -364,7 +372,7 @@ function AdvancedFilter() {
                   className="ml-1"
                   to="mailto:nikolay@shelf.nu?subject=Advanced filtering suggestions"
                 >
-                  Need more filtering options?
+                  Fehlen Filteroptionen?
                 </Button>
               </div>
               <div className="ml-8 flex items-center justify-between gap-2">
@@ -375,7 +383,7 @@ function AdvancedFilter() {
                     className="mt-0 whitespace-nowrap text-[14px]"
                     onClick={clearAllFilters}
                   >
-                    Clear all
+                    Alle löschen
                   </Button>
                 )}
 
@@ -388,7 +396,7 @@ function AdvancedFilter() {
                   disabled={!validation.canApplyFilters || disabled}
                   onClick={applyFilters}
                 >
-                  Apply filters
+                  Filter anwenden
                 </Button>
               </div>
             </div>
@@ -503,8 +511,8 @@ function AdvancedSorting() {
         >
           {/* We use the initial sorts, as we only count the ones returned from the server as those are already active filters */}
           {initialSorts.length > 0
-            ? `Sorted by ${initialSorts.length}`
-            : "Sort"}
+            ? `${initialSorts.length} Sortierungen aktiv`
+            : "Sortieren"}
         </Button>
       </PopoverTrigger>
       <PopoverPortal>
@@ -517,8 +525,11 @@ function AdvancedSorting() {
           <div className="border-b p-4 pb-5">
             {sorts.length === 0 ? (
               <div>
-                <h5>No sorting applied to this view</h5>
-                <p>Add a column below to sort by</p>
+                <h5>Keine Sortierung für diese Ansicht aktiv</h5>
+                <p>
+                  Fügen Sie unten eine Spalte hinzu, nach der sortiert werden
+                  soll
+                </p>
               </div>
             ) : (
               <Reorder.Group values={sorts} onReorder={setSorts}>
@@ -531,7 +542,7 @@ function AdvancedSorting() {
                         </div>
                         <div className="mt-[-2px]">
                           <span className="text-gray-500 ">
-                            {index === 0 ? "sort" : "then"} by
+                            {index === 0 ? "Sortieren" : "dann"} nach
                           </span>{" "}
                           {parseColumnName(s.name)}
                         </div>
@@ -542,7 +553,7 @@ function AdvancedSorting() {
                             htmlFor={`sort-${s.name}`}
                             className="text-[12px] text-gray-500"
                           >
-                            ascending:{" "}
+                            aufsteigend:{" "}
                           </label>
                           <Switch
                             id={`sort-${s.name}`}
@@ -592,7 +603,7 @@ function AdvancedSorting() {
                   className="mt-0 text-[14px]"
                   onClick={clearAllSorts}
                 >
-                  Clear all
+                  Alle löschen
                 </Button>
               )}
 
@@ -603,7 +614,7 @@ function AdvancedSorting() {
                 disabled={!haveSortsChanged || disabled}
                 onClick={applySorting}
               >
-                Apply sorting
+                Sortierung anwenden
               </Button>
             </div>
           </div>
@@ -721,12 +732,12 @@ function PickAColumnToSortBy({
             availableColumns.length === 0
               ? {
                   reason:
-                    "You are not able to add more sorts because all columns are already used. If you want to sort by more columns, please enable them on your column settings.",
+                    "Sie können keine weiteren Sortierungen hinzufügen, weil bereits alle Spalten verwendet werden. Wenn Sie nach weiteren Spalten sortieren möchten, aktivieren Sie diese in den Spalteneinstellungen.",
                 }
               : false
           }
         >
-          <span>Pick a column to sort by</span>{" "}
+          <span>Spalte zum Sortieren wählen</span>{" "}
           <ChevronRight className="ml-2 inline-block rotate-90" />
         </Button>
       </PopoverTrigger>
@@ -741,7 +752,7 @@ function PickAColumnToSortBy({
             <Search className="ml-4 size-4 text-gray-500" />
             <input
               ref={searchInputRef}
-              placeholder="Search column..."
+              placeholder="Spalte suchen..."
               className="border-0 px-4 py-2 pl-2 text-[14px] focus:border-0 focus:ring-0"
               value={searchQuery}
               onChange={handleSearch}
@@ -775,7 +786,7 @@ function PickAColumnToSortBy({
             ))}
             {filteredOptions.length === 0 && (
               <div className="px-4 py-2 text-[14px] text-gray-500">
-                No columns found
+                Keine Spalten gefunden
               </div>
             )}
           </div>

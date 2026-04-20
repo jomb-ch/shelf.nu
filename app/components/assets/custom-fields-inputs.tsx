@@ -402,7 +402,7 @@ function OptionSelect({
               <Search className="ml-4 size-4 text-gray-500" />
               <input
                 ref={searchInputRef}
-                placeholder={`Search ${field.name}...`}
+                placeholder={`${field.name} suchen...`}
                 className="border-0 px-4 py-2 pl-2 text-[14px] focus:border-0 focus:ring-0"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -412,7 +412,7 @@ function OptionSelect({
 
             {/* Options list */}
             {filteredOptions.length === 0 ? (
-              <div className="max-w-[400px] p-4">No options found</div>
+              <div className="max-w-[400px] p-4">Keine Optionen gefunden</div>
             ) : (
               filteredOptions.map((option, index) => {
                 const isSelected = value === option;

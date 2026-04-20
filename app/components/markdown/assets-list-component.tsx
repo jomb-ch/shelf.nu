@@ -128,12 +128,14 @@ export function AssetsListComponent({
 
         {!isLoading && error && (
           <div className="py-2 text-sm text-gray-500">
-            Failed to load asset details
+            Asset-Details konnten nicht geladen werden
           </div>
         )}
 
         {!isLoading && data?.assets.length === 0 && (
-          <div className="py-2 text-sm text-gray-500">No assets found</div>
+          <div className="py-2 text-sm text-gray-500">
+            Keine Assets gefunden
+          </div>
         )}
       </PopoverContent>
     </Popover>

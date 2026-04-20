@@ -71,28 +71,28 @@ export const AssetsList = ({
   const isSwappingMode = modeFetcher?.formData;
   const headerChildren = modeIsSimple ? (
     <>
-      <Th>Category</Th>
+      <Th>Kategorie</Th>
       <Th>Tags</Th>
       <When truthy={!isUserPage}>
         <Th className="flex items-center gap-1 whitespace-nowrap">
-          Custodian{" "}
+          Zuständig{" "}
           <InfoTooltip
             iconClassName="size-4"
             content={
               <>
-                <h6>Asset custody</h6>
+                <h6>Asset-Zuständigkeit</h6>
                 <p>
-                  This column shows if a user has custody of the asset either
-                  via direct assignment or via a booking. If you see{" "}
-                  <GrayBadge>private</GrayBadge> that means you don't have the
-                  permissions to see who has custody of the asset.
+                  Diese Spalte zeigt, ob eine Person für das Asset zuständig
+                  ist, entweder durch direkte Zuweisung oder über eine Buchung.
+                  Wenn <GrayBadge>Privat</GrayBadge> angezeigt wird, haben Sie
+                  keine Berechtigung zu sehen, wer für das Asset zuständig ist.
                 </p>
               </>
             }
           />
         </Th>
       </When>
-      <Th>Location</Th>
+      <Th>Standort</Th>
       <Th>Actions</Th>
     </>
   ) : (

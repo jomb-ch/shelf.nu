@@ -569,7 +569,7 @@ export default function AddKitsToBooking() {
           emptyStateClassName="py-10"
           customEmptyStateContent={{
             title: "You haven't created any kits yet.",
-            text: "What are you waiting for? Create your first kit now!",
+            text: "Erstellen Sie jetzt Ihr erstes Kit.",
             newButtonRoute: "/kits/new",
             newButtonContent: "New kit",
           }}

@@ -88,12 +88,12 @@ export function SaveFilterButton({
   const isDisabled = atLimit || !hasFilters || hasUnappliedFilters;
 
   const title = atLimit
-    ? `Maximum ${savedFilterPresetLimit} presets allowed`
+    ? `Maximal ${savedFilterPresetLimit} Presets erlaubt`
     : hasUnappliedFilters
-    ? "Apply filters first before saving"
+    ? "Wenden Sie die Filter zuerst an, bevor Sie speichern"
     : !hasFilters
-    ? "No filters to save"
-    : "Save current filters";
+    ? "Keine Filter zum Speichern"
+    : "Aktuelle Filter speichern";
 
   return (
     <>
@@ -108,7 +108,7 @@ export function SaveFilterButton({
         <div className="flex items-center gap-2">
           <Save className="size-4" />
           <span className="hidden whitespace-nowrap md:inline">
-            Save Filter
+            Filter speichern
           </span>
         </div>
       </Button>

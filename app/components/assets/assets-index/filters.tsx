@@ -78,7 +78,7 @@ export function AssetIndexFilters({
                 className="block min-w-28 max-w-none font-normal text-gray-600 hover:text-gray-700"
                 type="button"
               >
-                Clear all filters
+                Alle Filter löschen
               </Button>
               <div className="text-gray-600"> | </div>
             </div>
@@ -87,13 +87,13 @@ export function AssetIndexFilters({
             <DynamicDropdown
               trigger={
                 <div className="flex cursor-pointer items-center gap-2">
-                  Categories{" "}
+                  Kategorien{" "}
                   <ChevronRight className="hidden rotate-90 md:inline" />
                 </div>
               }
               model={{ name: "category", queryKey: "name" }}
-              label="Filter by category"
-              placeholder="Search categories"
+              label="Nach Kategorie filtern"
+              placeholder="Kategorien suchen"
               initialDataKey="categories"
               countKey="totalCategories"
               withoutValueItem={{
@@ -146,7 +146,7 @@ export function AssetIndexFilters({
               <DynamicDropdown
                 trigger={
                   <div className="flex cursor-pointer items-center gap-2">
-                    Custodian{" "}
+                    Zuständig{" "}
                     <ChevronRight className="hidden rotate-90 md:inline" />
                   </div>
                 }
@@ -156,13 +156,13 @@ export function AssetIndexFilters({
                   deletedAt: null,
                 }}
                 renderItem={(item) => resolveTeamMemberName(item, true)}
-                label="Filter by custodian"
-                placeholder="Search team members"
+                label="Nach zuständiger Person filtern"
+                placeholder="Teammitglieder suchen"
                 initialDataKey="teamMembers"
                 countKey="totalTeamMembers"
                 withoutValueItem={{
                   id: "without-custody",
-                  name: "Without custody",
+                  name: "Ohne Zuständigkeit",
                 }}
               />
             </When>

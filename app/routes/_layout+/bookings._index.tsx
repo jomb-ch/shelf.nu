@@ -335,7 +335,7 @@ export default function BookingsIndexPage({
               <Th>Von</Th>
               <Th>Bis</Th>
               <Th>Tags</Th>
-              <Th>Verwahrer</Th>
+              <Th>Zuständig</Th>
               <Th>Erstellt von</Th>
             </>
           }

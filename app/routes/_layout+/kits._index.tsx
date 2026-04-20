@@ -260,13 +260,13 @@ export default function KitsIndexPage() {
             <DynamicDropdown
               trigger={
                 <div className="my-2 flex cursor-pointer items-center gap-2 md:my-0">
-                  Custodian{" "}
+                  Zuständig{" "}
                   <ChevronRight className="hidden rotate-90 md:inline" />
                 </div>
               }
               model={{ name: "teamMember", queryKey: "name", deletedAt: null }}
-              label="Filter by custodian"
-              placeholder="Search team members"
+              label="Nach zuständiger Person filtern"
+              placeholder="Teammitglieder suchen"
               countKey="totalTeamMembers"
               initialDataKey="teamMembers"
               transformItem={(item) => ({
@@ -331,23 +331,23 @@ export default function KitsIndexPage() {
             bulkActions={isBase ? undefined : <BulkActionsDropdown />}
             headerChildren={
               <>
-                <Th>Category</Th>
-                <Th>Location</Th>
-                <Th>Description</Th>
+                <Th>Kategorie</Th>
+                <Th>Standort</Th>
+                <Th>Beschreibung</Th>
                 <Th>Assets</Th>
                 <Th className="flex items-center gap-1 whitespace-nowrap">
-                  Custodian{" "}
+                  Zuständig{" "}
                   <InfoTooltip
                     iconClassName="size-4"
                     content={
                       <>
-                        <h6>Asset custody</h6>
+                        <h6>Kit-Zuständigkeit</h6>
                         <p>
-                          This column shows if a user has custody of the asset
-                          either via direct assignment or via a booking. If you
-                          see <GrayBadge>private</GrayBadge> that means you
-                          don't have the permissions to see who has custody of
-                          the asset.
+                          Diese Spalte zeigt, ob eine Person für das Kit
+                          zuständig ist, entweder durch direkte Zuweisung oder
+                          über eine Buchung. Wenn <GrayBadge>Privat</GrayBadge>{" "}
+                          angezeigt wird, haben Sie keine Berechtigung zu sehen,
+                          wer für das Kit zuständig ist.
                         </p>
                       </>
                     }

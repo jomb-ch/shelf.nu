@@ -239,13 +239,13 @@ export default function QrLinkExisting() {
             <DynamicDropdown
               trigger={
                 <div className="flex cursor-pointer items-center gap-2">
-                  Custodian{" "}
+                  Zuständig{" "}
                   <ChevronRight className="hidden rotate-90 md:inline" />
                 </div>
               }
               model={{ name: "teamMember", queryKey: "name", deletedAt: null }}
-              label="Filter by custodian"
-              placeholder="Search team members"
+              label="Nach zuständiger Person filtern"
+              placeholder="Teammitglieder suchen"
               countKey="totalTeamMembers"
               initialDataKey="teamMembers"
               transformItem={(item) => ({
@@ -266,10 +266,10 @@ export default function QrLinkExisting() {
           /** Clicking on the row will add the current asset to the atom of selected assets */
           navigate={handleSelectKit}
           customEmptyStateContent={{
-            title: "You haven't added any kits yet.",
-            text: "What are you waiting for? Create your first kit now!",
+            title: "Sie haben noch keine Kits hinzugefügt.",
+            text: "Erstellen Sie jetzt Ihr erstes Kit.",
             newButtonRoute: `/kits/new?qrId=${qrId}`,
-            newButtonContent: "Create new kit and link",
+            newButtonContent: "Neues Kit erstellen und verknüpfen",
           }}
           className="h-full border-t-0"
         />
@@ -287,7 +287,7 @@ export default function QrLinkExisting() {
       {/* Footer of the modal */}
       <footer className="-mx-4 flex justify-between border-t px-4 pt-3">
         <Button variant="secondary" to={`/qr/${qrId}/link`} width="full">
-          Close
+          Schliessen
         </Button>
       </footer>
     </div>
@@ -357,18 +357,18 @@ export const ConfirmLinkingKitModal = ({
             <LinkIcon />
           </span>
           <AlertDialogTitle className="text-left">
-            Link QR code with ‘{kit.name}’
+            QR-Code mit „{kit.name}“ verknüpfen
           </AlertDialogTitle>
           <AlertDialogDescription className="text-left">
-            Are you sure that you want to do this? The current QR code that is
-            linked to this kit will be unlinked. You can always re-link it with
-            the old QR code.
+            Möchten Sie das wirklich tun? Der aktuell mit diesem Kit verknüpfte
+            QR-Code wird gelöst. Sie können ihn später jederzeit wieder mit dem
+            alten QR-Code verknüpfen.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="gap-2">
           <AlertDialogCancel asChild>
             <Button variant="secondary" disabled={disabled}>
-              Cancel
+              Abbrechen
             </Button>
           </AlertDialogCancel>
 
@@ -380,7 +380,7 @@ export const ConfirmLinkingKitModal = ({
               width="full"
               disabled={disabled}
             >
-              Confirm
+              Bestätigen
             </Button>
           </fetcher.Form>
           {data?.error ? (

@@ -35,7 +35,7 @@ export const DeleteTag = ({
       type="submit"
       className="text-[12px]"
       icon={"trash"}
-      title={"Delete"}
+      title={"Löschen"}
       data-test-id="deleteCategoryButton"
     />
   );
@@ -50,15 +50,15 @@ export const DeleteTag = ({
           <span className="flex size-12 items-center justify-center rounded-full bg-error-50 p-2 text-error-600">
             <TrashIcon />
           </span>
-          <AlertDialogTitle>Delete {tag.name}</AlertDialogTitle>
+          <AlertDialogTitle>{tag.name} löschen</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to delete this tag? This action cannot be
-            undone.
+            Möchten Sie diesen Tag wirklich löschen? Diese Aktion kann nicht
+            rückgängig gemacht werden.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel asChild>
-            <Button variant="secondary">Cancel</Button>
+            <Button variant="secondary">Abbrechen</Button>
           </AlertDialogCancel>
           <Form method="delete" action="/tags">
             <input type="hidden" name="id" value={tag.id} />
@@ -67,7 +67,7 @@ export const DeleteTag = ({
               type="submit"
               data-test-id="confirmDeleteCategoryButton"
             >
-              Delete
+              Löschen
             </Button>
           </Form>
         </AlertDialogFooter>

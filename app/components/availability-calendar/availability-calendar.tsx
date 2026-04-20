@@ -233,7 +233,7 @@ function CalendarLoadingFallback() {
     <div className="absolute inset-0 z-10 flex justify-center bg-white/90">
       <div className="flex flex-col items-center gap-4 pt-[300px]">
         <FallbackLoading className="size-16" />
-        <p className="text-sm text-gray-600">Loading calendar...</p>
+        <p className="text-sm text-gray-600">Kalender wird geladen...</p>
       </div>
     </div>
   );

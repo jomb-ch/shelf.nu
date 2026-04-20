@@ -190,7 +190,7 @@ export default function NrmSettings() {
               to="add-member"
               className="mt-2 w-full md:mt-0 md:w-max"
             >
-              <span className=" whitespace-nowrap">Add NRM</span>
+              <span className=" whitespace-nowrap">NRM hinzufügen</span>
             </Button>
           </div>
         </Filters>
@@ -202,10 +202,10 @@ export default function NrmSettings() {
           className="overflow-x-visible md:overflow-x-auto"
           ItemComponent={TeamMemberRow}
           customEmptyStateContent={{
-            title: "No team members on database",
-            text: "What are you waiting for? Add your first team member now!",
+            title: "Keine Teammitglieder in der Datenbank",
+            text: "Fügen Sie jetzt Ihr erstes Teammitglied hinzu.",
             newButtonRoute: "add-member",
-            newButtonContent: "Add NRM",
+            newButtonContent: "NRM hinzufügen",
           }}
           hideFirstHeaderColumn
           headerChildren={

@@ -41,6 +41,7 @@ const EXACT_TRANSLATIONS = {
   "Open command palette": "Befehlspalette öffnen",
   "Quick find": "Schnellsuche",
   "Quick find...": "Schnellsuche...",
+  "Clear all filters": "Alle Filter löschen",
   "Basic fields": "Basisfelder",
   "Basic information about your asset.":
     "Grundlegende Informationen zu Ihrem Asset.",
@@ -98,6 +99,8 @@ const EXACT_TRANSLATIONS = {
     "Diese fortlaufende ID wird beim Erstellen des Assets vergeben",
   "Main image": "Hauptbild",
   Image: "Bild",
+  "1 image(s)": "1 Bild",
+  "Edit image(s)": "Bild(er) bearbeiten",
   "You don't have permission to access this barcode.":
     "Sie haben keine Berechtigung, auf diesen Barcode zuzugreifen.",
   "This barcode is not linked to any asset or kit.":
@@ -242,7 +245,7 @@ const EXACT_TRANSLATIONS = {
   "Select a kit": "Ein Kit auswählen",
   "Select category": "Kategorie auswählen",
   "Select location": "Standort auswählen",
-  "Select custodian": "Verwahrer auswählen",
+  "Select custodian": "Zuständige Person auswählen",
   "Select tag": "Tag auswählen",
   "Select tags": "Tags auswählen",
   "Select batch": "Batch auswählen",
@@ -270,7 +273,7 @@ const EXACT_TRANSLATIONS = {
   "New email must be different from your current email":
     "Die neue E-Mail-Adresse muss sich von der aktuellen unterscheiden.",
   "Emails do not match": "Die E-Mail-Adressen stimmen nicht überein.",
-  "Please select a custodian": "Bitte wählen Sie einen Verwahrer aus.",
+  "Please select a custodian": "Bitte wählen Sie eine zuständige Person aus.",
   "Start date must be in the future":
     "Das Startdatum muss in der Zukunft liegen.",
   "End date cannot be earlier than start date":
@@ -327,6 +330,21 @@ const EXACT_TRANSLATIONS = {
   "Add another category": "Weitere Kategorie hinzufügen",
   "Add barcode": "Barcode hinzufügen",
   "Add another barcode": "Weiteren Barcode hinzufügen",
+  "Leave a note": "Notiz hinterlassen",
+  "Create note": "Notiz erstellen",
+  "Content is required": "Inhalt ist erforderlich",
+  "Loading calendar...": "Kalender wird geladen...",
+  "Create your first asset": "Erstellen Sie Ihr erstes Asset",
+  "Create a custom category": "Erstellen Sie eine eigene Kategorie",
+  "Create a tag": "Erstellen Sie einen Tag",
+  "Add a team member": "Fügen Sie ein Teammitglied hinzu",
+  "Create a custom field": "Erstellen Sie ein benutzerdefiniertes Feld",
+  "Skip tour, continue to dashboard": "Tour überspringen, weiter zum Dashboard",
+  "Link to existing asset/kit": "Mit bestehendem Asset/Kit verknüpfen",
+  "Create a new Asset and link": "Neues Asset erstellen und verknüpfen",
+  "Create a new Kit and link": "Neues Kit erstellen und verknüpfen",
+  "Unlinked QR Code": "Nicht verknüpfter QR-Code",
+  "Unclaimed QR Code": "Nicht beanspruchter QR-Code",
   "Input code": "Code eingeben",
   "Scan code": "Code scannen",
   "Barcode Value": "Barcodewert",
@@ -472,7 +490,7 @@ const EXACT_TRANSLATIONS = {
   "Search kits based on name or description.":
     "Kits nach Name oder Beschreibung durchsuchen.",
   "Search assets based on asset name or description, category, tag, location, custodian name. Simply separate your keywords by a space: 'Laptop lenovo 2020'.":
-    "Assets nach Name oder Beschreibung, Kategorie, Tag, Standort oder Verwahrer durchsuchen. Trennen Sie Ihre Suchbegriffe einfach mit einem Leerzeichen, zum Beispiel: 'Laptop lenovo 2020'.",
+    "Assets nach Name oder Beschreibung, Kategorie, Tag, Standort oder zuständiger Person durchsuchen. Trennen Sie Ihre Suchbegriffe einfach mit einem Leerzeichen, zum Beispiel: 'Laptop lenovo 2020'.",
   "Assets added to your booking will show up here. Scan tags or search for assets to add to your booking.":
     "Assets, die zu Ihrer Buchung hinzugefügt werden, erscheinen hier. Scannen Sie Tags oder suchen Sie nach Assets, um sie Ihrer Buchung hinzuzufügen.",
   "This is the initial object description. It will be shown on the asset’s overview page. You can always change it. Maximum 1000 characters.":
@@ -500,7 +518,7 @@ const EXACT_TRANSLATIONS = {
   "Add additional barcodes to this kit (Code 128, Code 39, or Data Matrix). Note: Each kit automatically gets a default Shelf QR code for tracking.":
     "Fügen Sie diesem Kit zusätzliche Barcodes hinzu (Code 128, Code 39 oder Data Matrix). Hinweis: Jedes Kit erhält automatisch einen Standard-Shelf-QR-Code zur Nachverfolgung.",
   "Choose a name for your booking, select a start and end time and choose the custodian. Based on the selected information, asset availability will be determined.":
-    "Geben Sie Ihrer Buchung einen Namen, wählen Sie Start- und Endzeit und bestimmen Sie den Verwahrer. Auf Grundlage dieser Angaben wird die Verfügbarkeit der Assets ermittelt.",
+    "Geben Sie Ihrer Buchung einen Namen, wählen Sie Start- und Endzeit und legen Sie die zuständige Person fest. Auf Grundlage dieser Angaben wird die Verfügbarkeit der Assets ermittelt.",
   "At least one tag must be selected":
     "Mindestens ein Tag muss ausgewählt werden.",
   "Title is required": "Ein Titel ist erforderlich.",
@@ -589,7 +607,7 @@ const FRAGMENT_TRANSLATIONS = {
   "filter by tag": "Nach Tag filtern",
   "filter by tags": "Nach Tags filtern",
   "filter by location": "Nach Standort filtern",
-  "filter by custodian": "Nach Verwahrer filtern",
+  "filter by custodian": "Nach zuständiger Person filtern",
   "search team members": "Teammitglieder suchen",
   "search categories": "Kategorien suchen",
   "search assets": "Assets suchen",
@@ -607,7 +625,28 @@ const FRAGMENT_TRANSLATIONS = {
   "select a kit": "Ein Kit auswählen",
   "select category": "Kategorie auswählen",
   "select location": "Standort auswählen",
-  "select custodian": "Verwahrer auswählen",
+  "select custodian": "Zuständige Person auswählen",
+  Custodian: "Zuständig",
+  Custodians: "Zuständige Personen",
+  "Without custody": "Ohne Zuständigkeit",
+  "No assets in custody": "Keine Assets in Zuständigkeit",
+  "Top custodians": "Top Zuständige",
+  "No reminders for this asset": "Keine Erinnerungen für dieses Asset",
+  "No reminders created yet.": "Noch keine Erinnerungen erstellt.",
+  "Alert Time": "Erinnerungszeit",
+  "Date Created": "Erstellt am",
+  "Date Updated": "Aktualisiert am",
+  "Alert Date": "Erinnerungsdatum",
+  Message: "Nachricht",
+  Pending: "Ausstehend",
+  "Reminder sent": "Erinnerung gesendet",
+  "No columns found": "Keine Spalten gefunden",
+  "Search column...": "Spalte suchen...",
+  "Select column": "Spalte auswählen",
+  "Sorted by:": "Sortiert nach:",
+  "Sort by:": "Sortieren nach:",
+  Ascending: "Aufsteigend",
+  Descending: "Absteigend",
   "select tag": "Tag auswählen",
   "select tags": "Tags auswählen",
   "select batch": "Batch auswählen",
@@ -711,6 +750,33 @@ const REGEX_TRANSLATIONS: RegexRule[] = [
     source: "^Remove selected items \\((\\d+)\\)$",
     flags: "i",
     replacement: "Ausgewählte Elemente entfernen ($1)",
+  },
+  {
+    source: "^No (.+) found$",
+    flags: "i",
+    replacement: "Keine $1 gefunden",
+  },
+  {
+    source: "^No (.+) on database$",
+    flags: "i",
+    replacement: "Keine $1 in der Datenbank",
+  },
+  {
+    source:
+      '^Your search for "(.+)" did not match any (.+) in the database\\.$',
+    flags: "i",
+    replacement:
+      'Ihre Suche nach "$1" ergab keine Treffer bei $2 in der Datenbank.',
+  },
+  {
+    source: "^What are you waiting for\\? Create your first (.+) now!$",
+    flags: "i",
+    replacement: "Erstellen Sie jetzt Ihr erstes $1.",
+  },
+  {
+    source: "^What are you waiting for\\? Add your first (.+) now!$",
+    flags: "i",
+    replacement: "Fügen Sie jetzt Ihr erstes $1 hinzu.",
   },
 ];
 

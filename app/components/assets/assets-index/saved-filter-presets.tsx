@@ -429,12 +429,13 @@ export function SavedFilterPresetsControls() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-sm font-medium text-gray-900">
-                    No saved filters yet
+                    Noch keine gespeicherten Filter
                   </h3>
                   <p className="text-sm text-gray-500">
-                    Save your current filter configuration to quickly access it
-                    later. Apply filters, then click Save in the filters menu to
-                    create your first preset.
+                    Speichern Sie Ihre aktuelle Filterkonfiguration, um später
+                    schnell darauf zugreifen zu können. Wenden Sie die Filter an
+                    und klicken Sie dann im Filtermenü auf Speichern, um Ihr
+                    erstes Preset zu erstellen.
                   </p>
                   {hasActiveFilters && (
                     <Button
@@ -445,7 +446,7 @@ export function SavedFilterPresetsControls() {
                     >
                       <div className="flex items-center gap-2">
                         <Save className="size-4" />
-                        Save Filter
+                        Filter speichern
                       </div>
                     </Button>
                   )}
@@ -468,7 +469,7 @@ export function SavedFilterPresetsControls() {
 
                 {allFilteredPresets.length === 0 ? (
                   <div className="px-3 py-6 text-center text-sm text-gray-500">
-                    No presets found
+                    Keine Presets gefunden
                   </div>
                 ) : (
                   <div className="max-h-[400px] space-y-3 overflow-y-auto p-3">
@@ -476,7 +477,7 @@ export function SavedFilterPresetsControls() {
                     {filteredStarredPresets.length > 0 && (
                       <div>
                         <div className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                          Starred
+                          Markiert
                         </div>
                         <div className="space-y-1">
                           {filteredStarredPresets.map((preset, index) => (

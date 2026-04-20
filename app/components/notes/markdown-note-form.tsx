@@ -10,7 +10,7 @@ import { MarkdownEditor } from "~/components/markdown/markdown-editor";
 import { Button } from "~/components/shared/button";
 
 export const MarkdownNoteSchema = z.object({
-  content: z.string().min(3, "Content is required"),
+  content: z.string().min(3, "Inhalt ist erforderlich"),
 });
 
 interface MarkdownNoteFormProps {
@@ -44,10 +44,10 @@ export function MarkdownNoteForm({
   editingAtom,
   action,
   formId,
-  placeholder = "Leave a note",
-  submitLabel = "Create note",
-  cancelLabel = "Cancel",
-  editorLabel = "note",
+  placeholder = "Notiz hinterlassen",
+  submitLabel = "Notiz erstellen",
+  cancelLabel = "Abbrechen",
+  editorLabel = "Notiz",
 }: MarkdownNoteFormProps) {
   const zo = useZorm(formId, MarkdownNoteSchema);
   const hasError = zo.errors.content()?.message;
