@@ -7,6 +7,7 @@ import {
   clearNotificationAtom,
   showNotificationAtom,
 } from "~/atoms/notifications";
+import { translateToDeCh } from "~/utils/de-ch";
 import { tw } from "~/utils/tw";
 import { iconsMap } from "./icons-map";
 import When from "../when/when";
@@ -16,6 +17,8 @@ export const Toaster = () => {
   const [notification, showNotification] = useAtom(showNotificationAtom);
 
   const { open, title, message, icon } = notification;
+  const translatedTitle = translateToDeCh(title);
+  const translatedMessage = message ? translateToDeCh(message) : message;
 
   const variants = {
     primary: tw(`border-primary-50 bg-primary-100 text-primary`),
@@ -59,12 +62,12 @@ export const Toaster = () => {
         </div>
         <div className="flex-1">
           <Toast.Title className=" text-text-sm font-semibold text-gray-900 ">
-            {title}
+            {translatedTitle}
           </Toast.Title>
 
-          <When truthy={!!message}>
+          <When truthy={!!translatedMessage}>
             <Toast.Description className="text-gray-600">
-              {message}
+              {translatedMessage}
             </Toast.Description>
           </When>
         </div>
@@ -73,7 +76,7 @@ export const Toaster = () => {
           className="flex"
           onClick={clearNotification}
           data-test-id="closeToast"
-          aria-label="Close notification"
+          aria-label="Benachrichtigung schliessen"
         >
           {iconsMap["x"]}
         </Toast.Close>

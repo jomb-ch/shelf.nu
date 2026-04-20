@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { InfoIcon } from "lucide-react";
 import type Stripe from "stripe";
 import type { CustomerWithSubscriptions } from "~/utils/stripe.server";
+import { DEFAULT_APP_LOCALE } from "~/utils/de-ch";
 import { tw } from "~/utils/tw";
 import { CustomerPortalForm } from "./customer-portal-form";
 import type { PriceWithProduct } from "./prices";
@@ -77,7 +78,7 @@ function SubscriptionBox({
       {isActive && (
         <div className="text-right">
           Total:{" "}
-          {new Intl.NumberFormat("en-US", {
+          {new Intl.NumberFormat(DEFAULT_APP_LOCALE, {
             style: "currency",
             currency: "USD",
           }).format(total / 100)}
@@ -168,7 +169,7 @@ function Item({
     return (
       <>
         <div>
-          {new Intl.NumberFormat("en-US", {
+          {new Intl.NumberFormat(DEFAULT_APP_LOCALE, {
             style: "currency",
             currency: "USD",
           }).format(costPerPrice)}{" "}

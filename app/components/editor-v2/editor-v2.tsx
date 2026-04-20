@@ -42,7 +42,7 @@ interface EditorV2Props
   onChange?: (value: string) => void;
 }
 
-const HINT_TEXT = "Use / to access commands.";
+const HINT_TEXT = "Verwenden Sie /, um Befehle aufzurufen.";
 
 export const EditorV2 = forwardRef<HTMLTextAreaElement, EditorV2Props>(
   function EditorV2(
@@ -257,7 +257,7 @@ export const EditorV2 = forwardRef<HTMLTextAreaElement, EditorV2Props>(
         />
         <div className="flex flex-col gap-1 text-xs text-gray-500">
           <span>
-            {label} supports Markdown and Markdoc. {HINT_TEXT}
+            {label} unterstützt Markdown und Markdoc. {HINT_TEXT}
           </span>
           {maxLength ? (
             <span

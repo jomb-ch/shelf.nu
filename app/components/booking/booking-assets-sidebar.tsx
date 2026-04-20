@@ -120,7 +120,7 @@ export function BookingAssetsSidebar({
       onClick={hasItems ? () => setIsOpen(true) : undefined}
       className={!hasItems ? "hover:text-gray cursor-default no-underline" : ""}
     >
-      {booking.assets.length} assets
+      {booking.assets.length} Assets
     </Button>
   );
 
@@ -136,16 +136,17 @@ export function BookingAssetsSidebar({
             </SheetTitle>
             <SheetDescription className="text-left">
               {booking.assets.length}{" "}
-              {booking.assets.length === 1 ? "asset" : "assets"} in this booking
+              {booking.assets.length === 1 ? "Asset" : "Assets"} in dieser
+              Buchung
             </SheetDescription>
           </SheetHeader>
 
           <div className="flex flex-1 flex-col overflow-hidden">
             {/* Header matching BookingAssetsColumn */}
             <div className="border border-b-0 bg-white px-4 pb-3 pt-4 text-left font-normal text-gray-600 md:mx-0 md:px-6">
-              <h5 className="text-left capitalize">Assets & kits</h5>
+              <h5 className="text-left capitalize">Assets & Kits</h5>
               <p>
-                <span>{paginatedItems.length} items</span>
+                <span>{paginatedItems.length} Einträge</span>
               </p>
             </div>
 
@@ -159,7 +160,7 @@ export function BookingAssetsSidebar({
                     </th>
                     <th className="px-6 py-3"> </th>
                     <th className="px-6 py-3 font-normal text-gray-600">
-                      Category
+                      Kategorie
                     </th>
                     <th className="px-6 py-3"> </th>
                   </tr>
@@ -196,14 +197,14 @@ export function BookingAssetsSidebar({
                                     className="text-gray-900 hover:text-gray-700"
                                     target="_blank"
                                     onlyNewTabIconOnHover={true}
-                                    aria-label="Go to kit"
+                                    aria-label="Zum Kit"
                                   >
                                     <div className="max-w-[200px] truncate sm:max-w-[250px] md:max-w-[350px] lg:max-w-[450px]">
                                       {kit.name}
                                     </div>
                                   </Button>
                                   <p className="text-sm text-gray-600">
-                                    {item.assets.length} assets
+                                    {item.assets.length} Assets
                                   </p>
                                 </div>
                               </div>
@@ -221,7 +222,7 @@ export function BookingAssetsSidebar({
                                   onClick={() => toggleKitExpansion(kit.id)}
                                   variant="link"
                                   className="text-center font-bold text-gray-600 hover:text-gray-900"
-                                  aria-label="Toggle kit expand"
+                                  aria-label="Kit ein- oder ausklappen"
                                 >
                                   <ChevronDownIcon
                                     className={tw(

@@ -55,7 +55,7 @@ export const BookingNotes = () => {
           download
           reloadDocument
         >
-          Export activity CSV
+          Aktivität als CSV exportieren
         </Button>
       ) : null}
       <NewBookingNote fetcher={fetcher} />
@@ -85,13 +85,13 @@ export const BookingNotes = () => {
           <div className="flex flex-col items-center justify-center p-[16px] text-center md:p-[50px]">
             <img
               src="/static/images/no-notes.svg"
-              alt="Graphic for no notes"
+              alt="Grafik für keine Notizen"
               className="mb-6 w-[172px]"
             />
-            <h4>No Notes</h4>
+            <h4>Keine Notizen</h4>
             <p>
-              Your booking `{booking?.name}` has no notes <br />
-              attached to it.
+              Ihrer Buchung `{booking?.name}` sind derzeit <br />
+              keine Notizen zugeordnet.
             </p>
           </div>
         </div>

@@ -28,6 +28,7 @@ import { Spinner } from "~/components/shared/spinner";
 import useApiQuery from "~/hooks/use-api-query";
 import { useUserRoleHelper } from "~/hooks/user-user-role-helper";
 import type { LayoutLoaderResponse } from "~/routes/_layout+/_layout";
+import { DEFAULT_APP_LOCALE } from "~/utils/de-ch";
 import type { DataOrErrorResponse } from "~/utils/http.server";
 import { isPersonalOrg } from "~/utils/organization";
 import { tw } from "~/utils/tw";
@@ -122,25 +123,25 @@ const NAVIGATION_COMMANDS: QuickCommand[] = [
   {
     id: "assets",
     label: "Assets",
-    description: "Browse and manage all assets",
+    description: "Alle Assets durchsuchen und verwalten",
     href: "/assets",
-    keywords: ["inventory", "items", "equipment"],
+    keywords: ["assets", "inventar", "objekte"],
     icon: CompassIcon,
   },
   {
     id: "kits",
     label: "Kits",
-    description: "Browse and manage asset kits",
+    description: "Alle Kits durchsuchen und verwalten",
     href: "/kits",
-    keywords: ["packages", "bundles", "collections"],
+    keywords: ["kits", "pakete", "sammlungen"],
     icon: PackageIcon,
   },
   {
     id: "bookings",
-    label: "Bookings",
-    description: "View upcoming and past bookings",
+    label: "Buchungen",
+    description: "Kommende und vergangene Buchungen anzeigen",
     href: "/bookings",
-    keywords: ["reservations", "schedule", "calendar"],
+    keywords: ["buchungen", "reservationen", "kalender"],
     icon: CalendarIcon,
     isVisible: ({ canCreateBookings, isPersonalWorkspace }) =>
       canCreateBookings && !isPersonalWorkspace,
@@ -148,28 +149,28 @@ const NAVIGATION_COMMANDS: QuickCommand[] = [
   {
     id: "team",
     label: "Team",
-    description: "Manage team members and roles",
+    description: "Teammitglieder und Rollen verwalten",
     href: "/settings/team/users",
-    keywords: ["users", "members", "people"],
+    keywords: ["team", "benutzer", "mitglieder"],
     icon: UserPlus2Icon,
     isVisible: ({ isPersonalWorkspace, isBaseOrSelfService }) =>
       !isPersonalWorkspace && !isBaseOrSelfService,
   },
   {
     id: "settings",
-    label: "Settings",
-    description: "Adjust organization preferences",
+    label: "Einstellungen",
+    description: "Organisationseinstellungen anpassen",
     href: "/settings",
-    keywords: ["preferences", "configuration"],
+    keywords: ["einstellungen", "konfiguration"],
     icon: SettingsIcon,
     isVisible: ({ isBaseOrSelfService }) => !isBaseOrSelfService,
   },
   {
     id: "dashboard",
     label: "Dashboard",
-    description: "See analytics and key metrics",
+    description: "Analysen und wichtige Kennzahlen anzeigen",
     href: "/dashboard",
-    keywords: ["overview", "analytics"],
+    keywords: ["dashboard", "übersicht", "analysen"],
     icon: LayoutDashboardIcon,
     isVisible: ({ isBaseOrSelfService }) => !isBaseOrSelfService,
   },
@@ -178,37 +179,37 @@ const NAVIGATION_COMMANDS: QuickCommand[] = [
 const ACTION_COMMANDS: QuickAction[] = [
   {
     id: "create-asset",
-    label: "Create asset",
-    description: "Add a new asset to your inventory",
+    label: "Asset erstellen",
+    description: "Ein neues Asset zum Inventar hinzufügen",
     href: "/assets/new",
-    keywords: ["new", "asset", "inventory"],
+    keywords: ["neu", "asset", "inventar"],
     icon: FilePlus2Icon,
     isVisible: ({ isBaseOrSelfService }) => !isBaseOrSelfService,
   },
   {
     id: "create-kit",
-    label: "Create kit",
-    description: "Bundle assets into a new kit",
+    label: "Kit erstellen",
+    description: "Assets in ein neues Kit bündeln",
     href: "/kits/new",
-    keywords: ["new", "kit", "inventory", "collection"],
+    keywords: ["neu", "kit", "inventar", "sammlung"],
     icon: PackageIcon,
     isVisible: ({ isBaseOrSelfService }) => !isBaseOrSelfService,
   },
   {
     id: "create-booking",
-    label: "Create booking",
-    description: "Reserve assets for a new booking",
+    label: "Buchung erstellen",
+    description: "Assets für eine neue Buchung reservieren",
     href: "/bookings/new",
-    keywords: ["book", "reservation", "calendar"],
+    keywords: ["buchen", "buchung", "kalender"],
     icon: CalendarIcon,
     isVisible: ({ canCreateBookings }) => canCreateBookings,
   },
   {
     id: "invite-user",
-    label: "Invite user",
-    description: "Send an invite to a teammate",
+    label: "Benutzer einladen",
+    description: "Ein Teammitglied einladen",
     href: "/settings/team/invites",
-    keywords: ["team", "user", "invite"],
+    keywords: ["team", "benutzer", "einladung"],
     icon: UserPlus2Icon,
     isVisible: ({ canInviteUsers, isPersonalWorkspace }) =>
       canInviteUsers && !isPersonalWorkspace,
@@ -624,7 +625,7 @@ export function CommandPalette() {
       <CommandInput
         value={query}
         onValueChange={setQuery}
-        placeholder="Search assets, kits, bookings, locations, team members..."
+        placeholder="Assets, Kits, Buchungen, Standorte und Teammitglieder suchen..."
         autoFocus
         className="my-4 rounded border-gray-100"
       />
@@ -632,14 +633,14 @@ export function CommandPalette() {
         <CommandEmpty>
           {isSearching ? (
             <span className="flex items-center gap-2 text-gray-500">
-              <Spinner className="size-4" /> Searching...
+              <Spinner className="size-4" /> Suche läuft...
             </span>
           ) : errorMessage ? (
             <span className="text-error-600">
-              {errorMessage || "Something went wrong"}
+              {errorMessage || "Etwas ist schiefgelaufen"}
             </span>
           ) : (
-            "No results found"
+            "Keine Ergebnisse gefunden"
           )}
         </CommandEmpty>
 
@@ -688,7 +689,7 @@ export function CommandPalette() {
                     {kit.name}
                   </span>
                   <span className="truncate text-xs text-gray-500">
-                    {kit.status} • {kit.assetCount} assets
+                    {kit.status} • {kit.assetCount} Assets
                     {kit.description ? ` • ${kit.description}` : ""}
                   </span>
                 </div>
@@ -698,7 +699,7 @@ export function CommandPalette() {
         ) : null}
 
         {bookingResults.length > 0 ? (
-          <CommandGroup heading="Bookings">
+          <CommandGroup heading="Buchungen">
             {bookingResults.map((booking) => (
               <CommandItem
                 key={booking.id}
@@ -715,11 +716,11 @@ export function CommandPalette() {
                     {booking.status}
                     {booking.custodianName ? ` • ${booking.custodianName}` : ""}
                     {booking.from && booking.to
-                      ? ` • ${new Date(
-                          booking.from
-                        ).toLocaleDateString()} - ${new Date(
-                          booking.to
-                        ).toLocaleDateString()}`
+                      ? ` • ${new Date(booking.from).toLocaleDateString(
+                          DEFAULT_APP_LOCALE
+                        )} - ${new Date(booking.to).toLocaleDateString(
+                          DEFAULT_APP_LOCALE
+                        )}`
                       : ""}
                   </span>
                 </div>
@@ -729,7 +730,7 @@ export function CommandPalette() {
         ) : null}
 
         {locationResults.length > 0 ? (
-          <CommandGroup heading="Locations">
+          <CommandGroup heading="Standorte">
             {locationResults.map((location) => (
               <CommandItem
                 key={location.id}
@@ -743,7 +744,7 @@ export function CommandPalette() {
                     {location.name}
                   </span>
                   <span className="truncate text-xs text-gray-500">
-                    {location.assetCount} assets
+                    {location.assetCount} Assets
                     {location.address ? ` • ${location.address}` : ""}
                     {location.description ? ` • ${location.description}` : ""}
                   </span>
@@ -754,7 +755,7 @@ export function CommandPalette() {
         ) : null}
 
         {teamMemberResults.length > 0 ? (
-          <CommandGroup heading="Team Members">
+          <CommandGroup heading="Teammitglieder">
             {teamMemberResults.map((member) => (
               <CommandItem
                 key={member.id}
@@ -808,7 +809,7 @@ export function CommandPalette() {
         ) : null}
 
         {actionResults.length > 0 ? (
-          <CommandGroup heading="Quick actions">
+          <CommandGroup heading="Schnellaktionen">
             {actionResults.map((command) => (
               <CommandItem
                 key={command.id}
@@ -843,16 +844,16 @@ export function CommandPalette() {
         <div className="flex items-center gap-2">
           <SearchIcon className="size-4" />
           {isPersonalOrg(layoutData?.currentOrganization)
-            ? "Search across all assets, kits, and locations"
-            : "Search across all assets, kits, bookings, locations, and team members"}
+            ? "Alle Assets, Kits und Standorte durchsuchen"
+            : "Alle Assets, Kits, Buchungen, Standorte und Teammitglieder durchsuchen"}
         </div>
         <CommandShortcut className={tw("bg-white")}>
           {shortcutLabel}
         </CommandShortcut>
       </div>
       <div className="border-t border-gray-100 px-4 pb-4 pt-2 text-[11px] text-gray-400">
-        <span className="font-medium text-gray-500">Keyboard tips:</span> ↑↓ to
-        navigate • ↵ to select • esc to close
+        <span className="font-medium text-gray-500">Tastaturtipps:</span> ↑↓ zum
+        Navigieren • ↵ zum Auswählen • esc zum Schliessen
       </div>
     </CommandDialog>
   );

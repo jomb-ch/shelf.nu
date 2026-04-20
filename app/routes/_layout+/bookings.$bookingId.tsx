@@ -114,13 +114,13 @@ export default function AssetDetailsPage() {
   const { roles } = useUserRoleHelper();
 
   const items = [
-    { to: "overview", content: "Overview" },
+    { to: "overview", content: "Übersicht" },
     ...(userHasPermission({
       roles,
       entity: PermissionEntity.bookingNote,
       action: PermissionAction.read,
     })
-      ? [{ to: "activity", content: "Activity" }]
+      ? [{ to: "activity", content: "Aktivität" }]
       : []),
   ];
   const matches = useMatches();
@@ -185,14 +185,14 @@ const AddToCalendar = () => {
               icon="calendar"
               className={"whitespace-nowrap"}
             >
-              Add to calendar
+              Zum Kalender hinzufügen
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom">
             <p className="text-xs">
               {disabled
-                ? "Not possible to add to calendar due to booking status"
-                : "Download this booking as a calendar event"}
+                ? "Wegen des Buchungsstatus kann nichts zum Kalender hinzugefügt werden"
+                : "Diese Buchung als Kalendereintrag herunterladen"}
             </p>
           </TooltipContent>
         </Tooltip>

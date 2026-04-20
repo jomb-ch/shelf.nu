@@ -310,7 +310,7 @@ export default function BookingsIndexPage({
                 data-test-id="createNewBooking"
                 prefetch="none"
               >
-                New booking
+                Neue Buchung
               </Button>
             }
           />
@@ -330,13 +330,13 @@ export default function BookingsIndexPage({
             <>
               <Th />
               <Th>Assets</Th>
-              <Th>Description</Th>
+              <Th>Beschreibung</Th>
 
-              <Th>From</Th>
-              <Th>To</Th>
+              <Th>Von</Th>
+              <Th>Bis</Th>
               <Th>Tags</Th>
-              <Th>Custodian</Th>
-              <Th>Created by</Th>
+              <Th>Verwahrer</Th>
+              <Th>Erstellt von</Th>
             </>
           }
           headerExtraContent={
@@ -441,10 +441,10 @@ const ListBookingsContent = ({
       <Td>
         {hasUnavaiableAssets ? (
           <AvailabilityBadge
-            badgeText={"Includes unavailable assets"}
-            tooltipTitle={"Booking includes unavailable assets"}
+            badgeText={"Enthält nicht verfügbare Assets"}
+            tooltipTitle={"Buchung enthält nicht verfügbare Assets"}
             tooltipContent={
-              "There are some assets within this booking that are unavailable for reservation because they are checked-out, have custody assigned or are marked as not allowed to book"
+              "Diese Buchung enthält Assets, die nicht reservierbar sind, weil sie ausgecheckt sind, einer Person zugewiesen wurden oder nicht buchbar markiert sind."
             }
           />
         ) : null}
@@ -492,7 +492,7 @@ const ListBookingsContent = ({
           items={item.tags}
           idKey="id"
           labelKey="name"
-          emptyMessage={<div className="text-sm text-gray-500">No tags</div>}
+          emptyMessage={<div className="text-sm text-gray-500">Keine Tags</div>}
         />
       </Td>
 

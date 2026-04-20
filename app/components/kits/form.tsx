@@ -29,7 +29,7 @@ import When from "../when/when";
 export const NewKitFormSchema = z.object({
   name: z
     .string()
-    .min(2, "Name is required")
+    .min(2, "Name ist erforderlich")
     .transform((value) => value.trim()),
   description: z
     .string()
@@ -135,8 +135,9 @@ export default function KitsForm({
           rowLabel="Description"
           subHeading={
             <p>
-              Briefly describe what is included and/or what is will be used for.
-              It will be shown on the kit’s overview page.
+              Beschreiben Sie kurz, was enthalten ist oder wofür das Kit
+              verwendet wird. Diese Beschreibung wird auf der Übersichtsseite
+              des Kits angezeigt.
             </p>
           }
           className="border-b-0"
@@ -149,7 +150,7 @@ export default function KitsForm({
             name={zo.fields.description()}
             defaultValue={description || ""}
             hideLabel
-            placeholder="Write your description here..."
+            placeholder="Beschreibung hier eingeben..."
             disabled={disabled}
             className="w-full"
             required={zodFieldIsRequired(NewKitFormSchema.shape.description)}
@@ -160,15 +161,15 @@ export default function KitsForm({
           rowLabel="Category"
           subHeading={
             <p>
-              Make it unique. Each kit can have 1 category. It will show on your
-              index.{" "}
+              Wählen Sie eine eindeutige Kategorie. Jedes Kit kann genau 1
+              Kategorie haben. Sie wird in Ihrer Übersicht angezeigt.{" "}
               <Button
                 to="/categories/new"
                 variant="link-gray"
                 className="text-gray-600 underline"
                 target="_blank"
               >
-                Create categories
+                Kategorien erstellen
               </Button>
             </p>
           }
@@ -180,8 +181,8 @@ export default function KitsForm({
             defaultValue={categoryId ?? undefined}
             model={{ name: "category", queryKey: "name" }}
             triggerWrapperClassName="flex flex-col !gap-0 justify-start items-start [&_.inner-label]:w-full [&_.inner-label]:text-left "
-            contentLabel="Categories"
-            label="Category"
+            contentLabel="Kategorien"
+            label="Kategorie"
             hideLabel
             initialDataKey="categories"
             countKey="totalCategories"
@@ -191,8 +192,8 @@ export default function KitsForm({
             extraContent={({ onItemCreated, closePopover }) => (
               <InlineEntityCreationDialog
                 type="category"
-                title="Create new category"
-                buttonLabel="Create new category"
+                title="Neue Kategorie erstellen"
+                buttonLabel="Neue Kategorie erstellen"
                 onCreated={(created) => {
                   if (created?.type !== "category") return;
                   const category = created.entity;
@@ -210,18 +211,18 @@ export default function KitsForm({
         </FormRow>
 
         <FormRow
-          rowLabel="Location"
+          rowLabel="Standort"
           subHeading={
             <p>
-              A location is a place where an item is supposed to be located.
-              This is different than the last scanned location{" "}
+              Ein Standort ist der Ort, an dem sich ein Element befinden soll.
+              Das ist etwas anderes als der zuletzt gescannte Standort.{" "}
               <Button
                 to="/locations/new"
                 className="text-gray-600 underline"
                 target="_blank"
                 variant="link-gray"
               >
-                Create locations
+                Standorte erstellen
               </Button>
             </p>
           }
@@ -234,8 +235,8 @@ export default function KitsForm({
             triggerWrapperClassName="flex flex-col !gap-0 justify-start items-start [&_.inner-label]:w-full [&_.inner-label]:text-left "
             defaultValue={locationId ?? undefined}
             model={{ name: "location", queryKey: "name" }}
-            contentLabel="Locations"
-            label="Location"
+            contentLabel="Standorte"
+            label="Standort"
             hideLabel
             initialDataKey="locations"
             countKey="totalLocations"
@@ -244,8 +245,8 @@ export default function KitsForm({
             extraContent={({ onItemCreated, closePopover }) => (
               <InlineEntityCreationDialog
                 type="location"
-                title="Create new location"
-                buttonLabel="Create new location"
+                title="Neuen Standort erstellen"
+                buttonLabel="Neuen Standort erstellen"
                 onCreated={(created) => {
                   if (created?.type !== "location") return;
                   const location = created.entity;
@@ -273,10 +274,10 @@ export default function KitsForm({
           />
         </FormRow>
 
-        <FormRow rowLabel="Image" className="border-b-0 pt-[10px]">
+        <FormRow rowLabel="Bild" className="border-b-0 pt-[10px]">
           <div>
             <p className="hidden lg:block">
-              Accepts PNG, JPG or JPEG (max.4 MB)
+              PNG, JPG oder JPEG erlaubt (max. 4 MB)
             </p>
             <Input
               disabled={disabled}
@@ -284,14 +285,14 @@ export default function KitsForm({
               name="image"
               type="file"
               onChange={validateFile}
-              label="Image"
+              label="Bild"
               hideLabel
               error={imageError}
               className="mt-2"
               inputClassName="border-0 shadow-none p-0 rounded-none"
             />
             <p className="mt-2 lg:hidden">
-              Accepts PNG, JPG or JPEG (max.8 MB)
+              PNG, JPG oder JPEG erlaubt (max. 8 MB)
             </p>
           </div>
         </FormRow>
@@ -300,7 +301,7 @@ export default function KitsForm({
           <FormRow
             rowLabel={"Barcodes"}
             className="border-b-0"
-            subHeading="Add additional barcodes to this kit (Code 128, Code 39, or Data Matrix). Note: Each kit automatically gets a default Shelf QR code for tracking."
+            subHeading="Fügen Sie diesem Kit zusätzliche Barcodes hinzu (Code 128, Code 39 oder Data Matrix). Hinweis: Jedes Kit erhält automatisch einen Standard-Shelf-QR-Code zur Nachverfolgung."
           >
             <BarcodesInput
               ref={barcodesInputRef}
@@ -316,10 +317,10 @@ export default function KitsForm({
         <FormRow className="border-y-0 pb-0 pt-5" rowLabel="">
           <div className="ml-auto flex gap-2">
             <Button to={referer} variant="secondary" disabled={disabled}>
-              Cancel
+              Abbrechen
             </Button>
             <Button type="submit" disabled={disabled}>
-              {disabled ? "Saving..." : "Save"}
+              {disabled ? "Speichert..." : "Speichern"}
             </Button>
           </div>
         </FormRow>

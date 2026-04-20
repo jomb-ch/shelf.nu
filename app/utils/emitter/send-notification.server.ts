@@ -1,13 +1,16 @@
 import type { NotificationType } from "~/atoms/notifications";
 import { emitter } from "./emitter.server";
+import { translateNotificationContent } from "../de-ch";
 import { ShelfError } from "../error";
 
 export function sendNotification(notification: Omit<NotificationType, "open">) {
   try {
+    const translatedNotification = translateNotificationContent(notification);
     emitter.emit(
       "notification",
       JSON.stringify({
         ...notification,
+        ...translatedNotification,
         open: true,
         /** In the case when the user updates an item 2 times in a row for example, the notification will be the same so useEventStream wont react to the changes as its cached.
          * We send the time to make sure it always updates */

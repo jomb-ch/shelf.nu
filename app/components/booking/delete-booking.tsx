@@ -35,7 +35,7 @@ export const DeleteBooking = ({
           className="justify-start rounded-sm px-2 py-1.5 text-sm font-medium text-gray-700 outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-slate-100 hover:text-gray-700"
           width="full"
         >
-          Delete
+          Löschen
         </Button>
       </AlertDialogTrigger>
 
@@ -46,17 +46,18 @@ export const DeleteBooking = ({
               <TrashIcon />
             </span>
           </div>
-          <AlertDialogTitle>Delete {booking.name}</AlertDialogTitle>
+          <AlertDialogTitle>{booking.name} löschen</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to delete this Booking? This action cannot be
-            undone. All assets associated with this booking will be released.
+            Möchten Sie diese Buchung wirklich löschen? Diese Aktion kann nicht
+            rückgängig gemacht werden. Alle mit dieser Buchung verknüpften
+            Assets werden freigegeben.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <div className="flex justify-center gap-2">
             <AlertDialogCancel asChild>
               <Button variant="secondary" disabled={disabled}>
-                Cancel
+                Abbrechen
               </Button>
             </AlertDialogCancel>
 
@@ -71,7 +72,7 @@ export const DeleteBooking = ({
                 value="delete"
                 disabled={disabled}
               >
-                Delete
+                Löschen
               </Button>
             </Form>
           </div>

@@ -20,9 +20,12 @@ import useApiQuery from "~/hooks/use-api-query";
 
 export const addAssetsToExistingBookingSchema = z.object({
   id: z
-    .string({ required_error: "Please select booking." })
-    .min(1, "Please select booking."),
-  assetsIds: z.string().array().min(1, "Please select at least one asset."),
+    .string({ required_error: "Bitte wählen Sie eine Buchung aus." })
+    .min(1, "Bitte wählen Sie eine Buchung aus."),
+  assetsIds: z
+    .string()
+    .array()
+    .min(1, "Bitte wählen Sie mindestens ein Asset aus."),
   addOnlyRestAssets: z.coerce.boolean().optional().nullable(),
 });
 
@@ -55,8 +58,8 @@ export default function AddAssetsToExistingBookingDialog() {
       ref={zo.ref}
       type="booking-exist"
       arrayFieldId="assetsIds"
-      title="Add to existing booking"
-      description={`Add selected(${selectedAssets.length}) assets to existing booking.`}
+      title="Zu bestehender Buchung hinzufügen"
+      description={`${selectedAssets.length} ausgewählte Assets zu einer bestehenden Buchung hinzufügen`}
       actionUrl="/api/assets/add-to-booking"
       className="lg:w-[600px]"
       skipCloseOnSuccess
@@ -77,10 +80,10 @@ export default function AddAssetsToExistingBookingDialog() {
                   <SelectValue
                     placeholder={
                       isFetchingBookings
-                        ? "Fetching bookings..."
+                        ? "Buchungen werden geladen..."
                         : bookings.length === 0
-                        ? "No bookings available"
-                        : "Select booking"
+                        ? "Keine Buchungen verfügbar"
+                        : "Buchung auswählen"
                     }
                   />
                 </SelectTrigger>

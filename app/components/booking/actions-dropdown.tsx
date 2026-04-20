@@ -72,7 +72,7 @@ export const ActionsDropdown = ({ fullWidth }: Props) => {
           className="flex"
         >
           <span className="flex items-center gap-2">
-            Actions <ChevronRight className="chev rotate-90" />
+            Aktionen <ChevronRight className="chev rotate-90" />
           </span>
         </Button>
       </DropdownMenuTrigger>
@@ -117,7 +117,7 @@ export const ActionsDropdown = ({ fullWidth }: Props) => {
                   void submit(formData, { method: "post" });
                 }}
               >
-                Archive
+                Archivieren
               </Button>
             </DropdownMenuItem>
           </When>
@@ -129,7 +129,7 @@ export const ActionsDropdown = ({ fullWidth }: Props) => {
               width="full"
               to="duplicate"
             >
-              Duplicate booking
+              Buchung duplizieren
             </Button>
           </DropdownMenuItem>
 

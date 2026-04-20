@@ -145,7 +145,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
 ];
 
 export const handle = {
-  breadcrumb: () => "Scan QR codes to add to booking",
+  breadcrumb: () => "QR-Codes zur Buchung hinzufügen",
   name: "booking.overview.scan-assets",
 };
 
@@ -175,7 +175,7 @@ export default function ScanAssetsForBookings() {
         <CodeScanner
           isLoading={isLoading}
           onCodeDetectionSuccess={handleCodeDetectionSuccess}
-          backButtonText="Booking"
+          backButtonText="Buchung"
           allowNonShelfCodes
           paused={false}
           setPaused={() => {}}

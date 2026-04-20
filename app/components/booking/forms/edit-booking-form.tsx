@@ -218,7 +218,7 @@ export function EditBookingForm({ booking, action }: BookingFormData) {
                   className="grow"
                   size="sm"
                 >
-                  Save
+                  Speichern
                 </Button>
               </>
             ) : null}
@@ -234,12 +234,12 @@ export function EditBookingForm({ booking, action }: BookingFormData) {
                   bookingFlags?.hasUnavailableAssets
                     ? {
                         reason: bookingFlags?.hasUnavailableAssets
-                          ? "You have some assets in your booking that are marked as unavailble. Either remove the assets from this booking or make them available again"
+                          ? "Einige Assets in Ihrer Buchung sind als nicht verfügbar markiert. Entfernen Sie diese Assets aus der Buchung oder machen Sie sie wieder verfügbar."
                           : bookingFlags?.hasAlreadyBookedAssets
-                          ? "Your booking has assets that are already booked for the desired period. You need to resolve that before you can reserve"
+                          ? "Ihre Buchung enthält Assets, die für den gewünschten Zeitraum bereits gebucht sind. Das muss vor der Reservierung gelöst werden."
                           : isProcessing || isLoadingWorkingHours
                           ? undefined
-                          : "You need to add assets to your booking before you can reserve it",
+                          : "Sie müssen Ihrer Buchung zuerst Assets hinzufügen, bevor Sie sie reservieren können.",
                       }
                     : false
                 }
@@ -249,7 +249,7 @@ export function EditBookingForm({ booking, action }: BookingFormData) {
                 className="grow whitespace-nowrap"
                 size="sm"
               >
-                {isBase ? "Request reservation" : "Reserve"}
+                {isBase ? "Reservierung anfragen" : "Reservieren"}
               </Button>
             ) : null}
 
@@ -267,12 +267,12 @@ export function EditBookingForm({ booking, action }: BookingFormData) {
                   bookingFlags?.hasAssetsInCustody
                     ? {
                         reason: bookingFlags?.hasAssetsInCustody
-                          ? "Some assets in this booking are currently in custody. You need to resolve that before you can check-out"
+                          ? "Einige Assets in dieser Buchung sind aktuell in Verwahrung. Das muss vor dem Check-out gelöst werden."
                           : bookingFlags?.hasAlreadyBookedAssets
-                          ? "Your booking has assets that are already booked for the desired period. You need to resolve that before you can check-out"
+                          ? "Ihre Buchung enthält Assets, die für den gewünschten Zeitraum bereits gebucht sind. Das muss vor dem Check-out gelöst werden."
                           : isProcessing || isLoadingWorkingHours
                           ? undefined
-                          : "Some assets in this booking are not Available because they're part of an Ongoing or Overdue booking",
+                          : "Einige Assets in dieser Buchung sind nicht verfügbar, weil sie Teil einer laufenden oder überfälligen Buchung sind.",
                       }
                     : false
                 }
@@ -304,7 +304,7 @@ export function EditBookingForm({ booking, action }: BookingFormData) {
           {id ? (
             <input type="hidden" name="id" defaultValue={id} key={id} />
           ) : null}
-          <h3>Booking details</h3>
+          <h3>Buchungsdetails</h3>
           <div
             className={tw(
               "flex flex-col gap-3 lg:flex-row",

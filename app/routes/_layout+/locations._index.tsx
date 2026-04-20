@@ -102,7 +102,7 @@ export default function LocationsIndexPage() {
           aria-label={`new location`}
           data-test-id="createNewLocation"
         >
-          New location
+          Neuer Standort
         </Button>
       </Header>
       <ListContentWrapper>
@@ -114,12 +114,12 @@ export default function LocationsIndexPage() {
           ItemComponent={ListItemContent}
           headerChildren={
             <>
-              <Th>Description</Th>
-              <Th>Parent location</Th>
-              <Th className="whitespace-nowrap">Child locations</Th>
+              <Th>Beschreibung</Th>
+              <Th>Übergeordneter Standort</Th>
+              <Th className="whitespace-nowrap">Unterstandorte</Th>
               <Th>Assets</Th>
               <Th>Kits</Th>
-              <Th>Actions</Th>
+              <Th>Aktionen</Th>
             </>
           }
         />

@@ -31,7 +31,7 @@ export function NameField({
         onChange={onChange}
         className="mobile-styling-only w-full p-0"
         defaultValue={name}
-        placeholder="Booking"
+        placeholder="Buchung"
         required
       />
     </FormRow>

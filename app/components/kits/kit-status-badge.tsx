@@ -1,19 +1,20 @@
 import { KitStatus } from "@prisma/client";
 import { BADGE_COLORS, type BadgeColorScheme } from "~/utils/badge-colors";
 import type { ExtendedKitStatus } from "~/utils/booking-assets";
+import { translateBookingStatus } from "~/utils/de-ch";
 import { Badge } from "../shared/badge";
 import { UnavailableBadge } from "../shared/unavailable-badge";
 
 export function userFriendlyKitStatus(status: ExtendedKitStatus) {
   switch (status) {
     case KitStatus.IN_CUSTODY:
-      return "In Custody";
+      return "In Verwahrung";
     case KitStatus.CHECKED_OUT:
-      return "Checked Out";
+      return "Ausgecheckt";
     case "PARTIALLY_CHECKED_IN":
-      return "Already checked in";
+      return "Bereits eingecheckt";
     default:
-      return "Available";
+      return "Verfügbar";
   }
 }
 
@@ -44,7 +45,7 @@ export function KitStatusBadge({
   return (
     <div className="flex items-center gap-[6px]">
       <Badge color={colors.bg} textColor={colors.text}>
-        {userFriendlyKitStatus(status)}
+        {translateBookingStatus(userFriendlyKitStatus(status))}
       </Badge>
       {!availableToBook && (
         <UnavailableBadge title="This kit is not available for Bookings because some of its assets are marked as unavailable" />

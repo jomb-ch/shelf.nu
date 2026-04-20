@@ -31,11 +31,11 @@ export function BookingStatistics({
 }) {
   return (
     <div className="m-0">
-      <h3>Booking statistics</h3>
+      <h3>Buchungsstatistik</h3>
       <div className="mt-4 flex flex-col gap-4">
         <Separator />
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-500">Booking duration</span>
+          <span className="text-sm text-gray-500">Dauer</span>
           <span className="text-right font-medium">{duration}</span>
         </div>
 
@@ -49,7 +49,9 @@ export function BookingStatistics({
             <Separator />
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-500">Check-in progress</span>
+                <span className="text-sm text-gray-500">
+                  Check-in-Fortschritt
+                </span>
                 <span className="flex min-w-[150px] items-center gap-2 text-right text-sm font-medium">
                   <span className="whitespace-nowrap">
                     {partialCheckinProgress.checkedInCount} /{" "}
@@ -69,13 +71,13 @@ export function BookingStatistics({
         <Separator />
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-1 text-sm text-gray-500">
-            Total assets{" "}
+            Total Assets{" "}
             <InfoTooltip
               iconClassName="size-4"
               content={
                 <p>
-                  The total number of assets in this booking including assets
-                  inside kits.
+                  Die Gesamtzahl aller Assets in dieser Buchung, inklusive
+                  Assets innerhalb von Kits.
                 </p>
               }
             />
@@ -84,16 +86,16 @@ export function BookingStatistics({
         </div>
         <Separator />
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-500">Total value</span>
+          <span className="text-sm text-gray-500">Gesamtwert</span>
           <span className="text-right font-medium">{totalValue}</span>
         </div>
         <Separator />
         <div className="flex items-start justify-between">
-          <span className="text-sm text-gray-500">Categories</span>
+          <span className="text-sm text-gray-500">Kategorien</span>
           <div className="text-right">
             <ItemsWithViewMore
               items={allCategories}
-              emptyMessage="No categories"
+              emptyMessage="Keine Kategorien"
               renderItem={(category) => (
                 <CategoryBadge category={category} key={category.id} />
               )}
@@ -106,7 +108,7 @@ export function BookingStatistics({
           <div className="text-right">
             <ItemsWithViewMore
               items={tags}
-              emptyMessage="No tags"
+              emptyMessage="Keine Tags"
               renderItem={(tag) => (
                 <TagBadge
                   key={tag.id}
@@ -122,7 +124,7 @@ export function BookingStatistics({
         <Separator />
 
         <div className="flex items-start justify-between">
-          <span className="text-sm text-gray-500">Created by</span>
+          <span className="text-sm text-gray-500">Erstellt von</span>
 
           <UserBadge
             name={`${creator.firstName} ${creator.lastName}`}

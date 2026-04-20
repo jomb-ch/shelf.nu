@@ -156,7 +156,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
 ];
 
 export const handle = {
-  breadcrumb: () => "Scan QR codes to check in",
+  breadcrumb: () => "QR-Codes zum Einchecken scannen",
   name: "booking.overview.checkin-assets",
 };
 

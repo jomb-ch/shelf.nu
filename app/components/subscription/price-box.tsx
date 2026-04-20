@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import { DEFAULT_APP_LOCALE } from "~/utils/de-ch";
 import { tw } from "~/utils/tw";
 import type { PriceType } from "./prices";
 import {
@@ -44,7 +45,7 @@ export const PriceBox = ({ price }: { price: PriceType }) => {
         {amount != null ? (
           <div className="mb-3 ">
             <div className=" text-4xl font-semibold text-gray-900">
-              {(amount / 100).toLocaleString("en-US", {
+              {(amount / 100).toLocaleString(DEFAULT_APP_LOCALE, {
                 style: "currency",
                 currency: price.currency,
                 maximumFractionDigits: 0,
@@ -56,7 +57,7 @@ export const PriceBox = ({ price }: { price: PriceType }) => {
                 <>
                   <span>
                     Billed annually{" "}
-                    {(amount / 10).toLocaleString("en-US", {
+                    {(amount / 10).toLocaleString(DEFAULT_APP_LOCALE, {
                       style: "currency",
                       currency: price.currency,
                       maximumFractionDigits: 0,

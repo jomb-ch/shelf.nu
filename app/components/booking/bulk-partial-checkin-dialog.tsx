@@ -24,7 +24,7 @@ import { Button } from "../shared/button";
 export const BulkPartialCheckinSchema = z.object({
   assetIds: z
     .array(z.string())
-    .min(1, "Please select at least one asset to check in."),
+    .min(1, "Bitte wählen Sie mindestens ein Asset für den Check-in aus."),
 });
 export default function BulkPartialCheckinDialog({
   open,
@@ -150,9 +150,10 @@ export default function BulkPartialCheckinDialog({
         title={
           <div className="w-full">
             <div className={tw("mb-5")}>
-              <h4>Check in selected items</h4>
+              <h4>Auswahl einchecken</h4>
               <p>
-                The following items will be checked in and marked as Available.
+                Die folgenden Einträge werden eingecheckt und als verfügbar
+                markiert.
               </p>
             </div>
           </div>
@@ -297,7 +298,7 @@ export default function BulkPartialCheckinDialog({
               disabled={disabled}
               onClick={handleCloseDialog}
             >
-              Cancel
+              Abbrechen
             </Button>
 
             {/* Submit button - conditional based on early check-in */}
@@ -309,7 +310,9 @@ export default function BulkPartialCheckinDialog({
                   to: booking.to,
                   from: booking.from,
                 }}
-                label={`Check in  item${totalSelectedItems !== 1 ? "s" : ""}`}
+                label={`${
+                  totalSelectedItems !== 1 ? "Einträge" : "Eintrag"
+                } einchecken`}
                 variant="primary"
                 disabled={disabled}
                 portalContainer={formRef.current || undefined}
@@ -325,7 +328,7 @@ export default function BulkPartialCheckinDialog({
                 name="intent"
                 value="partial-checkin"
               >
-                Check in items
+                Einträge einchecken
               </Button>
             )}
           </div>

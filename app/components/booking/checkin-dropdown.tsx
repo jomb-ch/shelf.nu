@@ -103,7 +103,7 @@ export default function CheckinDropdown({
                 disabled={disabled}
                 portalContainer={portalContainer}
                 onClose={closeMenu}
-                label="Quick check-in"
+                label="Schneller Check-in"
                 variant="dropdown"
               />
             </DropdownMenuItem>
@@ -119,7 +119,7 @@ export default function CheckinDropdown({
                 to={`/bookings/${booking.id}/overview/checkin-assets`}
               >
                 <span className="flex items-center gap-2">
-                  <ListChecks className="size-4" /> Explicit check-in
+                  <ListChecks className="size-4" /> Detaillierter Check-in
                 </span>
               </Button>
             </DropdownMenuItem>

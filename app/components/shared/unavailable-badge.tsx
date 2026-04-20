@@ -1,4 +1,5 @@
 import type { SVGProps } from "react";
+import { translateToDeCh } from "~/utils/de-ch";
 import {
   Tooltip,
   TooltipContent,
@@ -14,6 +15,8 @@ export function UnavailableBadge({
   title,
   ...svgProps
 }: UnavailableBadgeProps) {
+  const translatedTitle = translateToDeCh(title);
+
   return (
     <TooltipProvider delayDuration={100}>
       <Tooltip>
@@ -50,7 +53,7 @@ export function UnavailableBadge({
           </svg>
         </TooltipTrigger>
         <TooltipContent side="bottom">
-          <p>{title}</p>
+          <p>{translatedTitle}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

@@ -14,6 +14,7 @@ import {
 } from "~/atoms/list";
 import { useSearchParams } from "~/hooks/search-params";
 import useFetcherWithReset from "~/hooks/use-fetcher-with-reset";
+import { translateToDeCh } from "~/utils/de-ch";
 import { isFormProcessing } from "~/utils/form";
 import { tw } from "~/utils/tw";
 import Icon from "../icons/icon";
@@ -80,6 +81,7 @@ function BulkUpdateDialogTrigger({
       ? disabled
       : true; // If it is an object, then it is disabled
   const reason = typeof disabled === "object" ? disabled.reason : "";
+  const translatedReason = reason ? translateToDeCh(reason) : reason;
 
   const openBulkDialog = useSetAtom(openBulkDialogAtom);
 
@@ -119,8 +121,8 @@ function BulkUpdateDialogTrigger({
         </HoverCardTrigger>
         {reason && (
           <HoverCardContent side="left">
-            <h5 className="text-left text-[14px]">Action disabled</h5>
-            <p className="text-left text-[14px]">{reason}</p>
+            <h5 className="text-left text-[14px]">Aktion nicht verfügbar</h5>
+            <p className="text-left text-[14px]">{translatedReason}</p>
           </HoverCardContent>
         )}
       </HoverCard>

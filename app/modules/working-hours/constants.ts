@@ -13,21 +13,21 @@ export const WEEK_DISPLAY_ORDER: DayOfWeek[] = [
 
 // Helper for display names
 export const DAY_NAMES: Record<DayOfWeek, string> = {
-  [DayOfWeek.MONDAY]: "Monday",
-  [DayOfWeek.TUESDAY]: "Tuesday",
-  [DayOfWeek.WEDNESDAY]: "Wednesday",
-  [DayOfWeek.THURSDAY]: "Thursday",
-  [DayOfWeek.FRIDAY]: "Friday",
-  [DayOfWeek.SATURDAY]: "Saturday",
-  [DayOfWeek.SUNDAY]: "Sunday",
+  [DayOfWeek.MONDAY]: "Montag",
+  [DayOfWeek.TUESDAY]: "Dienstag",
+  [DayOfWeek.WEDNESDAY]: "Mittwoch",
+  [DayOfWeek.THURSDAY]: "Donnerstag",
+  [DayOfWeek.FRIDAY]: "Freitag",
+  [DayOfWeek.SATURDAY]: "Samstag",
+  [DayOfWeek.SUNDAY]: "Sonntag",
 };
 
 export const DAY_ABBREVIATIONS: Record<DayOfWeek, string> = {
-  [DayOfWeek.MONDAY]: "Mon",
-  [DayOfWeek.TUESDAY]: "Tue",
-  [DayOfWeek.WEDNESDAY]: "Wed",
-  [DayOfWeek.THURSDAY]: "Thu",
-  [DayOfWeek.FRIDAY]: "Fri",
-  [DayOfWeek.SATURDAY]: "Sat",
-  [DayOfWeek.SUNDAY]: "Sun",
+  [DayOfWeek.MONDAY]: "Mo",
+  [DayOfWeek.TUESDAY]: "Di",
+  [DayOfWeek.WEDNESDAY]: "Mi",
+  [DayOfWeek.THURSDAY]: "Do",
+  [DayOfWeek.FRIDAY]: "Fr",
+  [DayOfWeek.SATURDAY]: "Sa",
+  [DayOfWeek.SUNDAY]: "So",
 };

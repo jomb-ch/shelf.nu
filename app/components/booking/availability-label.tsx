@@ -43,9 +43,9 @@ export function AvailabilityLabel({
   if (isAlreadyAdded) {
     return (
       <AvailabilityBadge
-        badgeText="Already added to this booking"
-        tooltipTitle="Asset is part of booking"
-        tooltipContent="This asset is already added to the current booking."
+        badgeText="Bereits hinzugefügt"
+        tooltipTitle="Asset ist Teil der Buchung"
+        tooltipContent="Dieses Asset wurde bereits zur aktuellen Buchung hinzugefügt."
       />
     );
   }
@@ -57,10 +57,10 @@ export function AvailabilityLabel({
   if (!asset.availableToBook) {
     return (
       <AvailabilityBadge
-        badgeText={"Unavailable"}
-        tooltipTitle={"Asset is unavailable for bookings"}
+        badgeText={"Nicht verfügbar"}
+        tooltipTitle={"Asset ist für Buchungen nicht verfügbar"}
         tooltipContent={
-          "This asset is marked as unavailable for bookings by an administrator."
+          "Dieses Asset wurde von einer Administratorin oder einem Administrator für Buchungen deaktiviert."
         }
       />
     );
@@ -72,9 +72,9 @@ export function AvailabilityLabel({
   if (isPartOfKit && showKitStatus) {
     return (
       <AvailabilityBadge
-        badgeText="Part of kit"
-        tooltipTitle="Asset is part of a kit"
-        tooltipContent="Remove the asset from the kit to add it individually."
+        badgeText="Teil eines Kits"
+        tooltipTitle="Asset ist Teil eines Kits"
+        tooltipContent="Entfernen Sie das Asset aus dem Kit, um es einzeln hinzuzufügen."
       />
     );
   }
@@ -85,10 +85,10 @@ export function AvailabilityLabel({
   if (asset.custody) {
     return (
       <AvailabilityBadge
-        badgeText={"In custody"}
-        tooltipTitle={"Asset is in custody"}
+        badgeText={"In Verwahrung"}
+        tooltipTitle={"Asset ist in Verwahrung"}
         tooltipContent={
-          "This asset is in custody of a team member making it currently unavailable for bookings."
+          "Dieses Asset ist aktuell einer Person zugewiesen und deshalb momentan nicht buchbar."
         }
       />
     );
@@ -117,12 +117,12 @@ export function AvailabilityLabel({
       })[0];
     return (
       <AvailabilityBadge
-        badgeText={"Already booked"}
-        tooltipTitle={"Asset is already part of a booking"}
+        badgeText={"Bereits gebucht"}
+        tooltipTitle={"Asset ist bereits Teil einer Buchung"}
         tooltipContent={
           conflictingBooking ? (
             <span>
-              This asset is added to a booking (
+              Dieses Asset ist bereits einer Buchung (
               <Button
                 to={`/bookings/${conflictingBooking.id}`}
                 target="_blank"
@@ -131,10 +131,10 @@ export function AvailabilityLabel({
               >
                 {conflictingBooking?.name}
               </Button>
-              ) that is overlapping the selected time period.
+              ) zugeordnet, die sich mit dem gewählten Zeitraum überschneidet.
             </span>
           ) : (
-            "This asset is added to a booking that is overlapping the selected time period."
+            "Dieses Asset ist bereits einer Buchung zugeordnet, die sich mit dem gewählten Zeitraum überschneidet."
           )
         }
       />
@@ -165,12 +165,13 @@ export function AvailabilityLabel({
 
     return (
       <AvailabilityBadge
-        badgeText={"Checked out"}
-        tooltipTitle={"Asset is currently checked out"}
+        badgeText={"Ausgecheckt"}
+        tooltipTitle={"Asset ist aktuell ausgecheckt"}
         tooltipContent={
           conflictingBooking ? (
             <span>
-              This asset is currently checked out as part of another booking (
+              Dieses Asset ist aktuell im Rahmen einer anderen Buchung
+              ausgecheckt (
               <Link
                 to={`${SERVER_URL}/bookings/
                 ${conflictingBooking.id}`}
@@ -178,10 +179,10 @@ export function AvailabilityLabel({
               >
                 {conflictingBooking?.name}
               </Link>
-              ) and should be available for your selected date range period
+              ) und sollte für Ihren gewählten Zeitraum wieder verfügbar sein
             </span>
           ) : (
-            "This asset is currently checked out as part of another booking and should be available for your selected date range period"
+            "Dieses Asset ist aktuell im Rahmen einer anderen Buchung ausgecheckt und sollte für Ihren gewählten Zeitraum wieder verfügbar sein."
           )
         }
       />
@@ -194,9 +195,9 @@ export function AvailabilityLabel({
   if (isAddedThroughKit) {
     return (
       <AvailabilityBadge
-        badgeText="Added through kit"
-        tooltipTitle="Asset was added through a kit"
-        tooltipContent="Remove the asset from the kit to add it individually."
+        badgeText="Über Kit hinzugefügt"
+        tooltipTitle="Asset wurde über ein Kit hinzugefügt"
+        tooltipContent="Entfernen Sie das Asset aus dem Kit, um es einzeln hinzuzufügen."
       />
     );
   }
@@ -325,9 +326,9 @@ export function KitAvailabilityLabel({ kit }: { kit: KitForBooking }) {
   if (isInCustody) {
     return (
       <AvailabilityBadge
-        badgeText="In custody"
-        tooltipTitle="Kit is in custody"
-        tooltipContent="This kit is in custody or it contains some assets that are in custody."
+        badgeText="In Verwahrung"
+        tooltipTitle="Kit ist in Verwahrung"
+        tooltipContent="Dieses Kit ist in Verwahrung oder enthält Assets, die in Verwahrung sind."
       />
     );
   }
@@ -335,12 +336,12 @@ export function KitAvailabilityLabel({ kit }: { kit: KitForBooking }) {
   if (isCheckedOut) {
     return (
       <AvailabilityBadge
-        badgeText="Checked out"
-        tooltipTitle="Kit is checked out"
+        badgeText="Ausgecheckt"
+        tooltipTitle="Kit ist ausgecheckt"
         tooltipContent={
           isCheckedOutInANonConflictingBooking
-            ? "This kit is currently checked out as part of another booking and should be available for your selected date range period"
-            : "This kit is currently checked out and is not available for your selected date range period"
+            ? "Dieses Kit ist aktuell im Rahmen einer anderen Buchung ausgecheckt und sollte für Ihren gewählten Zeitraum wieder verfügbar sein."
+            : "Dieses Kit ist aktuell ausgecheckt und für Ihren gewählten Zeitraum nicht verfügbar."
         }
       />
     );
@@ -349,9 +350,9 @@ export function KitAvailabilityLabel({ kit }: { kit: KitForBooking }) {
   if (isKitWithoutAssets) {
     return (
       <AvailabilityBadge
-        badgeText="No assets"
-        tooltipTitle="No assets in kit"
-        tooltipContent="There are no assets added to this kit yet."
+        badgeText="Keine Assets"
+        tooltipTitle="Keine Assets im Kit"
+        tooltipContent="Diesem Kit wurden noch keine Assets hinzugefügt."
       />
     );
   }
@@ -359,9 +360,9 @@ export function KitAvailabilityLabel({ kit }: { kit: KitForBooking }) {
   if (someAssetMarkedUnavailable) {
     return (
       <AvailabilityBadge
-        badgeText="Contains non-bookable assets"
-        tooltipTitle="Kit is unavailable for check-out"
-        tooltipContent="Some assets in this kit are marked as non-bookable. You can still add the kit to your booking, but you must remove the non-bookable assets to proceed with check-out."
+        badgeText="Enthält nicht buchbare Assets"
+        tooltipTitle="Kit ist nicht für den Check-out verfügbar"
+        tooltipContent="Einige Assets in diesem Kit sind als nicht buchbar markiert. Sie können das Kit trotzdem zur Buchung hinzufügen, müssen diese Assets aber vor dem Check-out entfernen."
       />
     );
   }
@@ -369,9 +370,9 @@ export function KitAvailabilityLabel({ kit }: { kit: KitForBooking }) {
   if (someAssetHasUnavailableBooking) {
     return (
       <AvailabilityBadge
-        badgeText="Already booked"
-        tooltipTitle="Kit is already part of a booking"
-        tooltipContent="This kit is already added to another booking."
+        badgeText="Bereits gebucht"
+        tooltipTitle="Kit ist bereits Teil einer Buchung"
+        tooltipContent="Dieses Kit wurde bereits zu einer anderen Buchung hinzugefügt."
       />
     );
   }

@@ -8,6 +8,7 @@ import {
   normalizeWorkingHoursForValidation,
 } from "~/modules/working-hours/utils";
 import type { getHints } from "~/utils/client-hints";
+import { DEFAULT_APP_LOCALE } from "~/utils/de-ch";
 
 type ValidationResult = { isValid: true } | { isValid: false; message: string };
 
@@ -104,7 +105,7 @@ function validateFutureDate(
   let now: Date;
   if (timeZone) {
     now = new Date(
-      new Date().toLocaleString("en-US", {
+      new Date().toLocaleString(DEFAULT_APP_LOCALE, {
         timeZone,
       })
     );
@@ -120,12 +121,15 @@ function validateFutureDate(
     if (hasBuffer) {
       return {
         isValid: false,
-        message: `Start date must be at least ${bufferStartTime} hour${
-          bufferStartTime !== 1 ? "s" : ""
-        } from now`,
+        message: `Das Startdatum muss mindestens ${bufferStartTime} Stunde${
+          bufferStartTime !== 1 ? "n" : ""
+        } ab jetzt liegen`,
       };
     } else {
-      return { isValid: false, message: "Start date must be in the future" };
+      return {
+        isValid: false,
+        message: "Das Startdatum muss in der Zukunft liegen",
+      };
     }
   }
 
@@ -197,7 +201,7 @@ export function BookingFormSchema({
 
   // Base schema - let TypeScript infer the complex Zod types
   const baseSchema = z.object({
-    name: z.string().min(2, "Name is required"),
+    name: z.string().min(2, "Name ist erforderlich"),
     assetIds: z.array(z.string()).optional(),
     description: z.string().optional(),
     custodian: z
@@ -206,7 +210,7 @@ export function BookingFormSchema({
         if (!val && val === "") {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
-            message: "Please select a custodian",
+            message: "Bitte wählen Sie einen Verwahrer aus",
           });
           return z.NEVER;
         }
@@ -222,7 +226,7 @@ export function BookingFormSchema({
     startDate: z.coerce.date().optional(),
     endDate: z.coerce.date().optional(),
     tags: tagsRequired
-      ? z.string().min(1, "At least one tag is required")
+      ? z.string().min(1, "Mindestens ein Tag ist erforderlich")
       : z.string().optional(),
   });
 
@@ -273,7 +277,7 @@ export function BookingFormSchema({
     if (data.endDate && data.startDate && data.endDate <= data.startDate) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "End date cannot be earlier than start date",
+        message: "Das Enddatum kann nicht vor dem Startdatum liegen",
         path: ["endDate"],
       });
     }
@@ -300,7 +304,7 @@ export function BookingFormSchema({
       if (durationInHours > effectiveMaxBookingLength) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: `Booking duration cannot exceed ${effectiveMaxBookingLength} hours`,
+          message: `Die Buchungsdauer darf ${effectiveMaxBookingLength} Stunden nicht überschreiten`,
           path: ["endDate"],
         });
       }
@@ -399,7 +403,7 @@ export function ExtendBookingSchema({
         if (isNaN(dateTime.getTime())) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
-            message: "Invalid date format",
+            message: "Ungültiges Datumsformat",
           });
           return;
         }
@@ -456,7 +460,7 @@ export function ExtendBookingSchema({
         if (durationInHours > effectiveMaxBookingLength) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
-            message: `Booking duration cannot exceed ${effectiveMaxBookingLength} hours`,
+            message: `Die Buchungsdauer darf ${effectiveMaxBookingLength} Stunden nicht überschreiten`,
             path: ["endDate"],
           });
         }

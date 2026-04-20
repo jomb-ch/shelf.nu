@@ -3,6 +3,7 @@ import { parseFormAny } from "react-zorm";
 import type { ZodType } from "zod";
 import { sendNotification } from "./emitter/send-notification.server";
 import { SERVER_URL, URL_SHORTENER } from "./env";
+import { translateToDeCh } from "./de-ch";
 import type { Options } from "./error";
 import {
   ShelfError,
@@ -236,6 +237,11 @@ export type DataResponse<T extends ResponsePayload = ResponsePayload> =
  * @returns The normalized error with `error` key set to the error
  */
 export function error(cause: ShelfError, shouldSendNotification = true) {
+  const translatedTitle = cause.title
+    ? translateToDeCh(cause.title)
+    : undefined;
+  const translatedMessage = translateToDeCh(cause.message);
+
   if (cause.label !== "Request aborted") {
     Logger.error(cause);
   }
@@ -247,8 +253,8 @@ export function error(cause: ShelfError, shouldSendNotification = true) {
     shouldSendNotification
   ) {
     sendNotification({
-      title: cause.title || "Oops! Something went wrong",
-      message: cause.message,
+      title: translatedTitle || "Hoppla! Etwas ist schiefgelaufen",
+      message: translatedMessage,
       icon: { name: "x", variant: "error" },
       senderId: cause.additionalData.userId,
     });
@@ -256,9 +262,9 @@ export function error(cause: ShelfError, shouldSendNotification = true) {
 
   return {
     error: {
-      message: cause.message,
+      message: translatedMessage,
       label: cause.label,
-      ...(cause.title && { title: cause.title }),
+      ...(translatedTitle && { title: translatedTitle }),
       ...(cause.additionalData && {
         additionalData: cause.additionalData,
       }),

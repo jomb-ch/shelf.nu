@@ -207,21 +207,23 @@ export default function AssetCustomFields({
   return (
     <div className="border-b pb-6">
       <div className=" border-t py-5">
-        <h2 className="mb-1 text-[18px] font-semibold">Custom Fields</h2>
+        <h2 className="mb-1 text-[18px] font-semibold">
+          Benutzerdefinierte Felder
+        </h2>
         <Button
           to="/settings/custom-fields"
           className="font-medium text-primary-600"
           target="_blank"
           variant="link"
         >
-          Manage custom fields
+          Benutzerdefinierte Felder verwalten
         </Button>
       </div>
       {customFields.length > 0 ? (
         <>
           {requiredFields.length > 0 && (
             <div className="border-t pt-4">
-              <h5>Required Fields</h5>
+              <h5>Pflichtfelder</h5>
               {requiredFields.map((field, index) => (
                 <FormRow
                   key={field.id + index}
@@ -252,7 +254,7 @@ export default function AssetCustomFields({
           )}
           {optionalFields.length > 0 && (
             <div className="border-t pt-4">
-              <h5>Optional Fields</h5>
+              <h5>Optionale Felder</h5>
               {optionalFields.map((field, index) => (
                 <FormRow
                   key={field.id + index}
@@ -289,9 +291,11 @@ export default function AssetCustomFields({
               <div className="mb-4 inline-flex items-center justify-center rounded-full border-8 border-solid border-gray-50 bg-gray-100 p-2 text-gray-600">
                 <SearchIcon />
               </div>
-              <h4 className="mb-6 text-base">No active custom fields</h4>
+              <h4 className="mb-6 text-base">
+                Keine aktiven benutzerdefinierten Felder
+              </h4>
               <Button to="/settings/custom-fields/new" variant="primary">
-                Create custom fields
+                Benutzerdefinierte Felder erstellen
               </Button>
             </div>
           </div>
@@ -329,7 +333,7 @@ function OptionSelect({
     );
   }, [field.options, searchQuery]);
 
-  const displayValue = value || `Choose ${field.name}`;
+  const displayValue = value || `${field.name} auswählen`;
 
   // Handle option selection
   function handleOptionClick(option: string) {

@@ -32,7 +32,7 @@ export default function BookSelectedAssetsDropdown() {
   if (!isHydrated) {
     <Button variant="secondary">
       <span className="flex items-center gap-2">
-        Book <ChevronRightIcon className="chev size-4" />
+        Buchen <ChevronRightIcon className="chev size-4" />
       </span>
     </Button>;
   }
@@ -53,11 +53,11 @@ function ConditionalActionsDropdown() {
   const { roles } = useUserRoleHelper();
 
   const allSelected = isSelectingAllItems(selectedAssets);
-  const buttonTitle = `Book selection ${
+  const buttonTitle = `Auswahl buchen ${
     !selectedAssets.length
       ? ""
       : allSelected
-      ? "(All)"
+      ? "(Alle)"
       : `(${selectedAssets.length})`
   }`;
 
@@ -191,7 +191,7 @@ function ConditionalActionsDropdown() {
               <DropdownMenuItem className="py-1 lg:p-0">
                 <BulkUpdateDialogTrigger
                   type="bookings"
-                  label="Create new booking"
+                  label="Neue Buchung erstellen"
                   onClick={closeMenu}
                   disabled={disabledReason}
                 />
@@ -207,7 +207,7 @@ function ConditionalActionsDropdown() {
               <DropdownMenuItem className="py-1 lg:p-0">
                 <BulkUpdateDialogTrigger
                   type="booking-exist"
-                  label="Add to existing"
+                  label="Zu bestehender Buchung hinzufügen"
                   onClick={closeMenu}
                   disabled={disabledReason}
                 />

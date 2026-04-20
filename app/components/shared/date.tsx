@@ -1,5 +1,5 @@
-import { format } from "date-fns";
 import { getDateTimeFormatFromHints, useHints } from "~/utils/client-hints";
+import { DEFAULT_APP_LOCALE } from "~/utils/de-ch";
 
 /**
  * Formats a date using locale-specific formatting without timezone conversion.
@@ -7,7 +7,8 @@ import { getDateTimeFormatFromHints, useHints } from "~/utils/client-hints";
  */
 export function formatAbsoluteDate(
   date: string | Date,
-  options?: Intl.DateTimeFormatOptions
+  options?: Intl.DateTimeFormatOptions,
+  locale = DEFAULT_APP_LOCALE
 ): string {
   // Extract just the date part and create a local date
   let dateOnly: string;
@@ -23,46 +24,15 @@ export function formatAbsoluteDate(
   const [year, month, day] = dateOnly.split("-").map(Number);
   const dateToFormat = new Date(year, month - 1, day);
 
-  // Convert Intl.DateTimeFormatOptions to date-fns format string
-  let formatString: string;
+  const defaultOptions: Intl.DateTimeFormatOptions = {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  };
 
-  if (options) {
-    const parts = [];
-
-    // Build format parts in logical order
-    if (options.weekday === "long") parts.push("EEEE");
-    else if (options.weekday === "short") parts.push("EEE");
-    else if (options.weekday === "narrow") parts.push("EEEEE");
-
-    // Month and day should be together without comma
-    let datePartFormat = "";
-    if (options.month === "long") datePartFormat += "MMMM";
-    else if (options.month === "short") datePartFormat += "MMM";
-    else if (options.month === "numeric") datePartFormat += "M";
-    else if (options.month === "2-digit") datePartFormat += "MM";
-
-    if (options.day === "numeric") datePartFormat += " d";
-    else if (options.day === "2-digit") datePartFormat += " dd";
-
-    if (datePartFormat) parts.push(datePartFormat);
-
-    if (options.year === "numeric") parts.push("yyyy");
-    else if (options.year === "2-digit") parts.push("yy");
-
-    if (parts.length > 0) {
-      formatString = parts.join(", ");
-    } else {
-      // Fallback if no valid parts found
-      formatString = "PPP"; // date-fns long localized date format
-    }
-  } else {
-    // Default locale-aware format when no options provided
-    // Use date-fns localized format that adapts to locale
-    // PPP = long localized date format (e.g., "April 29th, 2023" in en-US, "29 avril 2023" in fr-FR)
-    formatString = "PPP";
-  }
-
-  return format(dateToFormat, formatString);
+  return new Intl.DateTimeFormat(locale, options ?? defaultOptions).format(
+    dateToFormat
+  );
 }
 
 /**
@@ -115,7 +85,7 @@ export const DateS = ({
       console.warn("includeTime is not supported with localeOnly formatting");
     }
 
-    const formattedDate = formatAbsoluteDate(date, options);
+    const formattedDate = formatAbsoluteDate(date, options, hints.locale);
     return <span>{formattedDate}</span>;
   }
 

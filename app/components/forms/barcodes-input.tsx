@@ -123,7 +123,7 @@ const BarcodesInput = forwardRef<BarcodesInputRef, BarcodesInputProps>(
       barcodes.forEach((barcode, index) => {
         // If a barcode row exists, value is required
         if (!barcode.value.trim()) {
-          errors[index] = "Barcode value is required";
+          errors[index] = "Ein Barcodewert ist erforderlich";
           return;
         }
 
@@ -140,7 +140,7 @@ const BarcodesInput = forwardRef<BarcodesInputRef, BarcodesInputProps>(
           barcode.value
         );
         if (values.has(normalizedValue)) {
-          errors[index] = "Duplicate barcode values are not allowed";
+          errors[index] = "Doppelte Barcodewerte sind nicht erlaubt";
           return;
         }
 
@@ -230,7 +230,7 @@ const BarcodesInput = forwardRef<BarcodesInputRef, BarcodesInputProps>(
                     <PopoverTrigger asChild>
                       <div className="w-full">
                         <p className="inner-label mb-[6px] font-medium text-gray-700 lg:hidden">
-                          Select barcode type
+                          Barcode-Typ auswählen
                         </p>
                         <Button
                           type="button"
@@ -242,7 +242,7 @@ const BarcodesInput = forwardRef<BarcodesInputRef, BarcodesInputProps>(
                           <span className="ml-2 text-text-md">
                             {BARCODE_TYPE_OPTIONS.find(
                               (opt) => opt.value === barcode.type
-                            )?.label || "Select barcode type"}
+                            )?.label || "Barcode-Typ auswählen"}
                           </span>
                           <BarcodeTypeTooltip type={barcode.type} />
                         </Button>
@@ -304,12 +304,12 @@ const BarcodesInput = forwardRef<BarcodesInputRef, BarcodesInputProps>(
                 {/* Barcode Value Input */}
                 <div className="w-full md:w-auto md:flex-[2]">
                   <Input
-                    label="Barcode Value"
+                    label="Barcodewert"
                     hideLabel
                     disabled={disabled}
                     name={valueName(i)}
                     value={barcode.value}
-                    placeholder="Enter barcode value"
+                    placeholder="Barcodewert eingeben"
                     onChange={(e) => {
                       barcodes[i].value = normalizeBarcodeValue(
                         barcodes[i].type,
@@ -353,7 +353,9 @@ const BarcodesInput = forwardRef<BarcodesInputRef, BarcodesInputProps>(
             ]);
           }}
         >
-          {barcodes.length === 0 ? "Add barcode" : "Add another barcode"}
+          {barcodes.length === 0
+            ? "Barcode hinzufügen"
+            : "Weiteren Barcode hinzufügen"}
         </Button>
       </div>
     );

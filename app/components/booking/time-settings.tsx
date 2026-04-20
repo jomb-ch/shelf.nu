@@ -16,12 +16,15 @@ import { handleActivationKeyPress } from "~/utils/keyboard";
 export const TimeSettingsSchema = z.object({
   bufferStartTime: z.coerce
     .number()
-    .min(0, "Buffer must be at least 0 hours")
-    .max(168, "Buffer cannot exceed 168 hours (7 days)"),
+    .min(0, "Der Puffer muss mindestens 0 Stunden betragen")
+    .max(168, "Der Puffer darf 168 Stunden (7 Tage) nicht überschreiten"),
   maxBookingLength: z.coerce
     .number()
-    .min(1, "Maximum booking length must be at least 1 hour")
-    .max(8760, "Maximum booking length cannot exceed 8760 hours (1 year)")
+    .min(1, "Die maximale Buchungsdauer muss mindestens 1 Stunde betragen")
+    .max(
+      8760,
+      "Die maximale Buchungsdauer darf 8760 Stunden (1 Jahr) nicht überschreiten"
+    )
     .optional()
     .or(z.literal("")),
   maxBookingLengthSkipClosedDays: z
@@ -60,27 +63,27 @@ export function TimeSettings({
       <div>
         <Form ref={zo.ref} method="post">
           <FormRow
-            rowLabel={`Minimum advance notice (hours)`}
+            rowLabel={`Minimale Vorlaufzeit (Stunden)`}
             subHeading={
               <div>
-                Users must book at least this many hours ahead of their booking
-                start time. Enter 0 to allow immediate bookings. This limitation
-                is only valid for <strong>Self service</strong> &{" "}
-                <strong>Base</strong> users.
+                Benutzer müssen mindestens so viele Stunden vor dem
+                Buchungsstart buchen. Geben Sie 0 ein, um sofortige Buchungen zu
+                erlauben. Diese Einschränkung gilt nur für{" "}
+                <strong>Self service</strong>- und <strong>Base</strong>-Rollen.
               </div>
             }
             className="border-b-0 pb-[10px] pt-0"
             required
           >
             <Input
-              label="Minimum advance notice (hours)"
+              label="Minimale Vorlaufzeit (Stunden)"
               hideLabel
               type="number"
               name={zo.fields.bufferStartTime()}
               disabled={disabled}
               defaultValue={defaultBufferValue}
               required
-              title={"Minimum advance notice (hours)"}
+              title={"Minimale Vorlaufzeit (Stunden)"}
               min={0}
               max={168}
               step={1}
@@ -93,25 +96,26 @@ export function TimeSettings({
           </FormRow>
 
           <FormRow
-            rowLabel={`Maximum booking length (hours)`}
+            rowLabel={`Maximale Buchungsdauer (Stunden)`}
             subHeading={
               <div>
-                Set the maximum duration for a single booking. Leave empty for
-                no limit. This helps prevent excessively long bookings.
+                Legen Sie die maximale Dauer für eine einzelne Buchung fest.
+                Leer lassen bedeutet kein Limit. Das verhindert übermässig lange
+                Buchungen.
               </div>
             }
             className="border-b-0 pb-[10px]"
           >
             <div className="flex flex-col">
               <Input
-                label="Maximum booking length (hours)"
+                label="Maximale Buchungsdauer (Stunden)"
                 hideLabel
                 type="number"
                 name={zo.fields.maxBookingLength()}
                 disabled={disabled}
                 defaultValue={defaultMaxLengthValue || ""}
-                placeholder="No limit"
-                title={"Maximum booking length (hours)"}
+                placeholder="Kein Limit"
+                title={"Maximale Buchungsdauer (Stunden)"}
                 min={1}
                 max={8760}
                 step={1}
@@ -124,7 +128,7 @@ export function TimeSettings({
               <div className="mt-2 flex items-center gap-2">
                 <Input
                   id="maxBookingLengthSkipClosedDays"
-                  label="Skip closed days"
+                  label="Geschlossene Tage überspringen"
                   hideLabel
                   type="checkbox"
                   name={zo.fields.maxBookingLengthSkipClosedDays()}
@@ -156,11 +160,12 @@ export function TimeSettings({
                   })}
                   className="cursor-default"
                 >
-                  Skip closed days
+                  Geschlossene Tage überspringen
                 </span>
               </div>
               <p className="mt-1 text-sm text-gray-500">
-                Closed days will not be considered for calculations.
+                Geschlossene Tage werden bei der Berechnung nicht
+                berücksichtigt.
               </p>
             </div>
           </FormRow>
@@ -172,7 +177,7 @@ export function TimeSettings({
               value="updateTimeSettings"
               name="intent"
             >
-              {disabled ? <Spinner /> : "Save settings"}
+              {disabled ? <Spinner /> : "Einstellungen speichern"}
             </Button>
           </div>
         </Form>

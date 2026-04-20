@@ -28,6 +28,10 @@ import nProgressCustomStyles from "./styles/nprogress.css?url";
 import pmDocStylesheetUrl from "./styles/pm-doc.css?url";
 import styles from "./tailwind.css?url";
 import { ClientHintCheck, getClientHint } from "./utils/client-hints";
+import {
+  buildDeChDomTranslationScript,
+  DEFAULT_APP_LOCALE,
+} from "./utils/de-ch";
 import { getBrowserEnv } from "./utils/env";
 import { payload } from "./utils/http.server";
 import { useNonce } from "./utils/nonce-provider";
@@ -83,11 +87,17 @@ export function Layout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <html lang="en" className="overflow-hidden">
+    <html lang={DEFAULT_APP_LOCALE} className="overflow-hidden">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <ClientHintCheck nonce={nonce} />
+        <script
+          nonce={nonce}
+          dangerouslySetInnerHTML={{
+            __html: buildDeChDomTranslationScript(),
+          }}
+        />
         <style data-fullcalendar />
         <Meta />
         <Links />
@@ -96,8 +106,8 @@ export function Layout({ children }: { children: ReactNode }) {
       <body>
         <noscript>
           <BlockInteractions
-            title="JavaScript is disabled"
-            content="This website requires JavaScript to be enabled to function properly. Please enable JavaScript or change browser and try again."
+            title="JavaScript ist deaktiviert"
+            content="Diese Website benötigt aktiviertes JavaScript, um korrekt zu funktionieren. Bitte aktivieren Sie JavaScript oder verwenden Sie einen anderen Browser und versuchen Sie es erneut."
             icon="x"
           />
         </noscript>
@@ -106,8 +116,8 @@ export function Layout({ children }: { children: ReactNode }) {
           children
         ) : (
           <BlockInteractions
-            title="Cookies are disabled"
-            content="This website requires cookies to be enabled to function properly. Please enable cookies and try again."
+            title="Cookies sind deaktiviert"
+            content="Diese Website benötigt aktivierte Cookies, um korrekt zu funktionieren. Bitte aktivieren Sie Cookies und versuchen Sie es erneut."
             icon="x"
           />
         )}
@@ -130,13 +140,13 @@ function App() {
 
   return maintenanceMode ? (
     <BlockInteractions
-      title={"Maintenance is being performed"}
+      title={"Wartungsarbeiten werden durchgeführt"}
       content={
-        "Apologies, we’re down for scheduled maintenance. Please try again later."
+        "Entschuldigung, wir sind wegen geplanter Wartungsarbeiten vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut."
       }
       cta={{
         to: "https://www.shelf.nu/blog-categories/updates-maintenance",
-        text: "Learn more",
+        text: "Mehr erfahren",
       }}
       icon="tool"
     />

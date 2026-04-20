@@ -56,7 +56,7 @@ export function CommandPaletteButton({
       <Button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Open command palette"
+        aria-label="Befehlspalette öffnen"
         variant={"secondary"}
         className={tw(
           "flex items-center justify-center rounded border-0 bg-white px-2  py-[2px] text-gray-600 transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 md:border-gray-200",
@@ -79,8 +79,8 @@ export function CommandPaletteButton({
       )}
     >
       <div className="flex w-full items-center gap-2">
-        <span className="hidden sm:inline">Quick find</span>
-        <span className="sm:hidden">Quick find...</span>
+        <span className="hidden sm:inline">Schnellsuche</span>
+        <span className="sm:hidden">Schnellsuche...</span>
         <span className="ml-auto hidden items-center gap-1 rounded bg-gray-50 px-1 text-[10px] font-medium  text-gray-500 md:inline-flex md:border md:border-gray-200">
           {shortcut}
         </span>

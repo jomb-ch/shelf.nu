@@ -93,7 +93,7 @@ export default function KitRow({
                 className="font-medium text-gray-900 hover:text-gray-700"
                 target={"_blank"}
                 onlyNewTabIconOnHover={true}
-                aria-label="Go to kit"
+                aria-label="Zum Kit"
               >
                 <div className="">{kit.name}</div>
               </Button>
@@ -114,12 +114,12 @@ export default function KitRow({
         <Td>
           <When truthy={isOverlapping && !isInProgress}>
             <AvailabilityBadge
-              badgeText="Already booked"
-              tooltipTitle="Kit is already booked"
-              tooltipContent="This kit is already added to a booking that is overlapping the selected time period."
+              badgeText="Bereits gebucht"
+              tooltipTitle="Kit ist bereits gebucht"
+              tooltipContent="Dieses Kit wurde bereits zu einer Buchung hinzugefügt, die sich mit dem gewählten Zeitraum überschneidet."
             />
           </When>
-          <div className="text-sm text-gray-600">{assets.length} assets</div>
+          <div className="text-sm text-gray-600">{assets.length} Assets</div>
         </Td>
 
         <Td>
@@ -147,7 +147,7 @@ export default function KitRow({
               }}
               variant="link"
               className="text-center font-bold text-gray-600 hover:text-gray-900"
-              aria-label="Toggle kit expand"
+              aria-label="Kit ein- oder ausklappen"
             >
               <ChevronDownIcon
                 className={tw(`size-6 ${!isExpanded ? "rotate-180" : ""}`)}

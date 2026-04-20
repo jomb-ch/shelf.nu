@@ -32,7 +32,7 @@ import {
 import When from "../when/when";
 
 export const NewLocationFormSchema = z.object({
-  name: z.string().min(2, "Name is required"),
+  name: z.string().min(2, "Name ist erforderlich"),
   description: z.string(),
   address: z.string(),
   parentId: z
@@ -178,7 +178,7 @@ export const LocationForm = ({
                 onChange={hasOnSuccessFunc ? undefined : updateName}
                 className="w-full"
                 defaultValue={name || undefined}
-                placeholder="Storage room"
+                placeholder="Lagerraum"
                 required={zodFieldIsRequired(NewLocationFormSchema.shape.name)}
               />
             </FormRow>
@@ -195,27 +195,27 @@ export const LocationForm = ({
             onChange={hasOnSuccessFunc ? undefined : updateName}
             className="w-full"
             defaultValue={name || undefined}
-            placeholder="Storage room"
+            placeholder="Lagerraum"
             required={zodFieldIsRequired(NewLocationFormSchema.shape.name)}
           />
         </When>
 
         <FormRow
-          rowLabel={"Parent location"}
+          rowLabel={"Übergeordneter Standort"}
           subHeading={
             <p>
-              Optional. Nest this location under an existing one to build
-              breadcrumbs.
+              Optional. Ordnen Sie diesen Standort einem bestehenden Standort
+              unter, um Breadcrumbs aufzubauen.
             </p>
           }
         >
           <div className="mb-2 block lg:hidden">
             <div className="text-sm font-medium text-gray-700">
-              Parent location
+              Übergeordneter Standort
             </div>
             <p className="text-xs text-gray-600">
-              Optional. Nest this location under an existing one to build
-              breadcrumbs.
+              Optional. Ordnen Sie diesen Standort einem bestehenden Standort
+              unter, um Breadcrumbs aufzubauen.
             </p>
           </div>
           <LocationSelect
@@ -224,7 +224,7 @@ export const LocationForm = ({
             popoverZIndexClassName={hasOnSuccessFunc ? "z-[10000]" : undefined}
             hideExtraContent={hasOnSuccessFunc}
             fieldName={zo.fields.parentId()}
-            placeholder="No parent"
+            placeholder="Kein übergeordneter Standort"
             defaultValue={parentId ?? undefined}
             hideCurrentLocationInput
             excludeIds={excludeLocationId ? [excludeLocationId] : undefined}
@@ -234,10 +234,10 @@ export const LocationForm = ({
         <When
           truthy={hasOnSuccessFunc}
           fallback={
-            <FormRow rowLabel={"Main image"}>
+            <FormRow rowLabel={"Hauptbild"}>
               <div>
                 <p className="hidden lg:block">
-                  Accepts PNG, JPG or JPEG (max.4 MB)
+                  PNG, JPG oder JPEG erlaubt (max. 4 MB)
                 </p>
                 <Input
                   disabled={disabled}
@@ -245,14 +245,14 @@ export const LocationForm = ({
                   name="image"
                   type="file"
                   onChange={validateFile}
-                  label={"Main image"}
+                  label={"Hauptbild"}
                   hideLabel
                   error={imageError}
                   className="mt-2"
                   inputClassName="border-0 shadow-none p-0 rounded-none"
                 />
                 <p className="mt-2 lg:hidden">
-                  Accepts PNG, JPG or JPEG (max.4 MB)
+                  PNG, JPG oder JPEG erlaubt (max. 4 MB)
                 </p>
               </div>
             </FormRow>
@@ -264,31 +264,33 @@ export const LocationForm = ({
             name="image"
             type="file"
             onChange={validateFile}
-            label={"Main image"}
+            label={"Hauptbild"}
             error={imageError}
             className="mt-2"
             inputClassName="border-0 shadow-none p-0 rounded-none"
           />
-          <p className="hidden lg:block">Accepts PNG, JPG or JPEG (max.4 MB)</p>
+          <p className="hidden lg:block">
+            PNG, JPG oder JPEG erlaubt (max. 4 MB)
+          </p>
         </When>
 
         <When
           truthy={hasOnSuccessFunc}
           fallback={
             <FormRow
-              rowLabel={"Address"}
+              rowLabel={"Adresse"}
               subHeading={
                 <p>
-                  Will set location’s geo position to address. Make sure to add
-                  an accurate address, to ensure the map location is as accurate
-                  as possible
+                  Setzt die Geoposition des Standorts anhand der Adresse. Geben
+                  Sie eine möglichst genaue Adresse an, damit die Kartenposition
+                  so präzise wie möglich ist.
                 </p>
               }
               className="pt-[10px]"
               required={zodFieldIsRequired(NewLocationFormSchema.shape.address)}
             >
               <Input
-                label="Address"
+                label="Adresse"
                 hideLabel
                 name={zo.fields.address()}
                 disabled={disabled}
@@ -303,7 +305,7 @@ export const LocationForm = ({
           }
         >
           <Input
-            label="Address"
+            label="Adresse"
             name={zo.fields.address()}
             disabled={disabled}
             error={zo.errors.address()?.message}
@@ -320,8 +322,8 @@ export const LocationForm = ({
               rowLabel="Description"
               subHeading={
                 <p>
-                  This is the initial object description. It will be shown on
-                  the location page. You can always change it.
+                  Dies ist die anfängliche Objektbeschreibung. Sie wird auf der
+                  Standortseite angezeigt und kann jederzeit geändert werden.
                 </p>
               }
               required={zodFieldIsRequired(
@@ -330,11 +332,11 @@ export const LocationForm = ({
             >
               <Input
                 inputType="textarea"
-                label="Description"
+                label="Beschreibung"
                 hideLabel
                 name={zo.fields.description()}
                 defaultValue={description || ""}
-                placeholder="Add a description for your location."
+                placeholder="Beschreibung für Ihren Standort hinzufügen."
                 disabled={disabled}
                 data-test-id="locationDescription"
                 className="w-full"
@@ -347,10 +349,10 @@ export const LocationForm = ({
         >
           <Input
             inputType="textarea"
-            label="Description"
+            label="Beschreibung"
             name={zo.fields.description()}
             defaultValue={description || ""}
-            placeholder="Add a description for your location."
+            placeholder="Beschreibung für Ihren Standort hinzufügen."
             disabled={disabled}
             data-test-id="locationDescription"
             className="w-full"
@@ -367,7 +369,7 @@ export const LocationForm = ({
         <FormRow className="border-y-0 py-2" rowLabel="">
           <div className="ml-auto">
             <Button type="submit" disabled={disabled}>
-              {disabled ? <Spinner /> : "Save"}
+              {disabled ? <Spinner /> : "Speichern"}
             </Button>
           </div>
         </FormRow>
@@ -390,18 +392,18 @@ const Actions = ({
       {/* When onCancel is provided (inline mode), use onClick instead of navigation */}
       {onCancel ? (
         <Button onClick={onCancel} variant="secondary" disabled={disabled}>
-          Cancel
+          Abbrechen
         </Button>
       ) : (
         <Button to={referer ?? ".."} variant="secondary" disabled={disabled}>
-          Cancel
+          Abbrechen
         </Button>
       )}
       <AddAnother disabled={disabled} />
     </ButtonGroup>
 
     <Button type="submit" disabled={disabled}>
-      Save
+      Speichern
     </Button>
   </>
 );
@@ -417,11 +419,13 @@ const AddAnother = ({ disabled }: { disabled: boolean }) => (
           name="addAnother"
           value="true"
         >
-          Add another
+          Weiteren hinzufügen
         </Button>
       </TooltipTrigger>
       <TooltipContent side="bottom">
-        <p className="text-sm">Save the location and add a new one</p>
+        <p className="text-sm">
+          Standort speichern und direkt einen neuen anlegen
+        </p>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

@@ -7,6 +7,7 @@ import type {
 } from "react";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { Link, type LinkProps } from "react-router";
+import { translateToDeCh } from "~/utils/de-ch";
 import { tw } from "~/utils/tw";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card";
 import type { IconType } from "./icons-map";
@@ -220,6 +221,14 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
       typeof disabled === "object" ? disabled.reason : undefined;
     const disabledTitle =
       typeof disabled === "object" ? disabled.title : undefined;
+    const renderedDisabledReason =
+      typeof disabledReason === "string"
+        ? translateToDeCh(disabledReason)
+        : disabledReason;
+    const renderedDisabledTitle =
+      typeof disabledTitle === "string"
+        ? translateToDeCh(disabledTitle)
+        : disabledTitle;
 
     // Check if this is an icon-only button (has icon but no text children)
     // Also handles empty strings and whitespace-only children
@@ -296,7 +305,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
     );
 
     // Render disabled button with hover card
-    if (isDisabled && disabledReason) {
+    if (isDisabled && renderedDisabledReason) {
       return (
         <HoverCard openDelay={50} closeDelay={50}>
           <HoverCardTrigger className="disabled cursor-not-allowed" asChild>
@@ -312,9 +321,9 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
           </HoverCardTrigger>
           <HoverCardContent side="left">
             <h5 className="text-left text-[14px]">
-              {disabledTitle || "Action disabled"}
+              {renderedDisabledTitle || "Aktion nicht verfügbar"}
             </h5>
-            <p className="text-left text-[14px]">{disabledReason}</p>
+            <p className="text-left text-[14px]">{renderedDisabledReason}</p>
           </HoverCardContent>
         </HoverCard>
       );

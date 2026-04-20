@@ -68,7 +68,7 @@ const WeeklyScheduleGrid = ({ weeklySchedule }: WeeklyScheduleGridProps) => (
                   <div className="text-xs font-medium text-gray-900">
                     <TimeDisplay time={daySchedule.openTime} />
                   </div>
-                  <div className="text-xs text-gray-500">to</div>
+                  <div className="text-xs text-gray-500">bis</div>
                   <div className="text-xs font-medium text-gray-900">
                     <TimeDisplay time={daySchedule.closeTime} />
                   </div>
@@ -79,7 +79,9 @@ const WeeklyScheduleGrid = ({ weeklySchedule }: WeeklyScheduleGridProps) => (
                 <div className="mx-auto mb-2 flex size-8 items-center justify-center rounded-full bg-gray-200">
                   <div className="h-0.5 w-3 rounded bg-gray-400"></div>
                 </div>
-                <div className="text-xs font-medium text-gray-500">Closed</div>
+                <div className="text-xs font-medium text-gray-500">
+                  Geschlossen
+                </div>
               </div>
             )}
           </div>
@@ -103,7 +105,7 @@ const OverridesSection = ({ overrides }: OverridesSectionProps) => {
     return (
       <div className="py-6 text-center text-gray-500">
         <CalendarDays className="mx-auto mb-2 size-8 opacity-50" />
-        <p className="text-sm">No upcoming schedule changes</p>
+        <p className="text-sm">Keine bevorstehenden Planänderungen</p>
       </div>
     );
   }
@@ -155,7 +157,7 @@ const OverridesSection = ({ overrides }: OverridesSectionProps) => {
                     : "bg-red-100 text-red-800"
                 )}
               >
-                {override.isOpen ? "Modified Hours" : "Closed"}
+                {override.isOpen ? "Angepasste Zeiten" : "Geschlossen"}
               </span>
             </div>
 
@@ -168,7 +170,7 @@ const OverridesSection = ({ overrides }: OverridesSectionProps) => {
               </p>
             ) : (
               <p className="mb-1 text-sm font-medium text-gray-700">
-                Closed all day
+                Ganztägig geschlossen
               </p>
             )}
 
@@ -206,7 +208,7 @@ export const WorkingHoursPreviewDialog = ({
         className={"mt-2 text-sm"}
         type={"button"}
       >
-        View full working schedule
+        Gesamten Arbeitsplan anzeigen
       </Button>
       <DialogPortal>
         <Dialog
@@ -221,10 +223,10 @@ export const WorkingHoursPreviewDialog = ({
               </div>
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">
-                  Working Hours Schedule
+                  Arbeitszeitenplan
                 </h2>
                 <p className="text-sm text-gray-600">
-                  Review operating hours and upcoming changes
+                  Öffnungszeiten und bevorstehende Änderungen prüfen
                 </p>
               </div>
             </div>
@@ -234,17 +236,18 @@ export const WorkingHoursPreviewDialog = ({
             {isLoading ? (
               <div className="py-12 text-center">
                 <div className="animate-spin mx-auto mb-4 size-8 rounded-full border-2 border-blue-600 border-t-transparent" />
-                <p className="text-gray-600">Loading working hours...</p>
+                <p className="text-gray-600">Arbeitszeiten werden geladen...</p>
               </div>
             ) : !workingHours?.enabled ? (
               <div className="py-12 text-center">
                 <Info className="mx-auto mb-4 size-12 text-gray-400" />
                 <h3 className="mb-2 text-lg font-medium text-gray-900">
-                  Working Hours Not Configured
+                  Arbeitszeiten nicht eingerichtet
                 </h3>
                 <p className="text-gray-600">
-                  This workspace doesn't have working hours restrictions. All
-                  times are available for booking.
+                  Für diesen Arbeitsbereich sind keine Einschränkungen für
+                  Arbeitszeiten eingerichtet. Alle Zeiten sind für Buchungen
+                  verfügbar.
                 </p>
               </div>
             ) : (
@@ -253,7 +256,7 @@ export const WorkingHoursPreviewDialog = ({
                 <div>
                   <div className="mb-4 flex items-center">
                     <h3 className="text-lg font-semibold text-gray-900">
-                      Weekly Schedule
+                      Wochenplan
                     </h3>
                   </div>
                   <WeeklyScheduleGrid
@@ -265,9 +268,11 @@ export const WorkingHoursPreviewDialog = ({
                 <div>
                   <div className="mb-4 flex items-center justify-between">
                     <h3 className="text-lg font-semibold text-gray-900">
-                      Upcoming Schedule Changes
+                      Bevorstehende Planänderungen
                     </h3>
-                    <span className="text-sm text-gray-500">Next 30 days</span>
+                    <span className="text-sm text-gray-500">
+                      Nächste 30 Tage
+                    </span>
                   </div>
                   <OverridesSection overrides={workingHours.overrides} />
                 </div>
@@ -279,14 +284,14 @@ export const WorkingHoursPreviewDialog = ({
           <div className="border-t border-gray-200 bg-gray-50 px-6 py-4">
             <div className="flex items-center justify-between">
               <p className="text-sm text-gray-600">
-                Booking times are validated against these working hours
+                Buchungszeiten werden gegen diese Arbeitszeiten geprüft
               </p>
               <Button
                 onClick={handleCloseDialog}
                 variant="secondary"
                 type={"button"}
               >
-                Close
+                Schliessen
               </Button>
             </div>
           </div>

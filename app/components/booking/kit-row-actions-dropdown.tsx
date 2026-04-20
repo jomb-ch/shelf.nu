@@ -33,7 +33,7 @@ export default function KitRowActionsDropdown({
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger
         className={tw("asset-actions", fullWidth ? "w-full" : "")}
-        aria-label="Actions Trigger"
+        aria-label="Aktionen"
       >
         <span className="flex size-6 items-center justify-center gap-2 text-center">
           <VerticalDotsIcon />
@@ -65,13 +65,13 @@ function RemoveKitFromBooking({ kit }: { kit: Pick<Kit, "id" | "name"> }) {
           )}
           title={
             isArchived || isCompleted
-              ? "Cannot remove assets from completed bookings"
+              ? "Assets können aus abgeschlossenen Buchungen nicht entfernt werden."
               : undefined
           }
           disabled={isArchived || isCompleted}
           width="full"
         >
-          Remove
+          Entfernen
         </Button>
       </AlertDialogTrigger>
 
@@ -82,23 +82,25 @@ function RemoveKitFromBooking({ kit }: { kit: Pick<Kit, "id" | "name"> }) {
               <TrashIcon />
             </span>
           </div>
-          <AlertDialogTitle>Remove "{kit.name}" from booking</AlertDialogTitle>
+          <AlertDialogTitle>
+            "{kit.name}" aus Buchung entfernen
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to remove this kit from the booking?
+            Möchten Sie dieses Kit wirklich aus der Buchung entfernen?
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <div className="flex justify-center gap-2">
             <AlertDialogCancel asChild>
               <Button variant="secondary" disabled={disabled}>
-                Cancel
+                Abbrechen
               </Button>
             </AlertDialogCancel>
 
             <Form method="post">
               <input type="hidden" name="kitId" value={kit.id} />
               <Button name="intent" value="removeKit" disabled={disabled}>
-                Remove
+                Entfernen
               </Button>
             </Form>
           </div>

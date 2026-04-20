@@ -14,8 +14,8 @@ import { SortBy } from "../list/filters/sort-by";
 import When from "../when/when";
 
 const BOOKING_SORTING_OPTIONS = {
-  from: "From Date",
-  to: "To Date",
+  from: "Startdatum",
+  to: "Enddatum",
   name: "Name",
 } as const;
 
@@ -64,7 +64,7 @@ export default function BookingFilters({
         <DynamicDropdown
           trigger={
             <div className="my-2 flex cursor-pointer items-center gap-2 md:my-0">
-              Custodian <ChevronRight className="hidden rotate-90 md:inline" />
+              Verwahrer <ChevronRight className="hidden rotate-90 md:inline" />
             </div>
           }
           model={{
@@ -73,8 +73,8 @@ export default function BookingFilters({
             deletedAt: null,
           }}
           renderItem={(item) => resolveTeamMemberName(item, true)}
-          label="Filter by custodian"
-          placeholder="Search team members"
+          label="Nach Verwahrer filtern"
+          placeholder="Teammitglieder suchen"
           initialDataKey="teamMembers"
           countKey="totalTeamMembers"
         />
@@ -87,12 +87,12 @@ export default function BookingFilters({
           </div>
         }
         model={{ name: "tag", queryKey: "name" }}
-        label="Filter by tag"
+        label="Nach Tag filtern"
         initialDataKey="tags"
         countKey="totalTags"
         withoutValueItem={{
           id: "untagged",
-          name: "Without tag",
+          name: "Ohne Tag",
         }}
       />
     </Filters>

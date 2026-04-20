@@ -29,8 +29,8 @@ export default function BulkDeleteDialog() {
       type="trash"
       arrayFieldId="bookingIds"
       actionUrl="/api/bookings/bulk-actions"
-      title={`Delete ${totalSelected} bookings`}
-      description={`Are your sure you want to delete all (${totalSelected}) bookings. This action cannot be undone.`}
+      title={`${totalSelected} Buchungen löschen`}
+      description={`Möchten Sie wirklich alle ${totalSelected} ausgewählten Buchungen löschen? Diese Aktion kann nicht rückgängig gemacht werden.`}
     >
       {({ fetcherError, disabled, handleCloseDialog }) => (
         <>
@@ -47,7 +47,7 @@ export default function BulkDeleteDialog() {
               disabled={disabled}
               onClick={handleCloseDialog}
             >
-              Cancel
+              Abbrechen
             </Button>
             <Button
               variant="primary"
@@ -55,7 +55,7 @@ export default function BulkDeleteDialog() {
               disabled={disabled}
               className="border-error-600 bg-error-600 hover:border-error-800 hover:bg-error-800"
             >
-              Confirm
+              Bestätigen
             </Button>
           </div>
         </>

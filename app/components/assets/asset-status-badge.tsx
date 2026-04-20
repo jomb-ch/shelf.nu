@@ -5,6 +5,7 @@ import { HoverCardPortal } from "@radix-ui/react-hover-card";
 import useApiQuery from "~/hooks/use-api-query";
 import { BADGE_COLORS, type BadgeColorScheme } from "~/utils/badge-colors";
 import type { ExtendedAssetStatus } from "~/utils/booking-assets";
+import { translateBookingStatus } from "~/utils/de-ch";
 import { Badge } from "../shared/badge";
 import { Button } from "../shared/button";
 import {
@@ -22,13 +23,13 @@ import When from "../when/when";
 export const userFriendlyAssetStatus = (status: ExtendedAssetStatus) => {
   switch (status) {
     case AssetStatus.IN_CUSTODY:
-      return "In custody";
+      return "In Verwahrung";
     case AssetStatus.CHECKED_OUT:
-      return "Checked out";
+      return "Ausgecheckt";
     case "PARTIALLY_CHECKED_IN":
-      return "Already checked in";
+      return "Bereits eingecheckt";
     default:
-      return "Available";
+      return "Verfügbar";
   }
 };
 
@@ -81,7 +82,7 @@ export function AssetStatusBadge({
       <HoverCardTrigger asChild>
         <span className="flex items-center gap-1.5">
           <Badge color={colors.bg} textColor={colors.text}>
-            {userFriendlyAssetStatus(status)}
+            {translateBookingStatus(userFriendlyAssetStatus(status))}
           </Badge>
           {!availableToBook && (
             <UnavailableBadge title="This asset is marked as unavailable for bookings" />

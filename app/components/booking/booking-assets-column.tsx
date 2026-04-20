@@ -99,14 +99,14 @@ export function BookingAssetsColumn() {
       isCompleted || isArchived || isCancelled || cantManageAssetsAsBase
         ? {
             reason: isCompleted
-              ? "Booking is completed. You cannot change the assets anymore"
+              ? "Die Buchung ist abgeschlossen. Die Assets können nicht mehr geändert werden."
               : isArchived
-              ? "Booking is archived. You cannot change the assets anymore"
+              ? "Die Buchung ist archiviert. Die Assets können nicht mehr geändert werden."
               : isCancelled
-              ? "Booking is cancelled. You cannot change the assets anymore"
+              ? "Die Buchung ist storniert. Die Assets können nicht mehr geändert werden."
               : cantManageAssetsAsBase
-              ? "You are unable to add assets at this point because the booking is already reserved. Cancel this booking and create another one if you need to make changes."
-              : "You need to select a start and end date and save your booking before you can add assets to your booking",
+              ? "Assets können jetzt nicht mehr hinzugefügt werden, weil die Buchung bereits reserviert ist. Stornieren Sie diese Buchung und erstellen Sie bei Bedarf eine neue."
+              : "Wählen Sie zuerst ein Start- und Enddatum und speichern Sie die Buchung, bevor Sie Assets hinzufügen.",
           }
         : false,
     [isCompleted, isArchived, isCancelled, cantManageAssetsAsBase]
@@ -164,10 +164,10 @@ export function BookingAssetsColumn() {
               <EmptyState
                 className="py-10"
                 customContent={{
-                  title: "Start by defining a booking period",
-                  text: "Assets added to your booking will show up here. Scan tags or search for assets to add to your booking.",
+                  title: "Definieren Sie zuerst einen Buchungszeitraum",
+                  text: "Hier erscheinen die Assets Ihrer Buchung. Scannen Sie Tags oder suchen Sie nach Assets, um sie Ihrer Buchung hinzuzufügen.",
                   newButtonRoute: manageAssetsUrl,
-                  newButtonContent: "Add assets",
+                  newButtonContent: "Assets hinzufügen",
                   buttonProps: {
                     disabled: manageAssetsButtonDisabled,
                   },
@@ -180,29 +180,29 @@ export function BookingAssetsColumn() {
                     <BulkListHeader itemsGetter={itemsGetter} />
                     <Th>Name</Th>
                     <Th> </Th>
-                    <Th>Category</Th>
+                    <Th>Kategorie</Th>
                     {shouldShowCheckinColumns && (
                       <>
                         <Th className="whitespace-nowrap">
-                          Checked in on{" "}
+                          Eingecheckt am{" "}
                           <InfoTooltip
                             iconClassName="size-4"
                             content={
                               <p>
-                                Shows the date when the asset was checked in via
-                                a partial check-in.
+                                Zeigt das Datum, an dem das Asset über einen
+                                Teil-Check-in eingecheckt wurde.
                               </p>
                             }
                           />
                         </Th>
                         <Th className="whitespace-nowrap">
-                          Checked in by{" "}
+                          Eingecheckt von{" "}
                           <InfoTooltip
                             iconClassName="size-4"
                             content={
                               <p>
-                                Shows the user who checked in the asset via a
-                                partial check-in.
+                                Zeigt die Person, die das Asset über einen
+                                Teil-Check-in eingecheckt hat.
                               </p>
                             }
                           />
@@ -309,14 +309,14 @@ function BookingAssetsHeader({
               to="scan-assets"
               disabled={manageAssetsButtonDisabled}
             >
-              Scan to add
+              Zum Hinzufügen scannen
             </Button>
             <Button
               to={manageAssetsUrl}
               className="whitespace-nowrap"
               disabled={manageAssetsButtonDisabled}
             >
-              Add assets
+              Assets hinzufügen
             </Button>
           </div>
         </When>
@@ -350,14 +350,14 @@ function BookingAssetsHeader({
             disabled={manageAssetsButtonDisabled}
             className="flex-1"
           >
-            Scan
+            Scannen
           </Button>
           <Button
             to={manageAssetsUrl}
             className="flex-1 whitespace-nowrap"
             disabled={manageAssetsButtonDisabled}
           >
-            Add assets
+            Assets hinzufügen
           </Button>
         </div>
       </When>

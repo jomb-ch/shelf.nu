@@ -62,11 +62,11 @@ export default function CreateBookingDialog({
         >
           <div className="px-6 py-4">
             <div className="mb-5">
-              <h4>Create new booking</h4>
+              <h4>Neue Buchung erstellen</h4>
               <p>
-                Choose a name for your booking, select a start and end time and
-                choose the custodian. Based on the selected information, asset
-                availability will be determined.
+                Geben Sie Ihrer Buchung einen Namen, wählen Sie Start- und
+                Endzeit und bestimmen Sie den Verwahrer. Auf Grundlage dieser
+                Angaben wird die Verfügbarkeit der Assets ermittelt.
               </p>
             </div>
 

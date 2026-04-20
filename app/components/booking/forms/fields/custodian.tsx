@@ -25,14 +25,14 @@ export function CustodianField({
 }) {
   return (
     <FormRow
-      rowLabel="Description"
+      rowLabel="Verwahrer"
       className="mobile-styling-only border-b-0 p-0"
     >
       <label
         className="mb-2.5 block font-medium text-gray-700"
         htmlFor="custodian"
       >
-        <span className="required-input-label">Custodian</span>
+        <span className="required-input-label">Verwahrer</span>
       </label>
       <DynamicSelect
         defaultValue={
@@ -51,10 +51,10 @@ export function CustodianField({
           deletedAt: null,
         }}
         fieldName="custodian"
-        contentLabel="Team members"
+        contentLabel="Teammitglieder"
         initialDataKey="teamMembersForForm"
         countKey="totalTeamMembers"
-        placeholder="Select a team member"
+        placeholder="Teammitglied auswählen"
         allowClear
         closeOnSelect
         transformItem={(item: ModelFilterItem & { userId?: string }) => ({
@@ -69,14 +69,14 @@ export function CustodianField({
         renderItem={(item) =>
           userCanSeeCustodian || isNewBooking
             ? resolveTeamMemberName(item, true)
-            : "Private"
+            : "Privat"
         }
       />
 
       {error ? <div className="text-sm text-error-500">{error}</div> : null}
       <p className="mt-2 text-[14px] text-gray-600">
-        The person that will be in custody of or responsible for the assets
-        during the duration of the booking period.
+        Die Person, die während des Buchungszeitraums die Assets verwahrt oder
+        dafür verantwortlich ist.
       </p>
     </FormRow>
   );

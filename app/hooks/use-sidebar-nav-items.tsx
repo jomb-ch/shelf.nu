@@ -79,13 +79,17 @@ export function useSidebarNavItems() {
     return {
       reason: (
         <div>
-          <h5>Disabled</h5>
+          <h5>Deaktiviert</h5>
           <p>
-            Booking is a premium feature only available for Team workspaces.
+            Buchungen sind eine Premium-Funktion und nur für
+            Team-Arbeitsbereiche verfügbar.
           </p>
 
           <When truthy={!!subscription} fallback={<UpgradeMessage />}>
-            <p>Please switch to your team workspace to access this feature.</p>
+            <p>
+              Bitte wechseln Sie zu Ihrem Team-Arbeitsbereich, um diese Funktion
+              zu nutzen.
+            </p>
           </When>
         </div>
       ),
@@ -95,14 +99,14 @@ export function useSidebarNavItems() {
   const topMenuItems: NavItem[] = [
     {
       type: "child",
-      title: "Admin Dashboard",
+      title: "Admin-Dashboard",
       to: "/admin-dashboard/users",
       Icon: ChartLineIcon,
       hidden: !isAdmin,
     },
     {
       type: "label",
-      title: "Asset management",
+      title: "Asset-Verwaltung",
     },
     {
       type: "child",
@@ -125,7 +129,7 @@ export function useSidebarNavItems() {
     },
     {
       type: "child",
-      title: "Categories",
+      title: "Kategorien",
       to: "/categories",
       Icon: BoxesIcon,
       hidden: isBaseOrSelfService,
@@ -140,24 +144,24 @@ export function useSidebarNavItems() {
     },
     {
       type: "child",
-      title: "Locations",
+      title: "Standorte",
       to: "/locations",
       Icon: MapPinIcon,
       hidden: isBaseOrSelfService,
     },
     {
       type: "parent",
-      title: "Bookings",
+      title: "Buchungen",
       Icon: CalendarRangeIcon,
       disabled: bookingDisabled,
       children: [
         {
-          title: "View Bookings",
+          title: "Buchungen anzeigen",
           to: "/bookings",
           disabled: bookingDisabled,
         },
         {
-          title: "Calendar",
+          title: "Kalender",
           to: "/calendar",
           disabled: bookingDisabled,
         },
@@ -165,14 +169,14 @@ export function useSidebarNavItems() {
     },
     {
       type: "child",
-      title: "Reminders",
+      title: "Erinnerungen",
       Icon: AlarmClockIcon,
       hidden: isBaseOrSelfService,
       to: "/reminders",
     },
     {
       type: "label",
-      title: "Organization",
+      title: "Organisation",
       hidden: isBaseOrSelfService,
     },
     {
@@ -182,38 +186,38 @@ export function useSidebarNavItems() {
       hidden: isBaseOrSelfService,
       children: [
         {
-          title: "Users",
+          title: "Benutzer",
           to: "/settings/team/users",
           hidden: isPersonalOrganization,
         },
         {
-          title: "Pending invites",
+          title: "Einladungen",
           to: "/settings/team/invites",
           hidden: isPersonalOrganization,
         },
         {
-          title: "Non-registered members",
+          title: "Ohne Konto",
           to: "/settings/team/nrm",
         },
       ],
     },
     {
       type: "parent",
-      title: "Workspace settings",
+      title: "Einstellungen",
       Icon: SettingsIcon,
       hidden: isBaseOrSelfService,
       children: [
         {
-          title: "General",
+          title: "Allgemein",
           to: "/settings/general",
         },
         {
-          title: "Bookings",
+          title: "Buchungen",
           to: "/settings/bookings",
           hidden: isPersonalOrganization,
         },
         {
-          title: "Custom fields",
+          title: "Felder",
           to: "/settings/custom-fields",
         },
       ],
@@ -223,20 +227,20 @@ export function useSidebarNavItems() {
   const bottomMenuItems: NavItem[] = [
     {
       type: "child",
-      title: "Asset labels",
+      title: "Asset-Etiketten",
       to: `https://store.shelf.nu/?ref=shelf_webapp_sidebar`,
       Icon: QrCodeIcon,
       target: "_blank",
     },
     {
       type: "child",
-      title: "QR Scanner",
+      title: "QR-Scanner",
       to: "/scanner",
       Icon: ScanBarcodeIcon,
     },
     {
       type: "button",
-      title: "Updates",
+      title: "Neuigkeiten",
       Icon: BellIcon,
       badge: {
         show: (unreadUpdatesCount || 0) > 0,
@@ -248,7 +252,7 @@ export function useSidebarNavItems() {
     },
     {
       type: "button",
-      title: "Questions/Feedback",
+      title: "Fragen/Feedback",
       Icon: MessageCircleIcon,
       onClick: () => {
         Crisp.chat.open();

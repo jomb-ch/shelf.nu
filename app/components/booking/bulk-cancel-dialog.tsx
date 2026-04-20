@@ -28,8 +28,8 @@ export default function BulkCancelDialog() {
       type="cancel"
       arrayFieldId="bookingIds"
       actionUrl="/api/bookings/bulk-actions"
-      title={`Cancel (${totalSelected}) bookings`}
-      description={`Are you sure you want to cancel all (${totalSelected}) bookings?`}
+      title={`${totalSelected} Buchungen stornieren`}
+      description={`Möchten Sie wirklich alle ${totalSelected} ausgewählten Buchungen stornieren?`}
     >
       {({ disabled, fetcherError, handleCloseDialog }) => (
         <>
@@ -46,7 +46,7 @@ export default function BulkCancelDialog() {
               disabled={disabled}
               onClick={handleCloseDialog}
             >
-              Cancel
+              Abbrechen
             </Button>
             <Button
               variant="primary"
@@ -54,7 +54,7 @@ export default function BulkCancelDialog() {
               disabled={disabled}
               className="border-error-600 bg-error-600 hover:border-error-800 hover:bg-error-800"
             >
-              Confirm
+              Bestätigen
             </Button>
           </div>
         </>

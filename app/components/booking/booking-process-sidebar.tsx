@@ -20,29 +20,30 @@ type ProcessItem = {
 const ITEMS: Array<ProcessItem> = [
   {
     icon: ClockIcon,
-    title: "Submit Request",
-    description: `Fill in all required information and select the assets you need. Click "Request reservation" to submit your request.`,
+    title: "Anfrage senden",
+    description:
+      'Füllen Sie alle Pflichtfelder aus und wählen Sie die benötigten Assets. Klicken Sie auf "Reservierung anfragen", um Ihre Anfrage zu senden.',
     iconClassName: "bg-blue-100 text-blue-500",
   },
   {
     icon: InfoIcon,
-    title: "Admin Review",
+    title: "Admin-Prüfung",
     description:
-      "Your booking will be shown as reserved, however the admin can choose to revert it back to draft or cancel it at any point, if there are any conflicts with other bookings.",
+      "Ihre Buchung wird als reserviert angezeigt. Administratoren können sie jedoch jederzeit wieder in den Entwurf zurücksetzen oder stornieren, falls es Konflikte mit anderen Buchungen gibt.",
     iconClassName: "bg-warning-100 text-warning-500",
   },
   {
     icon: ArrowRight,
-    title: "Check-Out",
+    title: "Check-out",
     description:
-      "On the start date of your booking, an administrator will check out the equipment on your behalf. You'll be responsible for the equipment during your booking period.",
+      "Zum Startzeitpunkt Ihrer Buchung checkt eine Administratorin oder ein Administrator das Equipment für Sie aus. Während der Buchungsdauer tragen Sie die Verantwortung dafür.",
     iconClassName: "bg-violet-100 text-violet-500",
   },
   {
     icon: ArrowLeft,
-    title: "Check-In",
+    title: "Check-in",
     description:
-      "At the end of you booking period, return the equipment to the administrator who will perform the check in action.",
+      "Am Ende Ihrer Buchung geben Sie das Equipment zurück, damit eine Administratorin oder ein Administrator den Check-in abschliessen kann.",
     iconClassName: "bg-indigo-100 text-indigo-500",
   },
 ];
@@ -56,7 +57,7 @@ export default function BookingProcessSidebar({
         <Button variant="block-link-gray" className={"mt-0"}>
           <div className="flex items-center gap-2">
             <InfoIcon className="size-4" />
-            How bookings work
+            So funktionieren Buchungen
           </div>
         </Button>
       </SheetTrigger>
@@ -68,20 +69,21 @@ export default function BookingProcessSidebar({
         <div className="flex items-center justify-between bg-blue-500 p-4 text-white">
           <div className="flex items-center gap-2 text-lg font-bold">
             <InfoIcon className="size-4" />
-            Booking Process
+            Buchungsablauf
           </div>
 
           <Close className="opacity-70 transition-opacity hover:opacity-100">
             <XIcon className="size-4" />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">Schliessen</span>
           </Close>
         </div>
 
         <div className="p-4">
           <p className="mb-8 border-l-4 border-blue-500 bg-blue-50 p-2 text-blue-500">
-            Base users reserve bookings that require admin approval and can be
-            cancelled at any time if there are conflicts with other bookings.
-            Admins handle equipment check-out and check-in.
+            Basis-Benutzer reservieren Buchungen, die eine Freigabe durch Admins
+            benötigen und bei Konflikten mit anderen Buchungen jederzeit
+            storniert werden können. Admins übernehmen Check-out und Check-in
+            des Equipments.
           </p>
 
           <div className="mb-8 flex flex-col gap-4">
@@ -108,20 +110,20 @@ export default function BookingProcessSidebar({
           </div>
 
           <div className="rounded-md bg-gray-50 p-4">
-            <h3 className="mb-1">Important Notes</h3>
+            <h3 className="mb-1">Wichtige Hinweise</h3>
 
             <ul className="list-inside list-disc">
               <li>
-                Equipment must be returned in the same condition it was checked
-                out.
+                Das Equipment muss im gleichen Zustand zurückgegeben werden, in
+                dem es ausgecheckt wurde.
               </li>
               <li>
-                If you need to extend your booking, contact an administrator
-                before your booking end date.
+                Wenn Sie Ihre Buchung verlängern möchten, kontaktieren Sie vor
+                dem Enddatum eine Administratorin oder einen Administrator.
               </li>
               <li>
-                Administrators have final say on booking approvals based on
-                equipment availability and priorities.
+                Administratoren entscheiden abschliessend über Freigaben,
+                basierend auf Verfügbarkeit und Prioritäten.
               </li>
             </ul>
           </div>

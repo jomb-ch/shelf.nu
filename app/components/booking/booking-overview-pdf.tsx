@@ -57,7 +57,7 @@ export const BookingOverviewPDF = ({
     setIsDialogOpen(false);
   };
   const disabled = !totalAssets && {
-    reason: "No assets in booking to generate PDF overview.",
+    reason: "Keine Assets in der Buchung, um eine Übersichts-PDF zu erstellen.",
   };
 
   return (
@@ -70,7 +70,7 @@ export const BookingOverviewPDF = ({
         onClick={handleOpenDialog}
         disabled={disabled}
       >
-        Generate overview PDF
+        Übersichts-PDF erstellen
       </Button>
       <DialogPortal>
         <Dialog
@@ -79,11 +79,11 @@ export const BookingOverviewPDF = ({
           className="h-[90vh] w-full py-0 md:h-[calc(100vh-4rem)]  md:w-[90%]"
           title={
             <div className="mx-auto w-full max-w-[210mm] border p-4 text-center">
-              <h3>Generate booking checklist for "{booking?.name}"</h3>
-              <p>You can either preview or download the PDF.</p>
+              <h3>Checkliste für Buchung "{booking?.name}" erstellen</h3>
+              <p>Sie können die PDF entweder ansehen oder herunterladen.</p>
               {!isFetchingBookings && (
                 <div className="mt-4">
-                  <Button onClick={handlePrint}>Download PDF</Button>
+                  <Button onClick={handlePrint}>PDF herunterladen</Button>
                 </div>
               )}
             </div>
@@ -93,7 +93,7 @@ export const BookingOverviewPDF = ({
             <div className="grow">
               {isFetchingBookings ? (
                 <div className="flex h-full flex-col items-center justify-center gap-2">
-                  <div>Generating PDF preview...</div>
+                  <div>PDF-Vorschau wird erstellt...</div>
                   <div>
                     <Spinner />
                   </div>
@@ -109,7 +109,7 @@ export const BookingOverviewPDF = ({
             </div>
             <div className="flex justify-end gap-3 py-4">
               <Button variant="secondary" onClick={handleCloseDialog}>
-                Cancel
+                Abbrechen
               </Button>
             </div>
           </div>
@@ -125,7 +125,7 @@ export const BookingOverviewPDF = ({
         disabled={disabled}
         onClick={handleOpenDialog}
       >
-        Generate overview PDF
+        Übersichts-PDF erstellen
       </Button>
     </>
   );
@@ -188,7 +188,7 @@ const BookingPDFPreview = ({
               <h3 className="m-0 p-0 text-gray-600">{organization?.name}</h3>
             </div>
             <h1 className="mt-0.5 text-xl font-medium">
-              Booking checklist for {booking?.name}
+              Checkliste für Buchung {booking?.name}
             </h1>
           </div>
           <div className="text-gray-500">
@@ -198,16 +198,16 @@ const BookingPDFPreview = ({
 
         <section className="mb-5 mt-2.5 border border-gray-300">
           <div className="flex border-b border-gray-300 p-2">
-            <span className="min-w-[150px] text-sm font-medium">Booking</span>
+            <span className="min-w-[150px] text-sm font-medium">Buchung</span>
             <span className="grow text-gray-600">{booking?.name}</span>
           </div>
           <div className="flex border-b border-gray-300 p-2">
-            <span className="min-w-[150px] text-sm font-medium">Custodian</span>
+            <span className="min-w-[150px] text-sm font-medium">Verwahrer</span>
             <span className="grow text-gray-600">{custodianName}</span>
           </div>
           <div className="flex border-b border-gray-300 p-2">
             <span className="min-w-[150px] text-sm font-medium">
-              Booking period
+              Buchungszeitraum
             </span>
             <span className="grow text-gray-600">
               {pdfMeta?.from && pdfMeta?.to
@@ -220,7 +220,7 @@ const BookingPDFPreview = ({
           <When truthy={isPeriodDifferentFromOriginal}>
             <div className="flex border-b border-gray-300 p-2">
               <span className="min-w-[150px] text-sm font-medium">
-                Original period
+                Ursprünglicher Zeitraum
               </span>
               <span className="grow text-gray-600">{`${
                 isFromDifferentFromOriginal
@@ -234,7 +234,7 @@ const BookingPDFPreview = ({
 
           <div className="flex border-b border-gray-300 p-2">
             <span className="min-w-[150px] text-sm font-medium">
-              Description
+              Beschreibung
             </span>
             <span className="grow whitespace-pre-wrap text-gray-600">
               {booking?.description}
@@ -243,7 +243,7 @@ const BookingPDFPreview = ({
 
           <div className="flex p-2">
             <span className="min-w-[150px] text-sm font-medium">
-              Total assets value
+              Gesamtwert der Assets
             </span>
             <span className="grow whitespace-pre-wrap text-gray-600">
               {totalValue}
@@ -270,7 +270,7 @@ const BookingPDFPreview = ({
                 #
               </th>
               <th className="w-20 min-w-[76px] border-b border-r border-gray-300 p-2.5 text-left text-xs font-medium">
-                Image
+                Bild
               </th>
               <th className="w-[30%] border-b border-r border-gray-300 p-2.5 text-left text-xs font-medium">
                 Name
@@ -279,10 +279,10 @@ const BookingPDFPreview = ({
                 Kit
               </th>
               <th className="w-24 border-b border-r border-gray-300 p-2.5 text-left text-xs font-medium">
-                Category
+                Kategorie
               </th>
               <th className="w-24 border-b border-r border-gray-300 p-2.5 text-left text-xs font-medium">
-                Location
+                Standort
               </th>
               <th className="min-w-[120px] border-b border-r border-gray-300 p-2.5 text-left text-xs font-medium">
                 Code
@@ -310,7 +310,7 @@ const BookingPDFPreview = ({
                         thumbnailImage: asset.thumbnailImage,
                         mainImageExpiration: asset.mainImageExpiration,
                       }}
-                      alt={`Image of ${asset.title}`}
+                      alt={`Bild von ${asset.title}`}
                       className="!size-14 object-cover"
                     />
                   </td>
@@ -330,7 +330,7 @@ const BookingPDFPreview = ({
                     <div className="flex items-center gap-3">
                       <img
                         src={assetIdToQrCodeMap[asset.id] || ""}
-                        alt="QR Code"
+                        alt="QR-Code"
                         className="size-14 object-cover"
                       />
                       <input type="checkbox" className="block size-5 border" />
@@ -342,7 +342,7 @@ const BookingPDFPreview = ({
                   <tr className="border-b border-gray-300 align-top">
                     <td colSpan={7} className="m-2 p-2">
                       <div className="flex items-start gap-4 bg-gray-100 p-4">
-                        <div className="w-20 text-xs">Asset Description</div>
+                        <div className="w-20 text-xs">Asset-Beschreibung</div>
                         <div className="flex-1 text-sm">
                           {asset.description}
                         </div>

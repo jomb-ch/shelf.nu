@@ -207,7 +207,7 @@ export function NewBookingForm({ booking, action }: NewBookingFormData) {
                 name="intent"
                 width={"full"}
               >
-                Scan QR codes
+                QR-Codes scannen
               </Button>
             ) : null}
             <Button
@@ -218,7 +218,7 @@ export function NewBookingForm({ booking, action }: NewBookingFormData) {
               disabled={disabled}
               width={"full"}
             >
-              {assetIds ? "Create Booking" : "View assets list"}
+              {assetIds ? "Buchung erstellen" : "Asset-Liste anzeigen"}
             </Button>
             <hr />
             <Button
@@ -228,7 +228,7 @@ export function NewBookingForm({ booking, action }: NewBookingFormData) {
               disabled={disabled}
               className="cancellation-button whitespace-nowrap"
             >
-              Cancel
+              Abbrechen
             </Button>
           </div>
           <div className="h-3" />

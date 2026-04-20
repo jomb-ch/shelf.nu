@@ -29,7 +29,7 @@ export default function ListBulkActionsDropdown() {
     return (
       <Button variant="secondary" to="#">
         <span className="flex items-center gap-2">
-          Actions <ChevronRight className="chev rotate-90" />
+          Aktionen <ChevronRight className="chev rotate-90" />
         </span>
       </Button>
     );
@@ -77,7 +77,7 @@ function ConditionalDropdown() {
   const partialCheckinDisabled = hasOnlyAlreadyCheckedInItems
     ? {
         reason:
-          "All selected assets are already checked in. Please select assets that are still checked out.",
+          "Alle ausgewählten Assets sind bereits eingecheckt. Bitte wählen Sie Assets aus, die noch ausgecheckt sind.",
       }
     : false;
 
@@ -127,7 +127,7 @@ function ConditionalDropdown() {
           disabled={actionsButtonDisabled}
         >
           <Button type="button" variant="secondary">
-            <span className="flex items-center gap-2">Actions</span>
+            <span className="flex items-center gap-2">Aktionen</span>
           </Button>
         </DropdownMenuTrigger>
 
@@ -139,7 +139,7 @@ function ConditionalDropdown() {
           disabled={actionsButtonDisabled}
           type="button"
         >
-          <span className="flex items-center gap-2">Actions</span>
+          <span className="flex items-center gap-2">Aktionen</span>
         </Button>
 
         {open && (
@@ -184,7 +184,7 @@ function ConditionalDropdown() {
                   disabled={partialCheckinDisabled}
                 >
                   <PackageCheck className="mr-2 inline size-5" />
-                  <span>Check in selected items</span>
+                  <span>Auswahl einchecken</span>
                 </Button>
               </DropdownMenuItem>
             )}
@@ -196,7 +196,7 @@ function ConditionalDropdown() {
             >
               <BulkUpdateDialogTrigger
                 type="trash"
-                label="Remove assets/kits"
+                label="Assets/Kits entfernen"
                 onClick={closeMenu}
               />
             </DropdownMenuItem>

@@ -137,7 +137,7 @@ const ConditionalActionsDropdown = ({
                   width="full"
                   onClick={() => setOpen(false)}
                 >
-                  Close
+                  Schliessen
                 </Button>
               </div>
             </div>

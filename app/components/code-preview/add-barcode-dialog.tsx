@@ -43,7 +43,9 @@ export function AddBarcodeDialog({
         onClose={onClose}
         title={
           <div className="">
-            <h3>Add barcode to {item.type}</h3>
+            <h3>
+              Barcode zu {item.type === "asset" ? "Asset" : "Kit"} hinzufügen
+            </h3>
           </div>
         }
         className={activeTab === "scan" ? "sm:max-w-full" : "sm:max-w-md"}
@@ -61,8 +63,8 @@ export function AddBarcodeDialog({
               className={activeTab === "scan" ? "flex h-full flex-col" : ""}
             >
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="input">Input code</TabsTrigger>
-                <TabsTrigger value="scan">Scan code</TabsTrigger>
+                <TabsTrigger value="input">Code eingeben</TabsTrigger>
+                <TabsTrigger value="scan">Code scannen</TabsTrigger>
               </TabsList>
 
               <TabsContent value="input">

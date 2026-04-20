@@ -4,6 +4,7 @@
  */
 import { parseISO } from "date-fns";
 import { parseAcceptLanguage } from "intl-parse-accept-language";
+import { DEFAULT_APP_LOCALE } from "./de-ch";
 import { ShelfError } from "./error";
 import { useRequestInfo } from "./request-info";
 
@@ -174,14 +175,18 @@ export function getDateTimeFormatFromHints(
 /**
  *
  * @param request
- * @returns current locale. Defaults to en-US
+ * @returns the application locale. Shelf currently defaults to Swiss German.
  */
 export function getLocale(request: Request) {
   const locales = parseAcceptLanguage(request.headers.get("accept-language"), {
     validate: Intl.DateTimeFormat.supportedLocalesOf,
   });
 
-  return locales[0] ?? "en-US";
+  const swissGermanLocale = locales.find((locale) =>
+    locale.toLowerCase().startsWith("de")
+  );
+
+  return swissGermanLocale ?? DEFAULT_APP_LOCALE;
 }
 
 export function formatDateBasedOnLocaleOnly(value: string, locale: string) {

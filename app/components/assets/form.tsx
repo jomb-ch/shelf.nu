@@ -47,7 +47,7 @@ import When from "../when/when";
 export const NewAssetFormSchema = z.object({
   title: z
     .string()
-    .min(2, "Name is required")
+    .min(2, "Name ist erforderlich")
     .transform((val) => val.trim()), // We trim to avoid white spaces at start and end
 
   description: z.string().transform((val) => val.trim()),
@@ -217,8 +217,8 @@ export const AssetForm = ({
 
         <div className="flex items-start justify-between border-b pb-5">
           <div className=" ">
-            <h2 className="mb-1 text-[18px] font-semibold">Basic fields</h2>
-            <p>Basic information about your asset.</p>
+            <h2 className="mb-1 text-[18px] font-semibold">Basisfelder</h2>
+            <p>Grundlegende Informationen zu Ihrem Asset.</p>
           </div>
           <div className="hidden flex-1 justify-end gap-2 md:flex">
             <Actions disabled={disabled} referer={referer} />
@@ -247,18 +247,18 @@ export const AssetForm = ({
         </FormRow>
 
         <FormRow
-          rowLabel={"Asset ID"}
+          rowLabel={"Asset-ID"}
           className="border-b-0 pb-[10px]"
           subHeading={
             id
-              ? "This is the unique identifier for this asset"
-              : "This sequential ID will be assigned when the asset is created"
+              ? "Dies ist die eindeutige Kennung dieses Assets"
+              : "Diese fortlaufende ID wird beim Erstellen des Assets vergeben"
           }
         >
           <div className="flex items-center gap-2">
             <div className="shrink-0">
               <Input
-                label="Prefix"
+                label="Präfix"
                 hideLabel
                 name="sequentialIdPrefix"
                 disabled={true}
@@ -270,7 +270,7 @@ export const AssetForm = ({
             <span className="font-medium text-gray-400">-</span>
             <div className="grow">
               <Input
-                label="Number"
+                label="Nummer"
                 hideLabel
                 name="sequentialIdNumber"
                 disabled={true}
@@ -285,7 +285,7 @@ export const AssetForm = ({
           <p className="mt-1 text-sm text-gray-600"></p>
         </FormRow>
 
-        <FormRow rowLabel={"Main image"} className="pt-[10px]">
+        <FormRow rowLabel={"Hauptbild"} className="pt-[10px]">
           <div className="flex items-center gap-2">
             {id && thumbnailImage && mainImageExpiration ? (
               <AssetImage
@@ -303,12 +303,12 @@ export const AssetForm = ({
               <p className="hidden lg:block">
                 <HoverCard openDelay={50} closeDelay={50}>
                   <HoverCardTrigger className={tw("inline-flex w-full  ")}>
-                    Accepts PNG, JPG or JPEG (max.8 MB)
+                    PNG, JPG oder JPEG erlaubt (max. 8 MB)
                   </HoverCardTrigger>
                   <HoverCardContent side="left">
-                    Images will be automatically resized on upload. Width will
-                    be set at 1200px and height will be adjusted accordingly to
-                    keep the aspect ratio.
+                    Bilder werden beim Upload automatisch skaliert. Die Breite
+                    wird auf 1200 px gesetzt, die Höhe entsprechend angepasst,
+                    damit das Seitenverhältnis erhalten bleibt.
                   </HoverCardContent>
                 </HoverCard>
               </p>
@@ -318,14 +318,14 @@ export const AssetForm = ({
                 name="mainImage"
                 type="file"
                 onChange={validateFile}
-                label={"Main image"}
+                label={"Hauptbild"}
                 hideLabel
                 error={mainImageError}
                 className="mt-2"
                 inputClassName="border-0 shadow-none p-0 rounded-none"
               />
               <p className="mt-2 lg:hidden">
-                Accepts PNG, JPG or JPEG (max.8 MB)
+                PNG, JPG oder JPEG erlaubt (max. 8 MB)
               </p>
             </div>
           </div>
@@ -336,9 +336,9 @@ export const AssetForm = ({
             rowLabel={"Description"}
             subHeading={
               <p>
-                This is the initial object description. It will be shown on the
-                asset’s overview page. You can always change it. Maximum 1000
-                characters.
+                Dies ist die anfängliche Objektbeschreibung. Sie wird auf der
+                Übersichtsseite des Assets angezeigt und kann jederzeit geändert
+                werden. Maximal 1000 Zeichen.
               </p>
             }
             className="border-b-0"
@@ -350,7 +350,7 @@ export const AssetForm = ({
               name="description"
               defaultValue={description || ""}
               hideLabel
-              placeholder="Add a description for your asset."
+              placeholder="Beschreibung für Ihr Asset hinzufügen."
               disabled={disabled}
               data-test-id="assetDescription"
               className="w-full"
@@ -362,15 +362,15 @@ export const AssetForm = ({
           rowLabel="Category"
           subHeading={
             <p>
-              Make it unique. Each asset can have 1 category. It will show on
-              your index.{" "}
+              Wählen Sie eine eindeutige Kategorie. Jedes Asset kann genau 1
+              Kategorie haben. Sie wird in Ihrer Übersicht angezeigt.{" "}
               <Button
                 to="/categories/new"
                 variant="link-gray"
                 className="text-gray-600 underline"
                 target="_blank"
               >
-                Create categories
+                Kategorien erstellen
               </Button>
             </p>
           }
@@ -381,8 +381,8 @@ export const AssetForm = ({
             defaultValue={categoryId ?? undefined}
             model={{ name: "category", queryKey: "name" }}
             triggerWrapperClassName="flex flex-col !gap-0 justify-start items-start [&_.inner-label]:w-full [&_.inner-label]:text-left "
-            contentLabel="Categories"
-            label="Category"
+            contentLabel="Kategorien"
+            label="Kategorie"
             hideLabel
             initialDataKey="categories"
             countKey="totalCategories"
@@ -391,9 +391,9 @@ export const AssetForm = ({
             allowClear={true}
             extraContent={({ onItemCreated, closePopover }) => (
               <InlineEntityCreationDialog
-                title="Create new category"
+                title="Neue Kategorie erstellen"
                 type="category"
-                buttonLabel="Create new category"
+                buttonLabel="Neue Kategorie erstellen"
                 onCreated={(created) => {
                   if (created?.type !== "category") return;
                   const category = created.entity;
@@ -414,14 +414,15 @@ export const AssetForm = ({
           rowLabel="Tags"
           subHeading={
             <p>
-              Tags can help you organise your database. They can be combined.{" "}
+              Tags helfen Ihnen beim Organisieren Ihrer Datenbank und können
+              kombiniert werden.{" "}
               <Button
                 to="/tags/new"
                 className="text-gray-600 underline"
                 target="_blank"
                 variant="link-gray"
               >
-                Create tags
+                Tags erstellen
               </Button>
             </p>
           }
@@ -436,18 +437,18 @@ export const AssetForm = ({
         </FormRow>
 
         <FormRow
-          rowLabel="Location"
+          rowLabel="Standort"
           subHeading={
             <p>
-              A location is a place where an item is supposed to be located.
-              This is different than the last scanned location{" "}
+              Ein Standort ist der Ort, an dem sich ein Element befinden soll.
+              Das ist etwas anderes als der zuletzt gescannte Standort.{" "}
               <Button
                 to="/locations/new"
                 className="text-gray-600 underline"
                 target="_blank"
                 variant="link-gray"
               >
-                Create locations
+                Standorte erstellen
               </Button>
             </p>
           }
@@ -468,8 +469,8 @@ export const AssetForm = ({
                   triggerWrapperClassName="flex flex-col !gap-0 justify-start items-start [&_.inner-label]:w-full [&_.inner-label]:text-left "
                   defaultValue={locationId || undefined}
                   model={{ name: "location", queryKey: "name" }}
-                  contentLabel="Locations"
-                  label="Location"
+                  contentLabel="Standorte"
+                  label="Standort"
                   hideLabel
                   initialDataKey="locations"
                   countKey="totalLocations"
@@ -478,11 +479,13 @@ export const AssetForm = ({
                 />
               </HoverCardTrigger>
               <HoverCardContent side="left">
-                <h5 className="text-left text-[14px]">Action disabled</h5>
+                <h5 className="text-left text-[14px]">
+                  Aktion nicht verfügbar
+                </h5>
                 <p className="text-left text-[14px]">
-                  This asset's location is managed by its parent kit{" "}
-                  <strong>"{asset?.kit?.name}"</strong>. Update the kit's
-                  location instead.
+                  Der Standort dieses Assets wird vom übergeordneten Kit{" "}
+                  <strong>"{asset?.kit?.name}"</strong> verwaltet. Aktualisieren
+                  Sie stattdessen den Standort des Kits.
                 </p>
               </HoverCardContent>
             </HoverCard>
@@ -494,8 +497,8 @@ export const AssetForm = ({
               triggerWrapperClassName="flex flex-col !gap-0 justify-start items-start [&_.inner-label]:w-full [&_.inner-label]:text-left "
               defaultValue={locationId || undefined}
               model={{ name: "location", queryKey: "name" }}
-              contentLabel="Locations"
-              label="Location"
+              contentLabel="Standorte"
+              label="Standort"
               hideLabel
               initialDataKey="locations"
               countKey="totalLocations"
@@ -504,8 +507,8 @@ export const AssetForm = ({
               extraContent={({ onItemCreated, closePopover }) => (
                 <InlineEntityCreationDialog
                   type="location"
-                  title="Create new location"
-                  buttonLabel="Create new location"
+                  title="Neuen Standort erstellen"
+                  buttonLabel="Neuen Standort erstellen"
                   onCreated={(created) => {
                     if (created?.type !== "location") return;
                     const location = created.entity;
@@ -535,11 +538,11 @@ export const AssetForm = ({
         </FormRow>
 
         <FormRow
-          rowLabel={"Value"}
+          rowLabel={"Wert"}
           subHeading={
             <p>
-              Specify the value of assets to get an idea of the total value of
-              your inventory.
+              Geben Sie den Wert von Assets an, um eine Vorstellung vom
+              Gesamtwert Ihres Inventars zu erhalten.
             </p>
           }
           className="border-b-0 py-[10px]"
@@ -547,7 +550,7 @@ export const AssetForm = ({
           <div className="relative w-full">
             <Input
               type="number"
-              label="Value"
+              label="Wert"
               inputClassName="pl-[70px] valuation-input"
               hideLabel
               name="valuation"
@@ -567,7 +570,7 @@ export const AssetForm = ({
           <FormRow
             rowLabel={"Barcodes"}
             className="border-b-0"
-            subHeading="Add additional barcodes to this asset (Code 128, Code 39, or Data Matrix). Note: Each asset automatically gets a default Shelf QR code for tracking."
+            subHeading="Fügen Sie diesem Asset zusätzliche Barcodes hinzu (Code 128, Code 39 oder Data Matrix). Hinweis: Jedes Asset erhält automatisch einen Standard-Shelf-QR-Code zur Nachverfolgung."
           >
             <BarcodesInput
               ref={barcodesInputRef}
@@ -605,13 +608,13 @@ const Actions = ({
   <>
     <ButtonGroup>
       <Button to={referer} variant="secondary" disabled={disabled}>
-        Cancel
+        Abbrechen
       </Button>
       <AddAnother disabled={disabled} />
     </ButtonGroup>
 
     <Button type="submit" disabled={disabled}>
-      Save
+      Speichern
     </Button>
   </>
 );
@@ -627,11 +630,11 @@ const AddAnother = ({ disabled }: { disabled: boolean }) => (
           name="addAnother"
           value="true"
         >
-          Add another
+          Weiteres hinzufügen
         </Button>
       </TooltipTrigger>
       <TooltipContent side="bottom">
-        <p className="text-sm">Save the asset and add a new one</p>
+        <p className="text-sm">Asset speichern und direkt ein neues anlegen</p>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

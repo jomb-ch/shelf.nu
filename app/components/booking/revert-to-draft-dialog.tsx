@@ -28,7 +28,7 @@ export default function RevertToDraftDialog({ booking }: RevertToDraftProps) {
         onClick={handleOpenDialog}
         disabled={booking.status !== BookingStatus.RESERVED}
       >
-        Revert to Draft
+        Auf Entwurf zurücksetzen
       </Button>
       <DialogPortal>
         <Dialog
@@ -37,15 +37,15 @@ export default function RevertToDraftDialog({ booking }: RevertToDraftProps) {
           onClose={handleCloseDialog}
           title={
             <div>
-              <h3>Reverting to draft state</h3>
+              <h3>Auf Entwurf zurücksetzen</h3>
             </div>
           }
         >
           <div className="px-6 pb-4">
             <p className="mb-4">
-              Are you sure you want to revert{" "}
-              <span className="font-bold">{booking.name}</span> booking back to
-              draft?
+              Möchten Sie die Buchung{" "}
+              <span className="font-bold">{booking.name}</span> wirklich wieder
+              in den Entwurf zurücksetzen?
             </p>
 
             <form method="post" className="flex w-full items-center gap-4">
@@ -56,10 +56,10 @@ export default function RevertToDraftDialog({ booking }: RevertToDraftProps) {
                 type="button"
                 onClick={handleCloseDialog}
               >
-                Cancel
+                Abbrechen
               </Button>
               <Button className="flex-1" disabled={disabled}>
-                Confirm
+                Bestätigen
               </Button>
             </form>
           </div>
@@ -74,7 +74,7 @@ export default function RevertToDraftDialog({ booking }: RevertToDraftProps) {
         onClick={handleOpenDialog}
         disabled={booking.status !== BookingStatus.RESERVED}
       >
-        Revert to Draft
+        Auf Entwurf zurücksetzen
       </Button>
     </>
   );

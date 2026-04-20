@@ -14,11 +14,11 @@ export function DescriptionField({
 }) {
   return (
     <FormRow
-      rowLabel="Description"
+      rowLabel="Beschreibung"
       className="mobile-styling-only h-full border-b-0 p-0"
     >
       <Input
-        label="Description"
+        label="Beschreibung"
         inputType="textarea"
         hideLabel
         name={fieldName}
@@ -26,7 +26,7 @@ export function DescriptionField({
         error={error}
         className="mobile-styling-only w-full p-0"
         defaultValue={description || undefined}
-        placeholder="Add a description..."
+        placeholder="Beschreibung hinzufügen..."
       />
     </FormRow>
   );

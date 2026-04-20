@@ -1,5 +1,6 @@
 import { useLocation, useRouteError } from "react-router";
 
+import { translateToDeCh } from "~/utils/de-ch";
 import { isRouteError } from "~/utils/http";
 import { tw } from "~/utils/tw";
 import Error404Handler from "./error-404-handler";
@@ -12,14 +13,16 @@ export const ErrorContent = ({ className }: ErrorContentProps) => {
   const loc = useLocation();
   const response = useRouteError();
 
-  let title = "Oops, something went wrong";
+  let title = "Hoppla, etwas ist schiefgelaufen";
   let message =
-    "There was an unexpected error. Please refresh to try again. If the issues persists, please contact support.";
+    "Es ist ein unerwarteter Fehler aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es nochmals. Falls das Problem weiterhin besteht, kontaktieren Sie bitte den Support.";
   let traceId;
 
   if (isRouteError(response)) {
-    message = response.data.error.message;
-    title = response.data.error.title || "Oops, something went wrong";
+    message = translateToDeCh(response.data.error.message);
+    title =
+      translateToDeCh(response.data.error.title || "") ||
+      "Hoppla, etwas ist schiefgelaufen";
     traceId = response.data.error.traceId;
   }
 
@@ -52,10 +55,10 @@ export const ErrorContent = ({ className }: ErrorContentProps) => {
         {traceId && <p className="text-gray-400">(Trace id: {traceId})</p>}
         <div className=" mt-8 flex gap-3">
           <Button to="/" variant="secondary" icon="home">
-            Back to home
+            Zur Startseite
           </Button>
           <Button to={loc.pathname} reloadDocument>
-            Reload page
+            Seite neu laden
           </Button>
         </div>
       </div>

@@ -36,7 +36,7 @@ export const BookingPagination = ({ className }: { className?: string }) => {
           onClick={() => goToPage(1)}
           disabled={prevDisabled}
           className="rounded-none border-y-0 border-l-0 border-r border-gray-300 bg-transparent px-3 py-[4px] hover:bg-transparent"
-          aria-label="Go to page 1"
+          aria-label="Zu Seite 1"
         >
           <ChevronLeftDoubleIcon />
         </Button>
@@ -47,20 +47,20 @@ export const BookingPagination = ({ className }: { className?: string }) => {
           onClick={() => goToPage(page - 1)}
           disabled={prevDisabled}
           className="h-8 w-10 rotate-180 rounded-none border-y-0 border-l border-r-0 border-gray-300 bg-transparent px-3 py-[4px] hover:bg-transparent"
-          aria-label="Go to previous page"
+          aria-label="Zur vorherigen Seite"
         >
           <ChevronRight />
         </Button>
 
         <div className="flex items-center gap-2 px-2.5 py-[4px] leading-none text-gray-400">
           <span className="whitespace-nowrap text-[14px] font-medium text-gray-500">
-            Page
+            Seite
           </span>
           <span className="whitespace-nowrap text-[14px] font-semibold text-gray-700">
             {page}
           </span>
           <span className="whitespace-nowrap text-[14px] font-medium text-gray-500">
-            of
+            von
           </span>
           <span className="whitespace-nowrap text-[14px] font-semibold text-gray-700">
             {totalPages === 0 ? 1 : totalPages}
@@ -73,7 +73,7 @@ export const BookingPagination = ({ className }: { className?: string }) => {
           onClick={() => goToPage(page + 1)}
           disabled={customNextDisabled}
           className="h-8 w-10 rounded-none border-y-0 border-l border-r-0 border-gray-300 bg-transparent px-3 py-[4px] hover:bg-transparent"
-          aria-label="Go to next page"
+          aria-label="Zur nächsten Seite"
         >
           <ChevronRight />
         </Button>
@@ -84,7 +84,7 @@ export const BookingPagination = ({ className }: { className?: string }) => {
           onClick={() => goToPage(totalPages)}
           disabled={customNextDisabled}
           className="rotate-180 rounded-none border-y-0 border-l-0 border-r border-gray-300 bg-transparent px-3 py-[4px] hover:bg-transparent"
-          aria-label="Go to last page"
+          aria-label="Zur letzten Seite"
         >
           <ChevronLeftDoubleIcon />
         </Button>
@@ -92,7 +92,7 @@ export const BookingPagination = ({ className }: { className?: string }) => {
       <div className="flex items-center gap-2">
         <PerPageItemsSelect />
         <p className="hidden text-[14px] font-medium text-gray-500 lg:block">
-          <span className="capitalize">{modelName.plural}</span> per page
+          <span className="capitalize">{modelName.plural}</span> pro Seite
         </p>
       </div>
     </div>

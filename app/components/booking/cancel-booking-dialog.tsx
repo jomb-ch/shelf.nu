@@ -30,7 +30,7 @@ export function CancelBookingDialog({ bookingName }: CancelBookingDialogProps) {
           className="justify-start rounded-sm px-2 py-1.5 text-sm font-medium text-gray-700 outline-none hover:bg-slate-100 hover:text-gray-700"
           width="full"
         >
-          Cancel
+          Stornieren
         </Button>
       </AlertDialogTrigger>
 
@@ -41,17 +41,17 @@ export function CancelBookingDialog({ bookingName }: CancelBookingDialogProps) {
               <AlertIcon />
             </span>
           </div>
-          <AlertDialogTitle>Cancel {bookingName}</AlertDialogTitle>
+          <AlertDialogTitle>{bookingName} stornieren</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to cancel this booking? This action cannot be
-            undone.
+            Möchten Sie diese Buchung wirklich stornieren? Diese Aktion kann
+            nicht rückgängig gemacht werden.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <div className="flex justify-center gap-2">
             <AlertDialogCancel asChild>
               <Button variant="secondary" disabled={disabled}>
-                Go back
+                Zurück
               </Button>
             </AlertDialogCancel>
 
@@ -64,7 +64,7 @@ export function CancelBookingDialog({ bookingName }: CancelBookingDialogProps) {
                 )}
                 disabled={disabled}
               >
-                Cancel booking
+                Buchung stornieren
               </Button>
             </Form>
           </div>

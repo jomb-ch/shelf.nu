@@ -11,6 +11,7 @@ import { Tag } from "~/components/shared/tag";
 import { config } from "~/config/shelf.config";
 import { getUserByID } from "~/modules/user/service.server";
 import { appendToMetaTitle } from "~/utils/append-to-meta-title";
+import { DEFAULT_APP_LOCALE } from "~/utils/de-ch";
 import { makeShelfError } from "~/utils/error";
 import { isFormProcessing } from "~/utils/form";
 import { payload, error } from "~/utils/http.server";
@@ -109,7 +110,7 @@ export default function SelectPlan() {
 
     const formattedPrice =
       amount > 0
-        ? (amount / 100).toLocaleString("en-US", {
+        ? (amount / 100).toLocaleString(DEFAULT_APP_LOCALE, {
             style: "currency",
             currency: price.currency,
             maximumFractionDigits: 0,
@@ -118,7 +119,7 @@ export default function SelectPlan() {
 
     let footnote = "";
     if (interval === "year") {
-      const annualTotal = (amount / 10).toLocaleString("en-US", {
+      const annualTotal = (amount / 10).toLocaleString(DEFAULT_APP_LOCALE, {
         style: "currency",
         currency: price.currency,
         maximumFractionDigits: 0,

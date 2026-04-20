@@ -39,14 +39,14 @@ export default function BookingActionsDropdown() {
       indexType: "asset",
       id: asset.id,
       disabled,
-      label: "Create new booking",
+      label: "Neue Buchung erstellen",
       icon: "bookings",
       to: "overview/create-new-booking",
     },
     {
       indexType: "asset",
       id: asset.id,
-      label: "Add to existing booking",
+      label: "Zu bestehender Buchung hinzufügen",
       icon: "booking-exist",
       disabled,
       to: `overview/add-to-existing-booking`,
@@ -58,7 +58,7 @@ export default function BookingActionsDropdown() {
       <GenericBookActionsDropdown
         links={links}
         key={"asset"}
-        label={"Book"}
+        label={"Buchen"}
         disabledTrigger={disabledTrigger}
       />
     </div>

@@ -13,6 +13,7 @@ export const TagsAutocomplete = ({
   hideLabel = false,
   error,
   required = false,
+  placeholder = "Tag hinzufügen",
 }: {
   existingTags: Tag[];
   suggestions: TagSuggestion[];
@@ -20,6 +21,7 @@ export const TagsAutocomplete = ({
   hideLabel?: boolean;
   error?: string;
   required?: boolean;
+  placeholder?: string;
 }) => (
   <MultiSelect
     className="w-full"
@@ -33,5 +35,6 @@ export const TagsAutocomplete = ({
     hideLabel={hideLabel}
     error={error}
     required={required}
+    placeholder={placeholder}
   />
 );

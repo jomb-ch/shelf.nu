@@ -1,3 +1,5 @@
+import { DEFAULT_APP_LOCALE } from "./de-ch";
+
 type RelativeTimeUnit =
   | "years"
   | "months"
@@ -8,7 +10,7 @@ type RelativeTimeUnit =
   | "seconds";
 export function timeAgo(input: Date | string) {
   const date = new Date(input);
-  const formatter = new Intl.RelativeTimeFormat("en");
+  const formatter = new Intl.RelativeTimeFormat(DEFAULT_APP_LOCALE);
 
   const ranges: Record<RelativeTimeUnit, number> = {
     years: 3600 * 24 * 365,
@@ -26,5 +28,5 @@ export function timeAgo(input: Date | string) {
       return formatter.format(Math.round(delta), key);
     }
   }
-  return "Just now";
+  return "Gerade eben";
 }

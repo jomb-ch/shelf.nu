@@ -51,7 +51,7 @@ describe("BookingFormSchema - time restrictions", () => {
       if (!result.success) {
         const errorMessages = result.error.errors.map((e) => e.message);
         expect(
-          errorMessages.some((msg) => msg.includes("at least 24 hour"))
+          errorMessages.some((msg) => msg.includes("mindestens 24 Stunden"))
         ).toBe(true);
       }
     });
@@ -112,7 +112,7 @@ describe("BookingFormSchema - time restrictions", () => {
         const errorMessages = result.error.errors.map((e) => e.message);
         expect(
           errorMessages.some((msg) =>
-            msg.includes("Booking duration cannot exceed 48 hours")
+            msg.includes("Buchungsdauer darf 48 Stunden nicht überschreiten")
           )
         ).toBe(true);
       }
@@ -174,7 +174,7 @@ describe("BookingFormSchema - time restrictions", () => {
         const errorMessages = result.error.errors.map((e) => e.message);
         expect(
           errorMessages.some((msg) =>
-            msg.includes("End date cannot be earlier than start date")
+            msg.includes("Enddatum kann nicht vor dem Startdatum liegen")
           )
         ).toBe(true);
       }
@@ -247,7 +247,7 @@ describe("ExtendBookingSchema - time restrictions", () => {
         const errorMessages = result.error.errors.map((e) => e.message);
         expect(
           errorMessages.some((msg) =>
-            msg.includes("Booking duration cannot exceed 48 hours")
+            msg.includes("Buchungsdauer darf 48 Stunden nicht überschreiten")
           )
         ).toBe(true);
       }

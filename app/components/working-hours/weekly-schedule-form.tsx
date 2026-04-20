@@ -110,12 +110,12 @@ export const WeeklyScheduleForm = ({
 
         // Validate open time
         if (!dayState.openTime) {
-          errors[`${dayNumber}`] = "Open time is required";
+          errors[`${dayNumber}`] = "Eine Öffnungszeit ist erforderlich";
         }
 
         // Validate close time
         if (!dayState.closeTime) {
-          errors[`${dayNumber}`] = "Close time is required";
+          errors[`${dayNumber}`] = "Eine Schliesszeit ist erforderlich";
         }
 
         // Validate time logic
@@ -131,7 +131,8 @@ export const WeeklyScheduleForm = ({
           const closeTotalMinutes = closeHours * 60 + closeMinutes;
 
           if (openTotalMinutes >= closeTotalMinutes) {
-            errors[`${dayNumber}`] = "Close time must be after open time";
+            errors[`${dayNumber}`] =
+              "Die Schliesszeit muss nach der Öffnungszeit liegen";
           }
         }
       }
@@ -139,7 +140,7 @@ export const WeeklyScheduleForm = ({
 
     // Check if at least one day is open
     if (!hasOpenDay) {
-      errors.general = "At least one day must be marked as open";
+      errors.general = "Mindestens ein Tag muss als offen markiert sein";
     }
 
     setValidationErrors(errors);
@@ -164,10 +165,10 @@ export const WeeklyScheduleForm = ({
       >
         <input type="hidden" name="intent" value="updateSchedule" />
         <div className="mb-4 border-b pb-4">
-          <h3 className="text-text-lg font-semibold">Weekly Schedule</h3>
+          <h3 className="text-text-lg font-semibold">Wochenplan</h3>
           <p className="text-sm text-gray-600">
-            Set your working hours for each day of the week. Times will be
-            displayed in your local format.
+            Legen Sie Ihre Arbeitszeiten für jeden Wochentag fest. Zeiten werden
+            in Ihrem lokalen Format angezeigt.
           </p>
 
           {validationErrors.general && (
@@ -215,8 +216,8 @@ export const WeeklyScheduleForm = ({
                             handleTimeChange(dayNumber, "openTime", time)
                           }
                           disabled={disabled}
-                          placeholder="Select opening time"
-                          aria-label={`${dayName} opening time`}
+                          placeholder="Öffnungszeit auswählen"
+                          aria-label={`${dayName} Öffnungszeit`}
                           required={dayState.isOpen}
                         />
                         <div> - </div>
@@ -227,8 +228,8 @@ export const WeeklyScheduleForm = ({
                             handleTimeChange(dayNumber, "closeTime", time)
                           }
                           disabled={disabled}
-                          placeholder="Select closing time"
-                          aria-label={`${dayName} closing time`}
+                          placeholder="Schliesszeit auswählen"
+                          aria-label={`${dayName} Schliesszeit`}
                           required={dayState.isOpen}
                         />
                       </div>

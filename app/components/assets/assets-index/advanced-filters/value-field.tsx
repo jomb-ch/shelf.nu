@@ -1762,7 +1762,9 @@ function MultiDateInput({
         <div className="mr-1 inline-block size-[14px] align-middle">
           <PlusIcon />
         </div>
-        <span className="inline-block align-middle">Add another date</span>
+        <span className="inline-block align-middle">
+          Weiteres Datum hinzufügen
+        </span>
       </Button>
     </div>
   );

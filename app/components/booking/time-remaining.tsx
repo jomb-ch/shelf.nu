@@ -2,6 +2,18 @@ import { BookingStatus } from "@prisma/client";
 import { Clock } from "lucide-react";
 import { ONE_DAY, ONE_HOUR } from "~/utils/constants";
 
+function getDayLabel(value: number) {
+  return value === 1 ? "Tag" : "Tage";
+}
+
+function getHourLabel(value: number) {
+  return value === 1 ? "Stunde" : "Stunden";
+}
+
+function getMinuteLabel(value: number) {
+  return value === 1 ? "Minute" : "Minuten";
+}
+
 export function TimeRemaining({
   to,
   from,
@@ -43,18 +55,22 @@ export function TimeRemaining({
         <div className="flex items-center text-sm text-gray-600 md:ml-4 [&_span]:whitespace-nowrap">
           <Clock className="mr-1 size-4 text-gray-400" />
           <span className="font-medium text-gray-900">
-            Overdue by {overdueDays} days
+            Überfällig seit {overdueDays} {getDayLabel(overdueDays)}
           </span>
           {overdueHours > 0 && (
             <>
               <span className="mx-1">·</span>
-              <span>{overdueHours} hours</span>
+              <span>
+                {overdueHours} {getHourLabel(overdueHours)}
+              </span>
             </>
           )}
           {overdueMinutes > 0 && (
             <>
               <span className="mx-1">·</span>
-              <span>{overdueMinutes} minutes</span>
+              <span>
+                {overdueMinutes} {getMinuteLabel(overdueMinutes)}
+              </span>
             </>
           )}
         </div>
@@ -75,18 +91,22 @@ export function TimeRemaining({
       <div className="flex items-center text-sm text-gray-600 md:ml-4 [&_span]:whitespace-nowrap">
         <Clock className="mr-1 size-4 text-gray-400" />
         <span className="font-medium text-gray-900">
-          Starts in: {remainingDays} days
+          Startet in {remainingDays} {getDayLabel(remainingDays)}
         </span>
         {remainingHours > 0 && (
           <>
             <span className="mx-1">·</span>
-            <span>{remainingHours} hours</span>
+            <span>
+              {remainingHours} {getHourLabel(remainingHours)}
+            </span>
           </>
         )}
         {remainingMinutes > 0 && (
           <>
             <span className="mx-1">·</span>
-            <span>{remainingMinutes} minutes</span>
+            <span>
+              {remainingMinutes} {getMinuteLabel(remainingMinutes)}
+            </span>
           </>
         )}
       </div>
@@ -97,20 +117,26 @@ export function TimeRemaining({
   return (
     <div className="flex items-center text-sm text-gray-600 md:ml-4 [&_span]:whitespace-nowrap">
       <Clock className="mr-1 size-4 text-gray-400" />
-      <span className="font-medium text-gray-900">{remainingDays} days</span>
+      <span className="font-medium text-gray-900">
+        {remainingDays} {getDayLabel(remainingDays)}
+      </span>
       {remainingHours > 0 && (
         <>
           <span className="mx-1">·</span>
-          <span>{remainingHours} hours</span>
+          <span>
+            {remainingHours} {getHourLabel(remainingHours)}
+          </span>
         </>
       )}
       {remainingMinutes > 0 && (
         <>
           <span className="mx-1">·</span>
-          <span>{remainingMinutes} minutes</span>
+          <span>
+            {remainingMinutes} {getMinuteLabel(remainingMinutes)}
+          </span>
         </>
       )}
-      <span className="ml-1">remaining</span>
+      <span className="ml-1">verbleibend</span>
     </div>
   );
 }

@@ -40,10 +40,10 @@ export default function CategoriesInput({
                 fieldName={name(i)}
                 defaultValue={category}
                 model={{ name: "category", queryKey: "name" }}
-                contentLabel="Category"
+                contentLabel="Kategorie"
                 initialDataKey="categories"
                 countKey="totalCategories"
-                placeholder="Select Category"
+                placeholder="Kategorie auswählen"
                 className="flex-1"
                 excludeItems={categories}
                 onChange={(value) => {
@@ -55,8 +55,8 @@ export default function CategoriesInput({
                 extraContent={({ onItemCreated, closePopover }) => (
                   <InlineEntityCreationDialog
                     type="category"
-                    title="Create new category"
-                    buttonLabel="Create new category"
+                    title="Neue Kategorie erstellen"
+                    buttonLabel="Neue Kategorie erstellen"
                     onCreated={(created) => {
                       if (created?.type !== "category") return;
 
@@ -104,7 +104,7 @@ export default function CategoriesInput({
           setCategories((prev) => [...prev, ""]);
         }}
       >
-        Add another category
+        Weitere Kategorie hinzufügen
       </Button>
     </div>
   );
