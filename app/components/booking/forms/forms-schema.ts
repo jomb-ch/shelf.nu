@@ -1,6 +1,7 @@
 import type { BookingSettings } from "@prisma/client";
 import { BookingStatus } from "@prisma/client";
-import { format, addHours, differenceInHours } from "date-fns";
+import { format, addHours, differenceInHours, isAfter } from "date-fns";
+import { getTimezoneOffset } from "date-fns-tz";
 import { z } from "zod";
 import type { WorkingHoursData } from "~/modules/working-hours/types";
 import {
@@ -100,24 +101,17 @@ function validateWorkingHours(
 function validateFutureDate(
   date: Date,
   bufferStartTime: number,
-  timeZone?: string
+  timeZone?: string // Wird für den reinen "In-Zukunft-Check" nicht benötigt
 ): ValidationResult {
-  let now: Date;
-  if (timeZone) {
-    now = new Date(
-      new Date().toLocaleString(DEFAULT_APP_LOCALE, {
-        timeZone,
-      })
-    );
-  } else {
-    now = new Date();
-  }
+  // 1. "Jetzt" als absoluter UTC-Zeitstempel
+  const now = new Date();
 
-  // Only apply buffer if bufferStartTime is greater than 0
+  // 2. Buffer ganz normal in absoluten Stunden addieren
   const hasBuffer = bufferStartTime > 0;
   const minimumTime = hasBuffer ? addHours(now, bufferStartTime) : now;
 
-  if (date <= minimumTime) {
+  // 3. Reiner, nativer Vergleich der physikalischen Zeit
+  if (!isAfter(date, minimumTime)) {
     if (hasBuffer) {
       return {
         isValid: false,
@@ -135,7 +129,6 @@ function validateFutureDate(
 
   return { isValid: true };
 }
-
 interface BookingFormSchemaParams {
   hints?: ReturnType<typeof getHints>;
   action: "new" | "save" | "reserve";
